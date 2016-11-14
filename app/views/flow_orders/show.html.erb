@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @flow_order.order %>
+</p>
+
+<p>
+  <strong>Project flg:</strong>
+  <%= @flow_order.project_flg %>
+</p>
+
+<p>
+  <strong>Dept:</strong>
+  <%= @flow_order.dept.try(:name) %>
+</p>
+
+<%= link_to 'Edit', edit_flow_order_path(@flow_order) %> |
+<%= link_to 'Back', flow_orders_path %>

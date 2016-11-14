@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  management_no: 1
+  emargency: false
+  filename: MyString
+  request_date: 2016-02-03
+  preferred_date: 2016-02-03
+  close: false
+
+two:
+  management_no: 1
+  emargency: false
+  filename: MyString
+  request_date: 2016-02-03
+  preferred_date: 2016-02-03
+  close: false

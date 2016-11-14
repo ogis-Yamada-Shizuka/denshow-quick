@@ -1,0 +1,41 @@
+<%= form_for(@flow_order) do |f| %>
+  <% if @flow_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flow_order.errors.count, "error") %> prohibited this flow_order from being saved:</h2>
+
+      <ul>
+      <% @flow_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order %><br>
+    <%= f.number_field :order %>
+  </div>
+  <div class="field">
+    <%= f.label :project_flg %><br>
+    <%= f.check_box :project_flg %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dept_id %><br>
+    <%= f.collection_select :dept_id, Dept.departments, :id, :name , include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reject_permission %><br>
+    <%= f.check_box :reject_permission %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_to_revert_permission %><br>
+    <%= f.check_box :first_to_revert_permission %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

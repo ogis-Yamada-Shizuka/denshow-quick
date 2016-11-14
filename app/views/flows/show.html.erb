@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Request application:</strong>
+  <%= @flow.request_application %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @flow.order %>
+</p>
+
+<p>
+  <strong>Dept:</strong>
+  <%= @flow.dept %>
+</p>
+
+<%= link_to 'Edit', edit_flow_path(@flow) %> |
+<%= link_to 'Back', flows_path %>

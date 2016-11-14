@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Management no:</strong>
+  <%= @request_application.management_no %>
+</p>
+
+<p>
+  <strong>Emargency:</strong>
+  <%= @request_application.emargency %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @request_application.filename %>
+</p>
+
+<p>
+  <strong>Request date:</strong>
+  <%= @request_application.request_date %>
+</p>
+
+<p>
+  <strong>Preferred date:</strong>
+  <%= @request_application.preferred_date %>
+</p>
+
+<p>
+  <strong>Close:</strong>
+  <%= @request_application.close_status %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= simple_format(@request_application.memo) %>
+</p>
+
+<p>
+  <strong>vendor</strong>
+  <%= "#{@request_application.vendor.try(:name)} ( #{@request_application.vendor.try(:code)} )" %>
+</p>
+
+<p>
+  <strong>model</strong>
+<%= @request_application.model.try(:code) %>
+
+</p>
+
+<p>
+  <strong>section</strong>
+  <%= @request_application.section.try(:name) %>
+</p>
+
+
+<hr>
+
+<%= render 'history'  %>
+
+
+<% unless @request_application.close? %>
+  <%= link_to 'Edit', edit_request_application_path(@request_application) %> |
+<% end %>
+<%= link_to 'Back', request_applications_path %>
+

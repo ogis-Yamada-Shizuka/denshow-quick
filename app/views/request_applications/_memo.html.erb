@@ -1,0 +1,17 @@
+<%= form_for(@request_application, url: url ) do |f| %>
+
+  <%= fields_for @request_application.flows.order(:history_no).last do |flow| %>
+  <div class="row">
+    <div class="col-sm-3">
+    <div class="field">
+      <%= flow.text_area :memo ,class: "form-control" %>
+    </div>
+    </div>
+  </div>
+  <% end %>
+
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+<% end %>
+

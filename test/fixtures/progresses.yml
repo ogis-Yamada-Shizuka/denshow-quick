@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flow_id: 
+  in_date: 2016-02-04 14:39:25
+  out_date: 2016-02-04 14:39:25
+
+two:
+  flow_id: 
+  in_date: 2016-02-04 14:39:25
+  out_date: 2016-02-04 14:39:25

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flow:</strong>
+  <%= @progress.flow %>
+</p>
+
+<p>
+  <strong>In date:</strong>
+  <%= @progress.in_date %>
+</p>
+
+<p>
+  <strong>Out date:</strong>
+  <%= @progress.out_date %>
+</p>
+
+<%= link_to 'Edit', edit_progress_path(@progress) %> |
+<%= link_to 'Back', progresses_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_application_id: 
+  order: 1
+  dept_id: 
+
+two:
+  request_application_id: 
+  order: 1
+  dept_id: 

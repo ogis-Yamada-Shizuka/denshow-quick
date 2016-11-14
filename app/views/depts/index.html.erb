@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Depts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Project</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @depts.each do |dept| %>
+      <tr>
+        <td><%= dept.name %></td>
+        <td><%= dept_status(dept.project) %></td>
+        <td><%= link_to 'Show', dept %></td>
+        <td><%= link_to 'Edit', edit_dept_path(dept) %></td>
+        <td><%= link_to 'Destroy', dept, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dept', new_dept_path %>
