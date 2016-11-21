@@ -1,28 +1,16 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#ブランチについて
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+##master  
+- スプリントレビューが終了し、PO確認が済んだコードを master にマージします。
+- なお、このブランチへの pullrequest は、原則としてこのレポジトリの staging ブランチから出すようにしてください。
+  
+##staging  
+- スプリントレビュー用のブランチです。
+- チームのテスト環境(heroku)へはこのブランチのものを上げるようにしてください。
+- このブランチへの pullrequest は、基本的に develop ブランチから出すようにしてください。
+  
+##develop  
+- スプリント中の作業をマージする為のブランチです。
+- 各自の作業をマージする際はこのブランチ宛に pullrequest してください。
