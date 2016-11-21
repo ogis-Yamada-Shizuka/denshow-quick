@@ -1,15 +1,11 @@
 class RequestApplication < ActiveRecord::Base
-  attr_accessor :vendor_code
   has_many :flows, dependent: :destroy
-  belongs_to :vendor
   belongs_to :section
   belongs_to :model
   belongs_to :project, class_name: "Dept"
   mount_uploader :filename, FileUploader
 
   validates :management_no, uniqueness: true, presence: true
-  validates :vendor_code, length: { in: 4..6 }, format: { with: /[A-Za-z0-9]/ }
-  validates :vendor_id, presence: { message: "vendor code has not been registered" }
 
   # custom scope
   scope :custom_scope, lambda { |dept_id|
@@ -67,14 +63,6 @@ class RequestApplication < ActiveRecord::Base
   # 今、フローの何番目にいるか
   def current_order
     Flow.where(request_application_id: id).order(:history_no).last.try(:order)
-  end
-
-  # ベンダーコードから、ベンダーIDをセットする。
-  # データがない場合は、nilをセットする。
-  def vendor_setting
-    self.vendor_id = Vendor.find_by(code: vendor_code).id
-  rescue
-    self.vendor_id = nil
   end
 
   private
