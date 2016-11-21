@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317231142) do
+ActiveRecord::Schema.define(version: 20161121051355) do
 
   create_table "depts", force: :cascade do |t|
     t.string   "name"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20160317231142) do
     t.datetime "updated_at",     null: false
     t.integer  "project_id"
     t.text     "memo"
-    t.integer  "vendor_id"
     t.integer  "model_id"
     t.integer  "section_id"
   end
