@@ -22,12 +22,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :vendor_code %><br>
-    <%= f.text_field :vendor_code, id: "vendor_id" %>
-    <div id="vendor_name"></div>
-  </div>
-
-  <div class="field">
     <%= f.label :model_id %><br>
      <%= f.collection_select :model_id, Model.all, :id, :name  %>
   </div>
