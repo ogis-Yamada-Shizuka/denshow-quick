@@ -1,6 +1,5 @@
 class RequestApplicationsController < ApplicationController
   before_action :set_request_application, only: [:show, :edit, :update, :destroy, :regist, :reject, :interrupt, :first_to_revert, :regist_memo, :reject_memo, :interrupt_memo, :first_to_revert_memo]
-  before_action :set_vendor_id, only: [:update]
   before_action :set_memo, only: [:regist, :reject, :interrupt, :first_to_revert]
 
   # GET /request_applications
@@ -34,7 +33,6 @@ class RequestApplicationsController < ApplicationController
     flow = @request_application.flows.build
     # 初期フロー生成
     flow.init_flow
-    @request_application.vendor_setting
 
     respond_to do |format|
       if @request_application.save && flow.save
@@ -51,7 +49,7 @@ class RequestApplicationsController < ApplicationController
   # PATCH/PUT /request_applications/1.json
   def update
     respond_to do |format|
-      if @request_application.update(request_application_params) && set_vendor_id
+      if @request_application.update(request_application_params)
         format.html { redirect_to @request_application, notice: 'Request application was successfully updated.' }
         format.json { render :show, status: :ok, location: @request_application }
       else
@@ -129,21 +127,11 @@ class RequestApplicationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_request_application
     @request_application = RequestApplication.find(params[:id])
-    begin
-      @request_application.vendor_code = Vendor.find(@request_application.vendor_id).code
-    rescue
-      @request_application.vendor_code = nil
-    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_application_params
-    params.require(:request_application).permit(:management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :vendor_code, :model_id, :section_id, flow_attributes: [:memo])
-  end
-
-  def set_vendor_id
-    @request_application.vendor_id = Vendor.find_by(code: params["request_application"]["vendor_code"]).try(:id)
-    @request_application.save
+    params.require(:request_application).permit(:management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id, flow_attributes: [:memo])
   end
 
   def set_memo
