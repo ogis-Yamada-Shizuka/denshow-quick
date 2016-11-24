@@ -3,7 +3,7 @@ class RequestApplication < ActiveRecord::Base
   has_many :request_details, dependent: :destroy
   belongs_to :section
   belongs_to :model
-  belongs_to :project, class_name: "Dept"
+  belongs_to :project
   mount_uploader :filename, FileUploader
 
   validates :management_no, uniqueness: true, presence: true
