@@ -1,5 +1,6 @@
 class RequestApplication < ActiveRecord::Base
   has_many :flows, dependent: :destroy
+  has_many :request_details, dependent: :destroy
   belongs_to :section
   belongs_to :model
   belongs_to :project, class_name: "Dept"
