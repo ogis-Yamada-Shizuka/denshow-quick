@@ -20,10 +20,12 @@ class RequestApplicationsController < ApplicationController
   # GET /request_applications/new
   def new
     @request_application = RequestApplication.new
+    @request_application.details.build
   end
 
   # GET /request_applications/1/edit
   def edit
+    @request_application.details.build
   end
 
   # POST /request_applications
@@ -33,7 +35,6 @@ class RequestApplicationsController < ApplicationController
     flow = @request_application.flows.build
     # 初期フロー生成
     flow.init_flow
-
     respond_to do |format|
       if @request_application.save && flow.save
         format.html { redirect_to @request_application, notice: 'Request application was successfully created.' }
@@ -131,11 +132,19 @@ class RequestApplicationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_application_params
-    params.require(:request_application).permit(:management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id, flow_attributes: [:memo])
+    params.require(:request_application).permit(
+      :management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id,
+      flow_attributes: [:memo],
+      details_attributes: detail_params_key_arr
+    )
   end
 
   def set_memo
     @memo = params[:flow][:memo].presence if params[:flow].present?
     @request_application.flows.last.set_memo(@memo)
+  end
+
+  def detail_params_key_arr
+    %i(doc_no doc_type sht rev eo_chgno chg_type mcl scp_for_smpl scml_ln)
   end
 end
