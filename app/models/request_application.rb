@@ -15,7 +15,7 @@ class RequestApplication < ActiveRecord::Base
                        }
   # scope :closed_list, -> (bool) {where(closed: bool)}
 
-  accepts_nested_attributes_for :details
+  accepts_nested_attributes_for :details, reject_if: :all_blank
 
   def self.closed(id)
     request_application = RequestApplication.find(id)
