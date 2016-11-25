@@ -96,7 +96,7 @@
       <div class="panel-heading">New Request Application Detail</div>
       <div class="panel-body">
         <%= f.fields_for :details do |detail| %>
-          <% next if detail.object.id.present? %>
+          <% next if detail.object.persisted? %>
           <div class="row">
             <div class="col-lg-2">
               <%= detail.label :doc_no %>
