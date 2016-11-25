@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121051355) do
+ActiveRecord::Schema.define(version: 20161124072343) do
 
   create_table "depts", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 20161121051355) do
 
   add_index "progresses", ["flow_id"], name: "index_progresses_on_flow_id"
 
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "request_applications", force: :cascade do |t|
     t.string   "management_no"
     t.boolean  "emargency"
@@ -76,6 +82,23 @@ ActiveRecord::Schema.define(version: 20161121051355) do
     t.integer  "model_id"
     t.integer  "section_id"
   end
+
+  create_table "request_details", force: :cascade do |t|
+    t.integer  "request_application_id"
+    t.string   "doc_no"
+    t.string   "doc_type"
+    t.string   "sht"
+    t.string   "rev"
+    t.string   "eo_chgno"
+    t.string   "chg_type"
+    t.string   "mcl"
+    t.string   "scp_for_smpl"
+    t.string   "scml_ln"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "request_details", ["request_application_id"], name: "index_request_details_on_request_application_id"
 
   create_table "sections", force: :cascade do |t|
     t.string   "name"
