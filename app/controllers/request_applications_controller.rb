@@ -37,7 +37,7 @@ class RequestApplicationsController < ApplicationController
     flow.init_flow
     respond_to do |format|
       if @request_application.save && flow.save
-        format.html { redirect_to @request_application, notice: 'Request application was successfully created.' }
+        format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :created, location: @request_application }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class RequestApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @request_application.update(request_application_params)
-        format.html { redirect_to @request_application, notice: 'Request application was successfully updated.' }
+        format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :ok, location: @request_application }
       else
         format.html { render :edit }
@@ -146,5 +146,21 @@ class RequestApplicationsController < ApplicationController
 
   def detail_params_key_arr
     %i(doc_no doc_type sht rev eo_chgno chg_type mcl scp_for_smpl scml_ln)
+  end
+
+  def change_redirect_to_by_commit_message
+    if params[:commit] == 'Save and Insert'
+      redirect_to edit_request_application_path(id: @request_application.id), notice: redirect_notice_message
+    else
+      redirect_to @request_application
+    end
+  end
+
+  def redirect_notice_message
+    if action_name == 'create'
+      'Request application was successfully created.'
+    else
+      'Request application was successfully updated.'
+    end
   end
 end
