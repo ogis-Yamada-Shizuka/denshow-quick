@@ -74,7 +74,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @request_application.details.all.each do |detail| %>
+          <% @request_application.details.select(&:persisted?).each do |detail| %>
             <tr>
               <td><%= detail.doc_no %></td>
               <td><%= detail.doc_type %></td>
