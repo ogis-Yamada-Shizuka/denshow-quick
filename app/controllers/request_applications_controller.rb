@@ -152,7 +152,7 @@ class RequestApplicationsController < ApplicationController
     if params[:commit] == 'Save and Insert'
       redirect_to edit_request_application_path(id: @request_application.id), notice: redirect_notice_message
     else
-      redirect_to @request_application
+      redirect_to @request_application, notice: redirect_notice_message
     end
   end
 
