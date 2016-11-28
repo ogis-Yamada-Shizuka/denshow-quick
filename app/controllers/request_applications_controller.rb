@@ -132,18 +132,13 @@ class RequestApplicationsController < ApplicationController
   def request_application_params
     params.require(:request_application).permit(
       :management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id,
-      flow_attributes: [:memo],
-      details_attributes: detail_params_key_arr
+      flow_attributes: [:memo]
     )
   end
 
   def set_memo
     @memo = params[:flow][:memo].presence if params[:flow].present?
     @request_application.flows.last.set_memo(@memo)
-  end
-
-  def detail_params_key_arr
-    %i(doc_no doc_type sht rev eo_chgno chg_type mcl scp_for_smpl scml_ln)
   end
 
   def change_redirect_to_by_commit_message
