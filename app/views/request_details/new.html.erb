@@ -7,7 +7,7 @@
 
 <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
 
-<%= form_for(@request_detail, url: request_details_path) do |f| %>
+<%= form_for(@request_detail, url: request_application_request_details_path) do |f| %>
   <%= render partial: 'shared/application_detail_form', locals: { f: f } %>
   <div class="row">
     <div class="actions">

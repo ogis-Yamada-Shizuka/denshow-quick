@@ -1,5 +1,5 @@
 <h1>Editing Request Detail</h1>
-<%= form_for(@request_detail) do |f| %>
+<%= form_for(@request_detail, url: request_application_request_details_path) do |f| %>
   <% if @request_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pero.errors.count, "error") %> prohibited this pero from being saved:</h2>
@@ -88,5 +88,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @request_detail %> |
+<%= link_to 'Show', request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
 <%= link_to 'Back', request_applications_path %>

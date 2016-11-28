@@ -143,7 +143,7 @@ class RequestApplicationsController < ApplicationController
 
   def change_redirect_to_by_commit_message
     if params[:save_and_insert].present?
-      redirect_to new_request_detail_path(id: @request_application.id), notice: redirect_notice_message
+      redirect_to new_request_application_request_detail_path(@request_application), notice: redirect_notice_message
     else
       redirect_to @request_application, notice: redirect_notice_message
     end

@@ -11,7 +11,7 @@
 <% end %>
 
 <div>
-  <%= link_to '詳細を追加', new_request_detail_path(id: @request_application.id) %>
+  <%= link_to '詳細を追加', new_request_application_request_detail_path(@request_application) %>
 </div>
 
 <%= link_to 'Show', @request_application %> |

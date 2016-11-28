@@ -5,7 +5,7 @@ class RequestDetailsController < ApplicationController
   end
 
   def new
-    @request_application = RequestApplication.find(params[:id])
+    @request_application = RequestApplication.find(params[:request_application_id])
     @request_detail = @request_application.details.build
   end
 
@@ -48,9 +48,9 @@ class RequestDetailsController < ApplicationController
 
   def change_redirect_to_by_commit_message
     if params[:save_and_insert].present?
-      redirect_to new_request_detail_path(id: @request_detail.request_application_id), notice: redirect_notice_message
+      redirect_to new_request_application_request_detail_path(@request_detail.request_application), notice: redirect_notice_message
     else
-      redirect_to @request_detail, notice: redirect_notice_message
+      redirect_to request_application_request_detail_path(@request_detail.request_application, @request_detail), notice: redirect_notice_message
     end
   end
 
