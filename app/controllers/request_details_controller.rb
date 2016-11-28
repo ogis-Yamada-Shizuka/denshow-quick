@@ -42,7 +42,7 @@ class RequestDetailsController < ApplicationController
 
   def request_detail_params
     params.require(:request_detail).permit(
-      :request_application_id, :doc_no, :doc_type, :sht, :rev, :eo_chgno, :chg_type, :mcl, :scp_for_smpl, :scml_ln
+      :request_application_id, :doc_no, :doc_type_id, :sht, :rev, :eo_chgno, :chg_type_id, :mcl, :scp_for_smpl, :scml_ln
     )
   end
 
