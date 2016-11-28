@@ -1,0 +1,18 @@
+<div class="well well-sm">
+  <%= form_for(@request_application) do |f| %>
+    <%= render partial: 'shared/request_application_form', locals: { f: f } %>
+    <%= f.submit '変更した内容を保存', class:"btn btn-primary", data: { action: 'update' } %>
+  <% end %>
+</div>
+
+<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
+
+<%= form_for(@request_detail, url: request_details_path) do |f| %>
+  <%= render partial: 'shared/application_detail_form', locals: { f: f } %>
+  <div class="row">
+    <div class="actions">
+      <%= f.submit '保存して詳細を続けて入力', class:"btn btn-primary", name: 'save_and_insert' %>
+      <%= f.submit '保存して終了', class:"btn btn-secondary", name: 'end_regist' %>
+    </div>
+  </div>
+<% end %>

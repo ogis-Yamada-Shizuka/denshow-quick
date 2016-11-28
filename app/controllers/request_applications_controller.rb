@@ -20,12 +20,10 @@ class RequestApplicationsController < ApplicationController
   # GET /request_applications/new
   def new
     @request_application = RequestApplication.new
-    @request_application.details.build
   end
 
   # GET /request_applications/1/edit
   def edit
-    @request_application.details.build
   end
 
   # POST /request_applications
@@ -149,8 +147,8 @@ class RequestApplicationsController < ApplicationController
   end
 
   def change_redirect_to_by_commit_message
-    if params[:commit] == 'Save and Insert'
-      redirect_to edit_request_application_path(id: @request_application.id), notice: redirect_notice_message
+    if params[:save_and_insert].present?
+      redirect_to new_request_detail_path(id: @request_application.id), notice: redirect_notice_message
     else
       redirect_to @request_application, notice: redirect_notice_message
     end
