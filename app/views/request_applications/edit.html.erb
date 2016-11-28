@@ -3,7 +3,7 @@
 <% unless @request_application.close? %>
   <div class="well well-sm">
     <%= form_for(@request_application) do |f| %>
-      <%= render partial: 'shared/request_application_form', locals: { f: f } %>
+      <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
       <%= f.submit '変更した内容を保存', class:"btn btn-primary", data: { action: 'update' } %>
     <% end %>
   </div>
