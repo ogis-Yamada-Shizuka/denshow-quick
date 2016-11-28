@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128021535) do
+ActiveRecord::Schema.define(version: 20161128103129) do
 
   create_table "chg_types", force: :cascade do |t|
     t.string   "name"
@@ -98,18 +98,20 @@ ActiveRecord::Schema.define(version: 20161128021535) do
   create_table "request_details", force: :cascade do |t|
     t.integer  "request_application_id"
     t.string   "doc_no"
-    t.string   "doc_type"
     t.string   "sht"
     t.string   "rev"
     t.string   "eo_chgno"
-    t.string   "chg_type"
     t.string   "mcl"
     t.string   "scp_for_smpl"
     t.string   "scml_ln"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "doc_type_id"
+    t.integer  "chg_type_id"
   end
 
+  add_index "request_details", ["chg_type_id"], name: "index_request_details_on_chg_type_id"
+  add_index "request_details", ["doc_type_id"], name: "index_request_details_on_doc_type_id"
   add_index "request_details", ["request_application_id"], name: "index_request_details_on_request_application_id"
 
   create_table "sections", force: :cascade do |t|
