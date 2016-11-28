@@ -1,0 +1,42 @@
+<div class="form-group">
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :management_no %><br>
+      <%= f.text_field :management_no %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.label :project_id %><br>
+      <%= f.collection_select :project_id, Dept.projects, :id, :name  %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.label :model_id %><br>
+      <%= f.collection_select :model_id, Model.all, :id, :name  %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.label :section_id %><br>
+      <%= f.collection_select :section_id, Section.all, :id, :name  %>
+    </div>
+    <div class="col-lg-4">
+      <%= f.label :emargency %><br>
+      <%= f.check_box :emargency %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <%= f.label :filename %><br>
+      <%= f.file_field :filename %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :request_date %><br>
+      <%= f.date_select :request_date %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :preferred_date %><br>
+      <%= f.date_select :preferred_date %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :memo %><br>
+      <%= f.text_area :memo %>
+    </div>
+  </div>
+</div>

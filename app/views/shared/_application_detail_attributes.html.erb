@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">New Request Application Detail</div>
+    <div class="panel-body">
+        <div class="row">
+          <%= f.hidden_field :request_application_id %>
+          <div class="col-lg-2">
+            <%= f.label :doc_no %>
+            <%= f.text_field :doc_no %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :doc_type %>
+            <%= f.text_field :doc_type %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :sht %>
+            <%= f.text_field :sht %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :rev %>
+            <%= f.text_field :rev %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :eo_chgno %>
+            <%= f.text_field :eo_chgno %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2">
+            <%= f.label :chg_type %>
+            <%= f.text_field :chg_type %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :mcl %>
+            <%= f.text_field :mcl %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :scp_for_smpl %>
+            <%= f.text_field :scp_for_smpl %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.label :scml_ln %>
+            <%= f.text_field :scml_ln %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,9 @@ class RequestApplication < ActiveRecord::Base
                          ids = Flow.current_ids(dept_id)
                          where(id: ids)
                        }
- # scope :closed_list, -> (bool) {where(closed: bool)}
+  # scope :closed_list, -> (bool) {where(closed: bool)}
+
+  accepts_nested_attributes_for :details, reject_if: :all_blank
 
   def self.closed(id)
     request_application = RequestApplication.find(id)

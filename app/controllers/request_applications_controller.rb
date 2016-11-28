@@ -33,10 +33,9 @@ class RequestApplicationsController < ApplicationController
     flow = @request_application.flows.build
     # 初期フロー生成
     flow.init_flow
-
     respond_to do |format|
       if @request_application.save && flow.save
-        format.html { redirect_to @request_application, notice: 'Request application was successfully created.' }
+        format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :created, location: @request_application }
       else
         format.html { render :new }
@@ -50,7 +49,7 @@ class RequestApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @request_application.update(request_application_params)
-        format.html { redirect_to @request_application, notice: 'Request application was successfully updated.' }
+        format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :ok, location: @request_application }
       else
         format.html { render :edit }
@@ -131,11 +130,30 @@ class RequestApplicationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_application_params
-    params.require(:request_application).permit(:management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id, flow_attributes: [:memo])
+    params.require(:request_application).permit(
+      :management_no, :emargency, :filename, :request_date, :preferred_date, :close, :project_id, :memo, :model_id, :section_id,
+      flow_attributes: [:memo]
+    )
   end
 
   def set_memo
     @memo = params[:flow][:memo].presence if params[:flow].present?
     @request_application.flows.last.set_memo(@memo)
+  end
+
+  def change_redirect_to_by_commit_message
+    if params[:save_and_insert].present?
+      redirect_to new_request_application_request_detail_path(@request_application), notice: redirect_notice_message
+    else
+      redirect_to @request_application, notice: redirect_notice_message
+    end
+  end
+
+  def redirect_notice_message
+    if action_name == 'create'
+      'Request application was successfully created.'
+    else
+      'Request application was successfully updated.'
+    end
   end
 end
