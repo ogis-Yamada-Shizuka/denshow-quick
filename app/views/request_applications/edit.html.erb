@@ -1,6 +1,14 @@
 <h1>Editing Request Application</h1>
 
-<%= render 'form'  unless @request_application.close %>
+<% unless @request_application.close %>
+  <div class="well well-sm">
+    <%= form_for(@request_application) do |f| %>
+      <%= render partial: 'shared/request_application_form', locals: { f: f } %>
+      <%= f.submit '変更した内容を保存', class:"btn btn-primary", data: { action: 'update' } %>
+    <% end %>
+  </div>
+  <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
+<% end %>
 
 <%= link_to 'Show', @request_application %> |
 <%= link_to 'Back', request_applications_path %>
