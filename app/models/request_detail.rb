@@ -1,8 +1,8 @@
 class RequestDetail < ActiveRecord::Base
   belongs_to :request_application
+  belongs_to :doc_type
+  belongs_to :chg_type
 
-  validates :doc_no, length: { maximum: 255 }
-  validates :doc_type, length: { maximum: 255 }
   validates :sht, length: { maximum: 255 }
   validates :rev, length: { maximum: 255 }
   validates :eo_chgno, length: { maximum: 255 }

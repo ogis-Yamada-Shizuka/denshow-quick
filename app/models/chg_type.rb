@@ -1,4 +1,5 @@
 class ChgType < ActiveRecord::Base
+  has_many :request_details
 
   # CSV Upload
   require 'csv'
@@ -9,5 +10,4 @@ class ChgType < ActiveRecord::Base
       model.save!
     end
   end
-
 end
