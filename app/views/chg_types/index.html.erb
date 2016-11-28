@@ -25,3 +25,10 @@
 <br>
 
 <%= link_to 'New Chg type', new_chg_type_path %>
+
+<p>
+  <%= form_tag import_chg_types_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag 'csv upload' %>
+  <% end %>
+</p>

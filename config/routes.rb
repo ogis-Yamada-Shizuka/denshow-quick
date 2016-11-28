@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     collection { post :import }  # for CSV Upload
   end
 
+  resources :chg_types do
+    collection { post :import }  # for CSV Upload
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

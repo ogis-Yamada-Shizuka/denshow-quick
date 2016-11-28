@@ -4,7 +4,17 @@ class ChgTypesController < ApplicationController
   # GET /chg_types
   # GET /chg_types.json
   def index
-    @chg_types = ChgType.all
+    respond_to do |format|
+      format.html do
+        @chg_types = ChgType.all
+      end
+      format.csv do
+        @chg_types = ChgType.all
+        send_data render_to_string, type: 'text/csv; charset=shift_jis'
+      end
+    end
+
+
   end
 
   # GET /chg_types/1
@@ -60,6 +70,12 @@ class ChgTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def import
+    ChgType.import(params[:file])
+    redirect_to chg_types_url, notice: 'chg_types imported.'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
