@@ -1,6 +1,10 @@
 class ChgType < ActiveRecord::Base
   has_many :request_details
 
+  before_validation do
+    name.upcase!
+  end
+
   # CSV Upload
   require 'csv'
   def self.import(file)
