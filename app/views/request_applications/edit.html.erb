@@ -10,5 +10,9 @@
   <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
 <% end %>
 
+<div>
+  <%= link_to '詳細を追加', new_request_detail_path(id: @request_application.id) %>
+</div>
+
 <%= link_to 'Show', @request_application %> |
 <%= link_to 'Back', request_applications_path %>

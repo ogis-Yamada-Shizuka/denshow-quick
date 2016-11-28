@@ -12,6 +12,7 @@
           <th><%= label_tag :mcl %></th>
           <th><%= label_tag :scp_for_smpl %></th>
           <th><%= label_tag :scml_ln %></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +27,8 @@
             <td><%= detail.mcl %></td>
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln%></td>
+            <td><%= link_to 'Edit', edit_request_detail_path(detail) %></td>
+            <td><%= link_to 'Destroy', detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>

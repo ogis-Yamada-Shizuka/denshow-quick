@@ -31,7 +31,7 @@ class RequestDetailsController < ApplicationController
 
   def destroy
     @request_detail.destroy
-    redirect_to request_details_url, notice: 'Request detail was successfully destroyed.'
+    redirect_to request_applications_url, notice: 'Request detail was successfully destroyed.'
   end
 
   private

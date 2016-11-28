@@ -1,0 +1,92 @@
+<h1>Editing Request Detail</h1>
+<%= form_for(@request_detail) do |f| %>
+  <% if @request_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pero.errors.count, "error") %> prohibited this pero from being saved:</h2>
+
+      <ul>
+      <% @request_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :doc_no %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :doc_no %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :doc_type %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :doc_type %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :sht %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :sht %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :rev %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :rev %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :eo_chgno %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :eo_chgno %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :chg_type %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :chg_type %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :mcl %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :mcl %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :scp_for_smpl %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :scp_for_smpl %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :scml_ln %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :scml_ln %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @request_detail %> |
+<%= link_to 'Back', request_applications_path %>
