@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :chg_types do
+    collection { post :import }  # for CSV Upload
+  end
+  resources :doc_types do
+    collection { post :import }  # for CSV Upload
+  end
   resources :sections
   resources :models
   resources :vendors
