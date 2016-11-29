@@ -17,6 +17,7 @@ class RequestDetailsController < ApplicationController
     if @request_detail.save
       change_redirect_to_by_commit_message
     else
+      @request_application = @request_detail.request_application
       render :new
     end
   end
@@ -25,6 +26,7 @@ class RequestDetailsController < ApplicationController
     if @request_detail.update(request_detail_params)
       change_redirect_to_by_commit_message
     else
+      @request_application = @request_detail.request_application
       render :edit
     end
   end
