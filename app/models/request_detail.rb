@@ -11,6 +11,7 @@ class RequestDetail < ActiveRecord::Base
 
   INVALID_REGEX = /\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々]|[Ａ-Ｚ]|[０-９]/
 
+  # TODO: rspecセットアップ後にvalidateのテストコードを書くこと
   %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
     validates attribute, length: { maximum: 255 }, format: { without: INVALID_REGEX }
   end
