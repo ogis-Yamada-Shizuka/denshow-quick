@@ -3,11 +3,15 @@ class RequestDetail < ActiveRecord::Base
   belongs_to :doc_type
   belongs_to :chg_type
 
-  validates :doc_no, length: { maximum: 255 }
-  validates :sht, length: { maximum: 255 }
-  validates :rev, length: { maximum: 255 }
-  validates :eo_chgno, length: { maximum: 255 }
-  validates :mcl, length: { maximum: 255 }
-  validates :scp_for_smpl, length: { maximum: 255 }
-  validates :scml_ln, length: { maximum: 255 }
+  before_validation do
+    %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
+      send(attribute).upcase!
+    end
+  end
+
+  INVALID_REGEX = /\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々]/
+
+  %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
+    validates attribute, length: { maximum: 255 }, format: { without: INVALID_REGEX }
+  end
 end
