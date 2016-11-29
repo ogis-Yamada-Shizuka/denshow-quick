@@ -20,3 +20,5 @@
 /*.pdf
 
 /public/uploads
+
+.rspec
