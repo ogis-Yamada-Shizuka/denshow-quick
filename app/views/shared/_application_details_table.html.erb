@@ -20,11 +20,11 @@
         <% request_application.details.select(&:persisted?).each do |detail| %>
           <tr>
             <td><%= detail.doc_no %></td>
-            <td><%= detail.doc_type %></td>
+            <td><%= detail.doc_type.name %></td>
             <td><%= detail.sht %></td>
             <td><%= detail.rev %></td>
             <td><%= detail.eo_chgno %></td>
-            <td><%= detail.chg_type %></td>
+            <td><%= detail.chg_type.name %></td>
             <td><%= detail.mcl %></td>
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln%></td>

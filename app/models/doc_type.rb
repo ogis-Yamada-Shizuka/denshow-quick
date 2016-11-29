@@ -1,4 +1,9 @@
 class DocType < ActiveRecord::Base
+  has_many :request_details
+
+  before_validation do
+    name.upcase!
+  end
 
   # CSV Upload
   require 'csv'
@@ -9,5 +14,4 @@ class DocType < ActiveRecord::Base
       model.save!
     end
   end
-
 end
