@@ -58,6 +58,13 @@ group :development do
   # gem 'rails-erd'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_rewinder'
+  gem 'capybara'
+end
+
 gem 'carrierwave'
 gem 'ransack'
 gem "jquery-turbolinks"
