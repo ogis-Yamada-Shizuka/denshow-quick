@@ -79,4 +79,22 @@
 
 <br>
 
-<%= link_to 'New Request application', new_request_application_path ,class: "btn btn-default" %>
+<div class="row">
+  <div class="col-lg-2">
+    <%= link_to 'New Request application', new_request_application_path, class: 'btn btn-default' %>
+  </div>
+  <div class="col-lg-1">
+  </div>
+  <div class="col-lg-9">
+    <div class="row">
+    <%= form_tag import_excel_request_applications_path, multipart: true do %>
+      <div class="col-lg-4">
+        <%= file_field_tag :file %>
+      </div>
+      <div class="col-lg-8">
+        <%= submit_tag 'Excel Upload', class: 'btn btn-primary'  %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
