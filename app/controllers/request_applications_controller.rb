@@ -121,6 +121,9 @@ class RequestApplicationsController < ApplicationController
   def first_to_return_memo
   end
 
+  def import_excel
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
