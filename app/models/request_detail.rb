@@ -6,7 +6,7 @@ class RequestDetail < ActiveRecord::Base
 
   before_validation do
     %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
-      send(attribute).upcase!
+      send(attribute).upcase! if send(attribute).present?
     end
   end
 
@@ -16,4 +16,8 @@ class RequestDetail < ActiveRecord::Base
   %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
     validates attribute, length: { maximum: 255 }, format: { without: INVALID_REGEX }
   end
+
+  validates :doc_type_id, presence: true
+  validates :chg_type_id, presence: true
+  validates :vendor_id, presence: true
 end
