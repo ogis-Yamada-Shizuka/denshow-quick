@@ -121,7 +121,7 @@ class RequestApplicationsController < ApplicationController
   def first_to_return_memo
   end
 
-  #TODO: 画面遷移先作成時にエラー処理とリファクタする
+  # TODO: 画面遷移先作成時にエラー処理とリファクタする
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
     # 初期フロー生成
@@ -129,6 +129,8 @@ class RequestApplicationsController < ApplicationController
     flow.init_flow
     @request_application.save
     redirect_to request_applications_path, notice: 'request imported.'
+  rescue
+    redirect_to request_applications_path, notice: 'import failed.'
   end
 
   private
