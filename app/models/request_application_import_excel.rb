@@ -43,12 +43,11 @@ class RequestApplicationImportExcel
       convert_request_value_to_record_id!(attributes)
       convert_detail_value_to_record_id!(attributes[:details_attributes])
 
-      # TODO: excelとrequest_applicationの関連を整理後に削除する
+      # TODO: 2015年仕様のrequest_applicationの関連を整理後に削除する
       # request_applicationにexcelに存在しない値を詰める
+      attributes[:project_id] = Dept.find_by!(project: true).first.id
       attributes[:emargency] = false
-      attributes[:filename] = 'file_name'
-      attributes[:project_id] = 1
-      attributes[:section_id] = 1
+      attributes[:close] = false
 
       attributes
     end
