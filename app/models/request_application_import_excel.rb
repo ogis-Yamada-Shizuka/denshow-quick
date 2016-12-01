@@ -5,6 +5,7 @@ require 'roo'
 class RequestApplicationImportExcel
   REQUEST_CELL = {
     management_no:  [1, 3],
+    request_origin: [2, 3],
     request_date:   [3, 3],
     preferred_date: [4, 3],
     model_code:     [5, 3]
@@ -19,7 +20,8 @@ class RequestApplicationImportExcel
     chg_type:     7,
     mcl:          8,
     scp_for_smpl: 9,
-    scml_ln:      10
+    scml_ln:      10,
+    vender_code:  11
   }.freeze
 
   DETAIL_START_ROW = 8
@@ -54,17 +56,20 @@ class RequestApplicationImportExcel
     # rubocop:enable all
 
     def convert_request_value_to_record_id!(attributes)
-      # TODO: excelの項目で判明しているのが機種コードのみなので後から関連している部分追加する
       attributes[:model_id] = Model.find_by!(code: attributes[:model_code]).id
+      attributes[:section_id] = Section.find_by!(name: attributes[:request_origin]).id
       attributes.delete(:model_code)
+      attributes.delete(:request_origin)
     end
 
     def convert_detail_value_to_record_id!(details_attributes)
       details_attributes.each do |attributes|
         attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
         attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
+        attributes[:vendor_id] = ChgType.find_by!(name: attributes[:vender_code]).id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
+        attributes.delete(:vender_code)
       end
     end
 
