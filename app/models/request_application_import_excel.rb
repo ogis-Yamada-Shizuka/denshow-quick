@@ -47,7 +47,7 @@ class RequestApplicationImportExcel
 
       # TODO: 2015年仕様のrequest_applicationの関連を整理後に削除する
       # request_applicationにexcelに存在しない値を詰める
-      attributes[:project_id] = Dept.find_by!(project: true).first.id
+      attributes[:project_id] = Dept.find_by!(project: true).id
       attributes[:emargency] = false
       attributes[:close] = false
 
