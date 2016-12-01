@@ -54,23 +54,20 @@ class RequestApplicationImportExcel
     end
     # rubocop:enable all
 
-    # ignore rubocop for safe navigation operator
-    # rubocop:disable all
     def convert_request_value_to_record_id!(attributes)
       # TODO: excelの項目で判明しているのが機種コードのみなので後から関連している部分追加する
-      attributes[:model_id] = Model.find_by(code: attributes[:model_code])&.id
+      attributes[:model_id] = Model.find_by!(code: attributes[:model_code]).id
       attributes.delete(:model_code)
     end
 
     def convert_detail_value_to_record_id!(details_attributes)
       details_attributes.each do |attributes|
-        attributes[:doc_type_id] = DocType.find_by(name: attributes[:doc_type])&.id
-        attributes[:chg_type_id] = ChgType.find_by(name: attributes[:chg_type])&.id
+        attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
+        attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
       end
     end
-    # rubocop:enable all
 
     def read_request_excel_data
       attributes_hash = {}
