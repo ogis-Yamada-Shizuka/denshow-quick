@@ -2,6 +2,7 @@ class RequestDetail < ActiveRecord::Base
   belongs_to :request_application
   belongs_to :doc_type
   belongs_to :chg_type
+  belongs_to :vendor
 
   before_validation do
     %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
