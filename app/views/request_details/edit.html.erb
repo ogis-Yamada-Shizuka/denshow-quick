@@ -2,8 +2,7 @@
 <%= form_for(@request_detail, url: request_application_request_detail_path) do |f| %>
   <% if @request_detail.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pero.errors.count, "error") %> prohibited this pero from being saved:</h2>
-
+      <h2><%= pluralize(@request_detail.errors.count, "error") %> prohibited this pero from being saved:</h2>
       <ul>
       <% @request_detail.errors.full_messages.each do |message| %>
         <li><%= message %></li>
