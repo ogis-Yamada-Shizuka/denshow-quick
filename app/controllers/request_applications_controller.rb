@@ -121,14 +121,16 @@ class RequestApplicationsController < ApplicationController
   def first_to_return_memo
   end
 
-  # TODO: 画面遷移先作成時にエラー処理とリファクタする
+  # TODO: NotRecord Foundのエラー処理の際にリファクタする
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
-    # 初期フロー生成
     flow = @request_application.flows.build
     flow.init_flow
-    @request_application.save
-    redirect_to request_applications_path, notice: 'request imported.'
+    if @request_application.save
+      redirect_to request_applications_path, notice: 'request imported.'
+    else
+      render :import_excel
+    end
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
   end

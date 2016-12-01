@@ -66,7 +66,7 @@ class RequestApplicationImportExcel
       details_attributes.each do |attributes|
         attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
         attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
-        attributes[:vendor_id] = ChgType.find_by!(name: attributes[:vender_code]).id
+        attributes[:vendor_id] = Vendor.find_by!(code: attributes[:vender_code]).id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
         attributes.delete(:vender_code)
