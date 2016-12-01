@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Chg Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chg_types.each do |chg_type| %>
+      <tr>
+        <td><%= chg_type.name %></td>
+        <td><%= link_to 'Show', chg_type %></td>
+        <td><%= link_to 'Edit', edit_chg_type_path(chg_type) %></td>
+        <td><%= link_to 'Destroy', chg_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chg type', new_chg_type_path %>
+
+<p>
+  <%= form_tag import_chg_types_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag 'csv upload' %>
+  <% end %>
+</p>

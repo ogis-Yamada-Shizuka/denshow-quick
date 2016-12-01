@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th><%= label_tag :doc_no %></th>
+          <th><%= label_tag :doc_type %></th>
+          <th><%= label_tag :sht %></th>
+          <th><%= label_tag :rev%></th>
+          <th><%= label_tag :eo_chgno %></th>
+          <th><%= label_tag :chg_type %></th>
+          <th><%= label_tag :mcl %></th>
+          <th><%= label_tag :scp_for_smpl %></th>
+          <th><%= label_tag :scml_ln %></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% request_application.details.select(&:persisted?).each do |detail| %>
+          <tr>
+            <td><%= detail.doc_no %></td>
+            <td><%= detail.doc_type.name %></td>
+            <td><%= detail.sht %></td>
+            <td><%= detail.rev %></td>
+            <td><%= detail.eo_chgno %></td>
+            <td><%= detail.chg_type.name %></td>
+            <td><%= detail.mcl %></td>
+            <td><%= detail.scp_for_smpl %></td>
+            <td><%= detail.scml_ln%></td>
+            <td><%= link_to 'Edit', edit_request_application_request_detail_path(request_application, detail) %></td>
+            <td><%= link_to 'Destroy', request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
