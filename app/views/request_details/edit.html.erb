@@ -1,9 +1,8 @@
 <h1>Editing Request Detail</h1>
-<%= form_for(@request_detail, url: request_application_request_details_path) do |f| %>
+<%= form_for(@request_detail, url: request_application_request_detail_path) do |f| %>
   <% if @request_detail.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pero.errors.count, "error") %> prohibited this pero from being saved:</h2>
-
+      <h2><%= pluralize(@request_detail.errors.count, "error") %> prohibited this pero from being saved:</h2>
       <ul>
       <% @request_detail.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -24,7 +23,7 @@
       <%= f.label :doc_type %>
     </div>
     <div class="col-lg-3">
-      <%= f.text_field :doc_type %>
+      <%= f.collection_select :doc_type_id, DocType.all, :id, :name %>
     </div>
   </div>
   <div class="row">
@@ -56,7 +55,7 @@
       <%= f.label :chg_type %>
     </div>
     <div class="col-lg-3">
-      <%= f.text_field :chg_type %>
+      <%= f.collection_select :chg_type_id, ChgType.all, :id, :name %>
     </div>
   </div>
   <div class="row">
@@ -81,6 +80,14 @@
     </div>
     <div class="col-lg-3">
       <%= f.text_field :scml_ln %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :vendor_id %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.collection_select :vendor_id, Vendor.all, :id, :code %>
     </div>
   </div>
   <div class="actions">

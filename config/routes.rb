@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :vendors
   root 'request_applications#index'
   resources :request_applications do
+    collection { post :import_excel }
     resources :request_details
   end
 

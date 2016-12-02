@@ -7,7 +7,7 @@
 
 <p>
   <strong>DocType:</strong>
-  <%= @request_detail.doc_type %>
+  <%= @request_detail.doc_type.name %>
 </p>
 
 <p>
@@ -26,6 +26,11 @@
 </p>
 
 <p>
+  <strong>ChgType:</strong>
+  <%= @request_detail.chg_type.name %>
+</p>
+
+<p>
   <strong>MCL:</strong>
 <%= @request_detail.mcl %>
 </p>
@@ -38,6 +43,11 @@
 <p>
   <strong>SCML, L/N:</strong>
 <%= @request_detail.scml_ln %>
+</p>
+
+<p>
+  <strong>V/C:</strong>
+  <%= @request_detail.vendor.code %>
 </p>
 
 

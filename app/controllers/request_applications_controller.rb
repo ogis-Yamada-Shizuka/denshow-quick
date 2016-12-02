@@ -121,6 +121,20 @@ class RequestApplicationsController < ApplicationController
   def first_to_return_memo
   end
 
+  # TODO: NotRecord Foundのエラー処理の際にリファクタする
+  def import_excel
+    @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
+    flow = @request_application.flows.build
+    flow.init_flow
+    if @request_application.save
+      redirect_to request_applications_path, notice: 'request imported.'
+    else
+      render :import_excel
+    end
+  rescue
+    redirect_to request_applications_path, notice: 'import failed.'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
