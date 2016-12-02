@@ -89,7 +89,7 @@
     <div class="row">
     <%= form_tag import_excel_request_applications_path, multipart: true do %>
       <div class="col-lg-4">
-        <%= file_field_tag :file %>
+        <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
       </div>
       <div class="col-lg-8">
         <%= submit_tag 'Excel Upload', class: 'btn btn-primary'  %>
