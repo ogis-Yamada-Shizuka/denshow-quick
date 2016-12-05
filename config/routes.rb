@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  resources :chg_types do
+    collection { post :import }  # for CSV Upload
+  end
+  resources :doc_types do
+    collection { post :import }  # for CSV Upload
+  end
   resources :sections
   resources :models
   resources :vendors
   root 'request_applications#index'
-  resources :request_applications
+  resources :request_applications do
+    collection { post :import_excel }
+    resources :request_details
+  end
 
   get 'request_applications/:id/regist_memo' => 'request_applications#regist_memo', as: :regist_memo
   get 'request_applications/:id/regist' => 'request_applications#regist', as: :regist_progress
@@ -29,8 +38,6 @@ Rails.application.routes.draw do
   resources :flow_orders
   resources :depts
   resources :users
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

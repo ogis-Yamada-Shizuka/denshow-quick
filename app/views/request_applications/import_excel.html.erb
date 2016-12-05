@@ -1,0 +1,99 @@
+<h1>Import Error</h1>
+
+<% if @request_application.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@request_application.errors.count, "error") %> prohibited this request application from being saved:</h2>
+    <ul>
+    <% @request_application.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Request Application
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover">
+        <colgroup>
+          <col class="col-lg-2" />
+          <col class="col-lg-10" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td><%= label_tag :management_no %></td>
+            <td><%= @request_application.management_no %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag :section %></td>
+            <td><%= @request_application.section&.name %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag :request_date %></td>
+            <td><%= @request_application.request_date %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag :preferred_date %></td>
+            <td><%= @request_application.preferred_date %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag :model %></td>
+            <td><%= @request_application.model&.name %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Request Detail
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th><%= label_tag 'No.' %></th>
+            <th><%= label_tag :doc_no %></th>
+            <th><%= label_tag :doc_type %></th>
+            <th><%= label_tag :sht %></th>
+            <th><%= label_tag :rev %></th>
+            <th><%= label_tag :eo_chgno %></th>
+            <th><%= label_tag :chg_type %></th>
+            <th><%= label_tag :mcl %></th>
+            <th><%= label_tag :scp_for_smpl %></th>
+            <th><%= label_tag :scml_ln %></th>
+            <th><%= label_tag :vendor %></th>
+          </tr>
+        </thead>
+        <% if @request_application.details.present? %>
+          <tbody>
+            <% @request_application.details.each_with_index do |detail, i| %>
+              <tr style="<%= 'border: 3px #ff6347 solid;' if detail.errors.any? %>" >
+                <td><%= i + 1 %></td>
+                <td><%= detail.doc_no %></td>
+                <td><%= detail.doc_type&.name %></td>
+                <td><%= detail.sht %></td>
+                <td><%= detail.rev %></td>
+                <td><%= detail.eo_chgno %></td>
+                <td><%= detail.chg_type&.name %></td>
+                <td><%= detail.mcl %></td>
+                <td><%= detail.scp_for_smpl %></td>
+                <td><%= detail.scml_ln %></td>
+                <td><%= detail.vendor&.code %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= link_to 'Back', request_applications_path %>
+</div>

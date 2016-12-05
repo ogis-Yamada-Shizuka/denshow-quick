@@ -7,10 +7,9 @@
 <table class="table  table-striped">
   <thead>
     <tr>
-      
+
       <th rowspan="2">Management no</th>
       <th>Project</th>
-      <th>vendor</th>
       <th>model</th>
       <th>section</th>
       <th>File</th>
@@ -42,7 +41,6 @@
       <tr>
         <td rowspan="2"><%= request_application.management_no %></td>
         <td><%= request_application.project.try(:name) %></td>
-        <td><%= "#{request_application.vendor.try(:name)} ( #{request_application.vendor.try(:code)} )" %></td>
         <td><%= request_application.model.try(:code) %></td>
         <td><%= request_application.section.try(:name) %></td>
         <td><%= (link_to "Download" , request_application.filename_url) if request_application.filename_url.present? %></td>
@@ -52,7 +50,7 @@
         <td rowspan="2">
           <%= ( flow.progress.try(:in_date) || (link_to 'Start', regist_progress_path(request_application), class:"btn btn-warning btn-xs" unless request_application.close?
  )) %><br>
-          <%= ( flow.progress.try(:out_date) || (link_to 'End', regist_memo_path(request_application), class:"btn btn-warning btn-xs"  unless (flow.progress.try(:in_date).blank?  ||  request_application.close?  || current_order != flow.order) ) ) %> 
+          <%= ( flow.progress.try(:out_date) || (link_to 'End', regist_memo_path(request_application), class:"btn btn-warning btn-xs"  unless (flow.progress.try(:in_date).blank?  ||  request_application.close?  || current_order != flow.order) ) ) %>
         </td>
          <% end %>
          <% (@flow_orders.count - request_application.flows.maximum(:order)).times do %>
@@ -81,4 +79,22 @@
 
 <br>
 
-<%= link_to 'New Request application', new_request_application_path ,class: "btn btn-default" %>
+<div class="row">
+  <div class="col-lg-2">
+    <%= link_to 'New Request application', new_request_application_path, class: 'btn btn-default' %>
+  </div>
+  <div class="col-lg-1">
+  </div>
+  <div class="col-lg-9">
+    <div class="row">
+    <%= form_tag import_excel_request_applications_path, multipart: true do %>
+      <div class="col-lg-4">
+        <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+      </div>
+      <div class="col-lg-8">
+        <%= submit_tag 'Excel Upload', class: 'btn btn-primary'  %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -22,14 +22,6 @@
 
       <div class="col-sm-2">
         <div class="form-group">
-          <%= f.label :vendor_code %>
-          <%= f.text_field :vendor_code_cont, class: "form-control input-sm", placeholder: "部分一致" %>
-        </div>
-      </div>
-
-
-      <div class="col-sm-2">
-        <div class="form-group">
           <%= f.label :model_id %>
           <%= f.collection_select :model_id_eq, Model.all, :id, :name, {include_blank: true },  class: "form-control input-sm"  %>
         </div>
@@ -54,6 +46,9 @@
           <%= f.label :close %>
           <%= f.select :close_eq,[["済/中断",true],["未済", false]],  {prompt: ""}, class: "form-control input-sm"%>
         </div>
+      </div>
+
+      <div class="col-sm-2">
       </div>
 
     </div>
