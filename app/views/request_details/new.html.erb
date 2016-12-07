@@ -1,8 +1,8 @@
 <div class="well well-sm">
   <%= form_for(@request_application) do |f| %>
     <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
-    <%= f.submit '変更した内容を保存', class:"btn btn-primary", data: { action: 'update' } %>
   <% end %>
+  <%= link_to '管理情報を修正', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
 </div>
 
 <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
