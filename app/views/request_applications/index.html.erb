@@ -39,7 +39,7 @@
     <% @request_applications.each do |request_application| %>
     <% current_order = request_application.current_order %>
       <tr>
-        <td rowspan="2"><%= request_application.management_no %></td>
+        <td rowspan="2"><%= link_to request_application.management_no, registration_result_request_application_path(request_application) %></td>
         <td><%= request_application.project.try(:name) %></td>
         <td><%= request_application.model.try(:code) %></td>
         <td><%= request_application.section.try(:name) %></td>
