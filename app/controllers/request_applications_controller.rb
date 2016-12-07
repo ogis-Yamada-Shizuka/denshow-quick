@@ -16,8 +16,7 @@ class RequestApplicationsController < ApplicationController
 
   # GET /request_applications/1
   # GET /request_applications/1.json
-  def show
-  end
+  def show; end
 
   # GET /request_applications/new
   def new
@@ -25,8 +24,7 @@ class RequestApplicationsController < ApplicationController
   end
 
   # GET /request_applications/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /request_applications
   # POST /request_applications.json
@@ -111,17 +109,13 @@ class RequestApplicationsController < ApplicationController
     end
   end
 
-  def regist_memo
-  end
+  def regist_memo; end
 
-  def reject_memo
-  end
+  def reject_memo; end
 
-  def interrupt_memo
-  end
+  def interrupt_memo; end
 
-  def first_to_return_memo
-  end
+  def first_to_return_memo; end
 
   # TODO: NotRecord Foundのエラー処理の際にリファクタする
   def import_excel
