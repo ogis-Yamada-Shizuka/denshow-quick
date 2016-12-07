@@ -36,10 +36,6 @@ class RequestDetailsController < ApplicationController
     redirect_to request_applications_url, notice: 'Request detail was successfully destroyed.'
   end
 
-  def registration_result
-
-  end
-
   private
 
   def set_request_detail
