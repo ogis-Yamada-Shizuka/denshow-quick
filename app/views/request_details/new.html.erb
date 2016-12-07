@@ -2,7 +2,7 @@
   <%= form_for(@request_application) do |f| %>
     <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
   <% end %>
-  <%= link_to '管理情報を修正', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+  <%= link_to '管理情報を変更', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
 </div>
 
 <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
