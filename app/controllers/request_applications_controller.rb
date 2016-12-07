@@ -1,5 +1,7 @@
 class RequestApplicationsController < ApplicationController
-  before_action :set_request_application, only: [:show, :edit, :update, :destroy, :regist, :reject, :interrupt, :first_to_revert, :regist_memo, :reject_memo, :interrupt_memo, :first_to_revert_memo]
+  before_action :set_request_application, only: %i(
+    show edit update destroy regist reject interrupt first_to_revert regist_memo reject_memo interrupt_memo first_to_revert_memo registration_result
+  )
   before_action :set_memo, only: [:regist, :reject, :interrupt, :first_to_revert]
 
   # GET /request_applications
@@ -134,6 +136,8 @@ class RequestApplicationsController < ApplicationController
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
   end
+
+  def registration_result; end
 
   private
 
