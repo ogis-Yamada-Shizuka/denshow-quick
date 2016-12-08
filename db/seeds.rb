@@ -83,9 +83,9 @@ end
 # 機種のマスターデータ
 Model.delete_all
 Model.create([
-              { code: "A01", name: "機種その１",  id: 1 },
-              { code: "B01", name: "機種その２", id: 2 },
-              { code: "C01", name: "機種その３",  id: 3 }
+              { code: "A01",  id: 1 },
+              { code: "B01", id: 2 },
+              { code: "C01",  id: 3 }
             ])
 if Rails.env.development?
   Model.connection.execute("update sqlite_sequence set seq=3 where name='models'")
@@ -105,4 +105,3 @@ if Rails.env.development?
 else
   Vendor.connection.execute("SELECT SETVAL('vendors_id_seq', 3)")
 end
-
