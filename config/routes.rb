@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'request_applications#index'
   resources :request_applications do
     collection { post :import_excel }
+    member { get :registration_result }
     resources :request_details
   end
 

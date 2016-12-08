@@ -52,7 +52,7 @@ class RequestDetailsController < ApplicationController
     if params[:save_and_insert].present?
       redirect_to new_request_application_request_detail_path(@request_detail.request_application), notice: redirect_notice_message
     else
-      redirect_to request_application_request_detail_path(@request_detail.request_application, @request_detail), notice: redirect_notice_message
+      redirect_to registration_result_request_application_path(@request_detail.request_application), notice: redirect_notice_message
     end
   end
 
