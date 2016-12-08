@@ -15,7 +15,6 @@
     <% @models.each do |model| %>
       <tr>
         <td><%= model.code %></td>
-        <td><%= model.name %></td>
         <td><%= link_to 'Show', model %></td>
         <td><%= link_to 'Edit', edit_model_path(model) %></td>
         <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
