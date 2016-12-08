@@ -55,7 +55,7 @@
       <%= f.label :chg_type %>
     </div>
     <div class="col-lg-3">
-      <%= f.collection_select :chg_type_id, ChgType.all, :id, :name %>
+      <%= f.collection_select :chg_type_id, ChgType.all, :id, :name, include_blank: true %>
     </div>
   </div>
   <div class="row">
