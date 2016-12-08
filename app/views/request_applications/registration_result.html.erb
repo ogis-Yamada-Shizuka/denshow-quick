@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div class="well well-sm">
+  <%= form_for(@request_application) do |f| %>
+    <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
+  <% end %>
+  <%= link_to '管理情報を変更', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+</div>
+
+<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
+
+<div>
+  <%= link_to '詳細を追加', new_request_application_request_detail_path(@request_application) %>
+</div>
+<%= link_to 'Back', request_applications_path %>
