@@ -1,48 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="well well-sm">
-  <div class="form-group">
-    <div class="row">
-      <div class="col-lg-2">
-        <%= label :management_no, :management_no %><br>
-        <%= @request_application.management_no %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :project, :project %><br>
-        <%= @request_application.project.name %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :model, :model %><br>
-        <%= @request_application.model.code %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :section, :section %><br>
-        <%= @request_application.section.name  %>
-      </div>
-      <div class="col-lg-4">
-        <%= label :emargency, :emargency %><br>
-        <%= @request_application.emargency? %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4" style="word-wrap: break-word;">
-        <%= label :filename, :filename %><br>
-        <%= @request_application.filename %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :request_date, :request_date %><br>
-        <%= @request_application.request_date %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :preferred_date, :preferred_date %><br>
-        <%= @request_application.preferred_date %>
-      </div>
-      <div class="col-lg-2">
-        <%= label :memo, :memo %><br>
-        <%= @request_application.memo %>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'shared/request_application_attributes_label', locals: { request_application: @request_application } %>
   <%= link_to '管理情報を変更', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
 </div>
 
