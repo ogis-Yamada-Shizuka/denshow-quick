@@ -18,6 +18,5 @@ class RequestDetail < ActiveRecord::Base
   end
 
   validates :doc_type_id, presence: true
-  validates :chg_type_id, presence: true
   validates :vendor_id, presence: true
 end

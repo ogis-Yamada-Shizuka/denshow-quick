@@ -1,5 +1,7 @@
 class RequestApplicationsController < ApplicationController
-  before_action :set_request_application, only: [:show, :edit, :update, :destroy, :regist, :reject, :interrupt, :first_to_revert, :regist_memo, :reject_memo, :interrupt_memo, :first_to_revert_memo]
+  before_action :set_request_application, only: %i(
+    show edit update destroy regist reject interrupt first_to_revert regist_memo reject_memo interrupt_memo first_to_revert_memo registration_result
+  )
   before_action :set_memo, only: [:regist, :reject, :interrupt, :first_to_revert]
 
   # GET /request_applications
@@ -14,8 +16,7 @@ class RequestApplicationsController < ApplicationController
 
   # GET /request_applications/1
   # GET /request_applications/1.json
-  def show
-  end
+  def show; end
 
   # GET /request_applications/new
   def new
@@ -23,8 +24,7 @@ class RequestApplicationsController < ApplicationController
   end
 
   # GET /request_applications/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /request_applications
   # POST /request_applications.json
@@ -109,17 +109,13 @@ class RequestApplicationsController < ApplicationController
     end
   end
 
-  def regist_memo
-  end
+  def regist_memo; end
 
-  def reject_memo
-  end
+  def reject_memo; end
 
-  def interrupt_memo
-  end
+  def interrupt_memo; end
 
-  def first_to_return_memo
-  end
+  def first_to_return_memo; end
 
   # TODO: NotRecord Foundのエラー処理の際にリファクタする
   def import_excel
@@ -134,6 +130,8 @@ class RequestApplicationsController < ApplicationController
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
   end
+
+  def registration_result; end
 
   private
 
