@@ -21,7 +21,7 @@ class RequestApplicationImportExcel
     mcl:          8,
     scp_for_smpl: 9,
     scml_ln:      10,
-    vender_code:  11
+    vendor_code:  11
   }.freeze
 
   DETAIL_START_ROW = 8
@@ -66,10 +66,8 @@ class RequestApplicationImportExcel
       details_attributes.each do |attributes|
         attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
         attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
-        attributes[:vendor_id] = Vendor.find_by!(code: attributes[:vender_code]).id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
-        attributes.delete(:vender_code)
       end
     end
 
