@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209121026) do
+ActiveRecord::Schema.define(version: 20161209123557) do
 
   create_table "chg_types", force: :cascade do |t|
     t.string   "name"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20161209121026) do
     t.datetime "updated_at",             null: false
     t.integer  "doc_type_id"
     t.integer  "chg_type_id"
+    t.string   "vendor"
   end
 
   add_index "request_details", ["chg_type_id"], name: "index_request_details_on_chg_type_id"
