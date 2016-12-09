@@ -92,16 +92,3 @@ if Rails.env.development?
 else
   Model.connection.execute("SELECT SETVAL('models_id_seq', 3)")
 end
-
-# ベンダーコードのマスターデータ
-Vendor.delete_all
-Vendor.create([
-              { code: "A0001", name: "ベンダーその１",  id: 1 },
-              { code: "B0001", name: "ベンダーその２", id: 2 },
-              { code: "C0001", name: "ベンダーその３",  id: 3 }
-            ])
-if Rails.env.development?
-  Vendor.connection.execute("update sqlite_sequence set seq=3 where name='vendors'")
-else
-  Vendor.connection.execute("SELECT SETVAL('vendors_id_seq', 3)")
-end
