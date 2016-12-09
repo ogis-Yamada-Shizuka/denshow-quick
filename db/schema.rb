@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20161209123557) do
     t.datetime "updated_at",             null: false
     t.integer  "doc_type_id"
     t.integer  "chg_type_id"
-    t.string   "vendor"
+    t.string   "vendor_code"
   end
 
   add_index "request_details", ["chg_type_id"], name: "index_request_details_on_chg_type_id"
