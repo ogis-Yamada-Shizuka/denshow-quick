@@ -92,3 +92,16 @@ if Rails.env.development?
 else
   Model.connection.execute("SELECT SETVAL('models_id_seq', 3)")
 end
+
+# プロジェクトのマスターデータ
+Project.delete_all
+Project.create([
+              { name: "プロジェクトA", id: 1 },
+              { name: "プロジェクトB", id: 2 },
+              { name: "プロジェクトC", id: 3 }
+            ])
+if Rails.env.development?
+  Project.connection.execute("update sqlite_sequence set seq=3 where name='projects'")
+else
+  Project.connection.execute("SELECT SETVAL('projects_id_seq', 3)")
+end
