@@ -29,7 +29,7 @@
             <td><%= detail.mcl %></td>
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln %></td>
-            <td><%= detail.vendor.code %></td>
+            <td><%= detail.vendor %></td>
             <td><%= link_to 'Edit', edit_request_application_request_detail_path(request_application, detail) %></td>
             <td><%= link_to 'Destroy', request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

@@ -43,8 +43,8 @@
             <%= f.text_field :scml_ln, class: 'form-control' %>
           </div>
           <div class="col-lg-2">
-            <%= f.label :vendor_id %>
-            <%= f.collection_select :vendor_id, Vendor.all, :id, :code, {}, class: 'form-control'  %>
+            <%= f.label :vendor %>
+            <%= f.text_field :vendor, class: 'form-control'  %>
           </div>
         </div>
     </div>
