@@ -12,7 +12,7 @@
           <th><%= label_tag :mcl %></th>
           <th><%= label_tag :scp_for_smpl %></th>
           <th><%= label_tag :scml_ln %></th>
-          <th><%= label_tag :vendor %></th>
+          <th><%= label_tag :vendor_code %></th>
           <th></th>
           <th></th>
         </tr>
@@ -29,7 +29,7 @@
             <td><%= detail.mcl %></td>
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln %></td>
-            <td><%= detail.vendor %></td>
+            <td><%= detail.vendor_code %></td>
             <td><%= link_to 'Edit', edit_request_application_request_detail_path(request_application, detail) %></td>
             <td><%= link_to 'Destroy', request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
