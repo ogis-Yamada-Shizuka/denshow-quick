@@ -1,5 +1,5 @@
 <div class="well well-sm">
-  <%= render partial: 'shared/request_application_attributes_label', locals: { request_application: @request_application } %>
+  <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
   <%= link_to '管理情報を変更', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
 </div>
 
