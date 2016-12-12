@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      request_detail: request_detail
+    attributes:
+      request_detail:
+        doc_no: 技術資料番号
+        sht: SHT
+        rev: REV
+        eo_chgno: EO/CHGNO
+        mcl: MCL
+        scp_for_smpl: SCP FOR SMPL
+        scml_ln: SCML L/N
+        vendor_code: V/C

@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      request_application: request_application
+    attributes:
+      request_application:
+        management_no: 要求元整理番号
+        model: 機種
+        section: 要求元
+        request_date: 要求日
+        preferred_date: 入手希望日
+      request_application/details:
+        doc_no: 技術資料番号
+        sht: SHT
+        rev: REV
+        eo_chgno: EO/CHGNO
+        mcl: MCL
+        scp_for_smpl: SCP FOR SMPL
+        scml_ln: SCML L/N
+        vendor_code: V/C
