@@ -65,7 +65,7 @@ RSpec.describe RequestDetail, type: :model do
     # 有効な文字パターン2(半角英数)
     VALID_VALUES_TWO = %w(A 1).freeze
 
-    # 無効な文字パターン1(半角記号、全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
+    # 無効な文字パターン2(半角記号、全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
     INVALID_VALUES_TWO = %w(# ひらがな ｶﾀｶﾅ カタカナ 漢字 ！ Ａ １).freeze
 
     describe 'doc_no validate' do
@@ -258,7 +258,7 @@ RSpec.describe RequestDetail, type: :model do
     end
 
     describe 'vendor_code validate' do
-      context '有効な文字パターン1の場合' do
+      context '有効な文字パターン2の場合' do
         VALID_VALUES_TWO.each do |valid_string|
           it do
             request_detail.vendor_code = valid_string
@@ -267,7 +267,7 @@ RSpec.describe RequestDetail, type: :model do
         end
       end
 
-      context '無効な文字パターン1の場合' do
+      context '無効な文字パターン2の場合' do
         INVALID_VALUES_TWO.each do |invalid_string|
           it do
             request_detail.vendor_code = invalid_string
