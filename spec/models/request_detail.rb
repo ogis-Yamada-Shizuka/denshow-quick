@@ -31,15 +31,15 @@ RSpec.describe RequestDetail, type: :model do
     end
     it { is_expected.to be_valid }
 
-    context 'request application' do
+    context 'request_application' do
       it { expect(request_detail.request_application).to eq request_application }
     end
 
-    context 'request application' do
+    context 'doc_type' do
       it { expect(request_detail.doc_type).to eq doc_type }
     end
 
-    context 'request application' do
+    context 'chg_type' do
       it { expect(request_detail.chg_type).to eq chg_type }
     end
   end
