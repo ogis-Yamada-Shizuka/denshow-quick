@@ -14,3 +14,8 @@ ja:
       blank: を入力してください
       invalid: は不正な値です
       taken: はすでに存在します
+
+  activerecord:
+    errors:
+      template:
+        header: "%{count}件のエラーがあります"

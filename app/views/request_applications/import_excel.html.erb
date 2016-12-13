@@ -2,7 +2,7 @@
 
 <% if @request_application.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@request_application.errors.count, "error") %> prohibited this request application from being saved:</h2>
+    <h2><%= t('activerecord.errors.template.header', count: @request_application.errors.messages.length) %></h2>
     <ul>
     <% @request_application.errors.full_messages.each do |message| %>
       <li><%= message %></li>
