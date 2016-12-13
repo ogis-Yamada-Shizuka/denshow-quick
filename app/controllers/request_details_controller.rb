@@ -24,7 +24,7 @@ class RequestDetailsController < ApplicationController
 
   def update
     if @request_detail.update(request_detail_params)
-      change_redirect_to_by_commit_message
+      redirect_to request_application_request_detail_path(@request_detail.request_application, @request_detail), notice: redirect_notice_message
     else
       @request_application = @request_detail.request_application
       render :edit
