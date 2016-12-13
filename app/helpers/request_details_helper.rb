@@ -1,5 +1,5 @@
 module RequestDetailsHelper
-  def append_error_class(model, attirbute_sym)
-    'alert-danger' if model.errors.key?(attirbute_sym)
+  def append_error_class(object, attirbute_name)
+    'alert-danger' if object.errors.key?(attirbute_name)
   end
 end
