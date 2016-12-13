@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :request_application, class: RequestApplication do
+  factory :request_application do
     management_no 'AABB-01-ｱ'
     emargency false
     request_date Time.zone.now.to_date.beginning_of_month

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :chg_type, class: ChgType do
+  factory :chg_type do
     name 'BVSR'
   end
 end

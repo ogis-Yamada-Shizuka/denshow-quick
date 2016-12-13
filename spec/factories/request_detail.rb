@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :request_detail, class: RequestDetail do
+  factory :request_detail do
     doc_no 'AABB-01-ｱ'
     sht 'AAA'
     rev 'R01'
