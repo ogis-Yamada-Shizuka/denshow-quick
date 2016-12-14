@@ -60,13 +60,13 @@ RSpec.describe RequestDetail, type: :model do
     %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
       describe "#{attribute} invalid value validate" do
         # 有効な文字パターン1(半角英数、半角記号、半角カタカナ)
-        VALID_VALUES_ONE = %w(A 1 ! ｶﾀｶﾅ).freeze
+        VALID_VALUES = %w(A 1 ! ｶﾀｶﾅ).freeze
 
         # 無効な文字パターン1(全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
-        INVALID_VALUES_ONE = %w(ひらがな カタカナ 漢字 ！ Ａ １).freeze
+        INVALID_VALUES = %w(ひらがな カタカナ 漢字 ！ Ａ １).freeze
 
         context '有効な文字パターン1の場合' do
-          VALID_VALUES_ONE.each do |valid_value|
+          VALID_VALUES.each do |valid_value|
             it do
               request_detail[attribute] = valid_value
               is_expected.to be_valid
@@ -75,7 +75,7 @@ RSpec.describe RequestDetail, type: :model do
         end
 
         context '無効な文字パターン1の場合' do
-          INVALID_VALUES_ONE.each do |invalid_value|
+          INVALID_VALUES.each do |invalid_value|
             it do
               request_detail[attribute] = invalid_value
               is_expected.to be_invalid
@@ -87,13 +87,13 @@ RSpec.describe RequestDetail, type: :model do
 
     describe 'vendor_code invalid value validate' do
       # 有効な文字パターン2(半角英数)
-      VALID_VALUES_TWO = %w(A 1).freeze
+      VALID_VALUES = %w(A 1).freeze
 
       # 無効な文字パターン2(半角記号、全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
-      INVALID_VALUES_TWO = %w(# ひらがな ｶﾀｶﾅ カタカナ 漢字 ！ Ａ １).freeze
+      INVALID_VALUES = %w(# ひらがな ｶﾀｶﾅ カタカナ 漢字 ！ Ａ １).freeze
 
       context '有効な文字パターン2の場合' do
-        VALID_VALUES_TWO.each do |valid_value|
+        VALID_VALUES.each do |valid_value|
           it do
             request_detail.vendor_code = valid_value
             is_expected.to be_valid
@@ -102,7 +102,7 @@ RSpec.describe RequestDetail, type: :model do
       end
 
       context '無効な文字パターン2の場合' do
-        INVALID_VALUES_TWO.each do |invalid_value|
+        INVALID_VALUES.each do |invalid_value|
           it do
             request_detail.vendor_code = invalid_value
             is_expected.to be_invalid
