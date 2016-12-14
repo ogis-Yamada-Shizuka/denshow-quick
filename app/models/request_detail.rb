@@ -9,15 +9,13 @@ class RequestDetail < ActiveRecord::Base
     end
   end
 
-  INVALID_REGEX = /\p{Hiragana}|[ァ-ン]|[ー－]|[一-龠々]|[Ａ-Ｚ]|[０-９]/
+  INVALID_REGEX = %r([^0-9^A-Z^ｧ-ﾝﾞﾟ!-/`:-@≠\[-`{-~])
 
-  # TODO: rspecセットアップ後にvalidateのテストコードを書くこと
   %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
     validates attribute, length: { maximum: 255 }, format: { without: INVALID_REGEX }
   end
 
   validates :doc_type_id, presence: true
 
-  # TODO: rspecセットアップ後にvalidateのテストコードを書くこと
   validates :vendor_code, length: { maximum: 255 }, format: { without: /[^0-9^A-Z]/ }
 end
