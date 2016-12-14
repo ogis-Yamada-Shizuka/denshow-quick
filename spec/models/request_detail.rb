@@ -56,16 +56,15 @@ RSpec.describe RequestDetail, type: :model do
     end
     it { is_expected.to be_valid }
 
-
     %i(doc_no sht rev eo_chgno mcl scp_for_smpl scml_ln).each do |attribute|
       describe "#{attribute} invalid value validate" do
-        # 有効な文字パターン1(半角英数、半角記号、半角カタカナ)
+        # 有効な文字パターン(半角英数、半角記号、半角カタカナ)
         VALID_VALUES = %w(A 1 ! ｶﾀｶﾅ).freeze
 
-        # 無効な文字パターン1(全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
+        # 無効な文字パターン(全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
         INVALID_VALUES = %w(ひらがな カタカナ 漢字 ！ Ａ １).freeze
 
-        context '有効な文字パターン1の場合' do
+        context '有効な文字パターンの場合' do
           VALID_VALUES.each do |valid_value|
             it do
               request_detail[attribute] = valid_value
@@ -74,7 +73,7 @@ RSpec.describe RequestDetail, type: :model do
           end
         end
 
-        context '無効な文字パターン1の場合' do
+        context '無効な文字パターンの場合' do
           INVALID_VALUES.each do |invalid_value|
             it do
               request_detail[attribute] = invalid_value
@@ -86,13 +85,13 @@ RSpec.describe RequestDetail, type: :model do
     end
 
     describe 'vendor_code invalid value validate' do
-      # 有効な文字パターン2(半角英数)
+      # 有効な文字パターン(半角英数)
       VALID_VALUES = %w(A 1).freeze
 
-      # 無効な文字パターン2(半角記号、全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
+      # 無効な文字パターン(半角記号、全角ひらがな、全角カタカナ、漢字、全角記号、全角英数字)
       INVALID_VALUES = %w(# ひらがな ｶﾀｶﾅ カタカナ 漢字 ！ Ａ １).freeze
 
-      context '有効な文字パターン2の場合' do
+      context '有効な文字パターンの場合' do
         VALID_VALUES.each do |valid_value|
           it do
             request_detail.vendor_code = valid_value
@@ -101,7 +100,7 @@ RSpec.describe RequestDetail, type: :model do
         end
       end
 
-      context '無効な文字パターン2の場合' do
+      context '無効な文字パターンの場合' do
         INVALID_VALUES.each do |invalid_value|
           it do
             request_detail.vendor_code = invalid_value
