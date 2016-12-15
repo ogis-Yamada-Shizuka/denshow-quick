@@ -15,8 +15,13 @@ Rails.application.routes.draw do
     resources :request_details
   end
 
-  namespace :csv do
-    resources :request_application_exports, only: %w(index create)
+  namespace :request_applications do
+    resource :csv_export, only: [] do
+      collection do
+        get :search
+        get :export
+      end
+    end
   end
 
   get 'request_applications/:id/regist_memo' => 'request_applications#regist_memo', as: :regist_memo
