@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :request_details
   end
 
+  namespace :csv do
+    resources :request_application_exports, only: %w(index create)
+  end
+
   get 'request_applications/:id/regist_memo' => 'request_applications#regist_memo', as: :regist_memo
   get 'request_applications/:id/regist' => 'request_applications#regist', as: :regist_progress
   patch 'request_applications/:id/regist' => 'request_applications#regist', as: :regist_confirm
