@@ -1,0 +1,49 @@
+<h1><%= t('.title') %></h1>
+<% if notice.present? %>
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+<div class="row">
+  <div class="row">
+    <div class="well well-sm well-search">
+      <%= search_form_for @q, url: csv_request_application_exports_path, class: "form-inline", method: :get do |f| %>
+      <div>
+        <%= f.label :management_no %>
+      </div>
+      <%= f.search_field :management_no_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
+        <%= f.submit t('.search'), class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+  <%= form_tag csv_request_application_exports_path, method: :post do %>
+  <div class="row" style="margin-bottom: 15px;" >
+  <%= submit_tag t('.csv_export'), class: 'btn btn-primary' %>
+  </div>
+  <div class="row">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th><%= label_tag t('.choose_output') %></th>
+        <th><%= label_tag t('activerecord.attributes.request_application.management_no') %></th>
+        <th><%= label_tag t('activerecord.attributes.model.code') %></th>
+      </tr>
+    </thead>
+    <% if @request_applications.present? %>
+      <tbody>
+        <% @request_applications.each do |request_application| %>
+          <tr>
+            <td><%= check_box_tag 'request_application[ids][]', request_application.id, false, id: "#{request_application.id}" %></td>
+            <td><%= request_application.management_no %></td>
+            <td><%= request_application.model.code %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <%= link_to 'Back', request_applications_path %>
+</div>

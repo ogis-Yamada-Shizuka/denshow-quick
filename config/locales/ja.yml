@@ -19,3 +19,6 @@ ja:
     errors:
       template:
         header: "%{count}件のエラーがあります"
+
+  placeholder:
+    partial_match: 部分一致
