@@ -1,8 +1,0 @@
-ja:
-  csv:
-    request_application_exports:
-      index:
-        title: RequestApplication CSV出力
-        search: 検索
-        csv_export: CSV出力
-        choose_output: 出力
