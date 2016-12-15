@@ -1,4 +1,4 @@
-class RequestApplications::CsvExportsController < ApplicationController
+class RequestApplications::CsvExportController < ApplicationController
   def search
     @q = RequestApplication.ransack(params.fetch(:q, {}).permit(:management_no_cont))
     @request_applications = @q.result.order(created_at: :DESC)

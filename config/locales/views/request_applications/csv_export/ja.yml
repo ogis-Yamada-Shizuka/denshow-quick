@@ -1,6 +1,6 @@
 ja:
   request_applications:
-    csv_exports:
+    csv_export:
       search:
         title: RequestApplication CSV出力
         search: 検索

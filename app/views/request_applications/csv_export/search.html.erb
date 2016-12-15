@@ -1,13 +1,8 @@
 <h1><%= t('.title') %></h1>
-<% if notice.present? %>
-  <div class="row">
-    <p id="notice"><%= notice %></p>
-  </div>
-<% end %>
 <div class="row">
   <div class="row">
     <div class="well well-sm well-search">
-      <%= search_form_for @q, url: search_request_applications_csv_export_path, class: "form-inline", method: :get do |f| %>
+      <%= search_form_for @q, url: search_request_applications_path, class: "form-inline", method: :get do |f| %>
       <div>
         <%= f.label :management_no %>
       </div>
@@ -16,7 +11,7 @@
       <% end %>
     </div>
   </div>
-  <%= form_tag export_request_applications_csv_export_path, method: :get do %>
+  <%= form_tag export_request_applications_path, method: :get do %>
   <div class="row" style="margin-bottom: 15px;" >
   <%= submit_tag t('.csv_export'), class: 'btn btn-primary' %>
   </div>

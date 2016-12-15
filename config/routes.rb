@@ -10,18 +10,13 @@ Rails.application.routes.draw do
   resources :vendors
   root 'request_applications#index'
   resources :request_applications do
-    collection { post :import_excel }
+    collection do
+      post :import_excel
+      get :search, to: 'request_applications/csv_export#search'
+      get :export, to: 'request_applications/csv_export#export'
+    end
     member { get :registration_result }
     resources :request_details
-  end
-
-  namespace :request_applications do
-    resource :csv_export, only: [] do
-      collection do
-        get :search
-        get :export
-      end
-    end
   end
 
   get 'request_applications/:id/regist_memo' => 'request_applications#regist_memo', as: :regist_memo
