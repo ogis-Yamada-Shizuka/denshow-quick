@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      model: 機種
+    attributes:
+      model:
+        code: 機種コード
