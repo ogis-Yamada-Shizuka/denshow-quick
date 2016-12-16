@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215104012) do
+ActiveRecord::Schema.define(version: 20161209123557) do
 
   create_table "chg_types", force: :cascade do |t|
     t.string   "name"
@@ -56,23 +56,6 @@ ActiveRecord::Schema.define(version: 20161215104012) do
 
   add_index "flows", ["dept_id"], name: "index_flows_on_dept_id"
   add_index "flows", ["request_application_id"], name: "index_flows_on_request_application_id"
-
-  create_table "kpeace_output_for_matchings", force: :cascade do |t|
-    t.integer  "format_type"
-    t.string   "document_no"
-    t.string   "model_code"
-    t.string   "doc_type_str"
-    t.string   "sht"
-    t.string   "rev"
-    t.string   "eo_chgno"
-    t.string   "chg_type_str"
-    t.string   "mcl"
-    t.string   "scp_for_smpl"
-    t.string   "scml"
-    t.string   "revision"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
   create_table "models", force: :cascade do |t|
     t.string   "code"
