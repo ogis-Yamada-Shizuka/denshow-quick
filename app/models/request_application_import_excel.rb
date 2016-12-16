@@ -47,7 +47,7 @@ class RequestApplicationImportExcel
 
       # TODO: 2015年仕様のrequest_applicationの関連を整理後に削除する
       # request_applicationにexcelに存在しない値を詰める
-      attributes[:project_id] = Dept.find_by!(project: true).id
+      attributes[:project_id] = Project.first.id || 1
       attributes[:emargency] = false
       attributes[:close] = false
 
@@ -62,14 +62,17 @@ class RequestApplicationImportExcel
       attributes.delete(:request_origin)
     end
 
+    # rubocop:disable all
+    # ぼっち演算子を書くとなぜかrubocop errorになるのでdisable
     def convert_detail_value_to_record_id!(details_attributes)
       details_attributes.each do |attributes|
-        attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
-        attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
+        attributes[:doc_type_id] = DocType.find_by(name: attributes[:doc_type])&.id
+        attributes[:chg_type_id] = ChgType.find_by(name: attributes[:chg_type])&.id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
       end
     end
+    # rubocop:enable all
 
     def read_request_excel_data
       attributes_hash = {}
