@@ -1,7 +1,5 @@
 <div class="well well-sm">
-  <%= form_for(@request_application) do |f| %>
-    <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
-  <% end %>
+  <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
   <%= link_to '管理情報を変更', edit_request_application_path(@request_application), class: 'btn btn-primary' %>
 </div>
 
@@ -17,5 +15,5 @@
   </div>
 <% end %>
 <div class="row">
-    <%= link_to '何もせずに終了', request_applications_path, class:"btn btn-default" %>
+    <%= link_to '何もせずに終了', registration_result_request_application_path(@request_application), class:"btn btn-default" %>
 </div>

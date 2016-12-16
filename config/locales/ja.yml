@@ -1,0 +1,24 @@
+ja:
+  date:
+    formats:
+      default: "%Y/%m/%d"
+
+    order:
+    - :year
+    - :month
+    - :day
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: を入力してください
+      invalid: は不正な値です
+      taken: はすでに存在します
+
+  activerecord:
+    errors:
+      template:
+        header: "%{count}件のエラーがあります"
+
+  placeholder:
+    partial_match: 部分一致

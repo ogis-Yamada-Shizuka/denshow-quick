@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :vendors
   root 'request_applications#index'
   resources :request_applications do
-    collection { post :import_excel }
+    collection do
+      post :import_excel
+      get :search, to: 'request_applications/csv_export#search'
+      get :export, to: 'request_applications/csv_export#export'
+    end
     member { get :registration_result }
     resources :request_details
   end

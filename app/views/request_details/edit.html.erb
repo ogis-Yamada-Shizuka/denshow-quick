@@ -84,10 +84,10 @@
   </div>
   <div class="row">
     <div class="col-lg-2">
-      <%= f.label :vendor_id %>
+      <%= f.label :vendor_code %>
     </div>
     <div class="col-lg-3">
-      <%= f.collection_select :vendor_id, Vendor.all, :id, :code %>
+      <%= f.text_field :vendor_code %>
     </div>
   </div>
   <div class="actions">
