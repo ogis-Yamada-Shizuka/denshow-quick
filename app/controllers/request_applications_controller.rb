@@ -30,9 +30,7 @@ class RequestApplicationsController < ApplicationController
   # POST /request_applications.json
   def create
     @request_application = RequestApplication.new(request_application_params)
-    flow = @request_application.flows.build
-    # 初期フロー生成
-    flow.init_flow
+    initialize_flow
     respond_to do |format|
       if @request_application.save && flow.save
         format.html { change_redirect_to_by_commit_message }
@@ -117,16 +115,11 @@ class RequestApplicationsController < ApplicationController
 
   def first_to_return_memo; end
 
-  # TODO: NotRecord Foundのエラー処理の際にリファクタする
+  # TODO: ファイル読込に失敗したのか、フォーマットが違うのかをexceptionで判定する
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
-    flow = @request_application.flows.build
-    flow.init_flow
-    if @request_application.save
-      redirect_to request_applications_path, notice: 'request imported.'
-    else
-      render :import_excel
-    end
+    initialize_flow
+    @request_application.save ? redirect_to(request_applications_path, notice: 'request imported.') : (render :import_excel)
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
   end
@@ -167,5 +160,11 @@ class RequestApplicationsController < ApplicationController
     else
       'Request application was successfully updated.'
     end
+  end
+
+  def initialize_flow
+    # 初期フロー生成
+    flow = @request_application.flows.build
+    flow.init_flow
   end
 end
