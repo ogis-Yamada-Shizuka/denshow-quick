@@ -55,15 +55,15 @@ class RequestApplicationImportExcel
     end
     # rubocop:enable all
 
+    # rubocop:disable all
+    # ぼっち演算子を書くとなぜかrubocop errorになるのでdisable
     def convert_request_value_to_record_id!(attributes)
-      attributes[:model_id] = Model.find_by!(code: attributes[:model_code]).id
-      attributes[:section_id] = Section.find_by!(name: attributes[:request_origin]).id
+      attributes[:model_id] = Model.find_by(code: attributes[:model_code])&.id
+      attributes[:section_id] = Section.find_by(name: attributes[:request_origin])&.id
       attributes.delete(:model_code)
       attributes.delete(:request_origin)
     end
 
-    # rubocop:disable all
-    # ぼっち演算子を書くとなぜかrubocop errorになるのでdisable
     def convert_detail_value_to_record_id!(details_attributes)
       details_attributes.each do |attributes|
         attributes[:doc_type_id] = DocType.find_by(name: attributes[:doc_type])&.id
