@@ -33,20 +33,11 @@ RSpec.describe ForMatchingData, type: :model do
     end
 
     describe '複合ユニーク制約(document_no, revision)' do
-      subject { same_value_object }
-      let!(:for_matching_data) { create(:for_matching_data) }
-      let(:same_value_object) { build(:for_matching_data) }
-
-      context '同一の組合せが既に存在するか確認' do
-        it do
-          exist_record = ForMatchingData.find_by(document_no: same_value_object.document_no, revision: same_value_object.revision)
-          expect(exist_record.present?).to be_truthy
-        end
-      end
-
       context '同一の値が既に存在した場合' do
         it do
-          is_expected.to be_invalid
+          attributes = { document_no: 'KP／PICTURE／AAA／R01／N99／BVSR／(D)／ｲ-6#2／A-N／A', revision: 'A' }
+          expect(create(:for_matching_data, attributes)).to be_valid
+          expect(build(:for_matching_data, attributes)).to be_invalid
         end
       end
     end
