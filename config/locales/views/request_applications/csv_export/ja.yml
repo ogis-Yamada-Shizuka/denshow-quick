@@ -2,7 +2,7 @@ ja:
   request_applications:
     csv_export:
       search:
-        title: RequestApplication CSV出力
+        title: 突合せデータ取得用CSV出力
         search: 検索
         csv_export: CSV出力
         choose_output: 出力
