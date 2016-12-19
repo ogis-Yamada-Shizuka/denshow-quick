@@ -75,23 +75,6 @@ ActiveRecord::Schema.define(version: 20161219123807) do
     t.string   "doc_no"
   end
 
-  create_table "kpeace_output_for_matchings", force: :cascade do |t|
-    t.integer  "format_type"
-    t.string   "document_no"
-    t.string   "model_code"
-    t.string   "doc_type_str"
-    t.string   "sht"
-    t.string   "rev"
-    t.string   "eo_chgno"
-    t.string   "chg_type_str"
-    t.string   "mcl"
-    t.string   "scp_for_smpl"
-    t.string   "scml"
-    t.string   "revision"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "models", force: :cascade do |t|
     t.string   "code"
     t.datetime "created_at", null: false
