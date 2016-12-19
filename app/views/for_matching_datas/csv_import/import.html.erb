@@ -1,0 +1,32 @@
+<h1><%= t('.title') %></h1>
+
+<div class="row">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t('.csv_import') %></h3>
+  </div>
+  <div class="panel-body">
+
+<div class="row">
+  <%= form_tag for_matching_datas_import_path, method: :post, multipart: true do %>
+    <div class="row">
+      <div class="col-lg-1">
+        <%= label_tag :file, t('.choose'), class: 'btn btn-default', style: 'margin-left: 10px;' %>
+      </div>
+      <div class="col-lg-4">
+        <%= text_field_tag :file_name, nil, class: 'form-control', readonly: true %>
+        <%= file_field_tag :file, style: 'display: none' %>
+      </div>
+      <div class="col-lg-7">
+        <%= submit_tag t('.registration'), class: 'btn btn-primary'  %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+<div class="row" style="margin-top: 15px;" >
+  <%= link_to 'Back', request_applications_path %>
+</div>
+<%= javascript_include_tag 'for_matching_datas' %>
