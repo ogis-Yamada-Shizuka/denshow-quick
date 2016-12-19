@@ -18,21 +18,17 @@ RSpec.describe Flow, type: :model do
     let(:flow) { build(:flow) }
     it { is_expected.to be_valid }
 
-    context 'initialize時にhistory_noに 1 が設定される' do
-      it do
-        expect(flow.history_no).to eq 1
-      end
+    it 'history_noに 1 が設定されること' do
+      expect(flow.history_no).to eq 1
     end
 
-    context 'initialize時にflow_orderを元に設定される' do
-      it do
-        expect(flow.order).to eq flow_order.order
-        expect(flow.dept).to eq flow_order.dept
-      end
+    it 'initialize時にflow_orderを元に設定されること' do
+      expect(flow.order).to eq flow_order.order
+      expect(flow.dept).to eq flow_order.dept
     end
 
-    context 'flow_orderが複数存在する場合はorderの降順で設定される' do
-      it do
+    context 'flow_orderが複数存在する場合' do
+      it 'orderの降順で設定されること' do
         flow_order.update(order: 2)
         create(:flow_order, dept: create(:dept, name: '技術情報課'), order: 1)
         expect(build(:flow).dept.name).to eq '技術情報課'
