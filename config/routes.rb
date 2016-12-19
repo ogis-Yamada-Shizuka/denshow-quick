@@ -44,6 +44,11 @@ Rails.application.routes.draw do
   resources :depts
   resources :users
 
+  namespace :for_matching_datas do
+    get :import, to: 'csv_import#import'
+    post :import, to: 'csv_import#import_csv'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
