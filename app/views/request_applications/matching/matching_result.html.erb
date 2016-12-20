@@ -1,14 +1,20 @@
 <h1><%= t('.title') %></h1>
 <div class="row">
+  <div>
+    <%= label_tag t('activerecord.attributes.request_application.management_no') %>
+    <%= "AABB-01-ｱ" %>
+  </div>
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
-        <col class="col-lg-2"/>
+        <col class="col-lg-1"/>
+        <col class="col-lg-1"/>
         <col class="col-lg-5"/>
         <col class="col-lg-5"/>
       </colgroup>
       <thead>
         <tr>
+          <th><%= label_tag t('.matching_result') %></th>
           <th><%= label_tag t('.matching_key') %></th>
           <th><%= label_tag t('.request_detail') %></th>
           <th><%= label_tag t('.matching_data') %></th>
@@ -16,26 +22,31 @@
       </thead>
       <tbody>
         <tr>
+          <td><%= "一致" %></td>
           <td><%= "A01 D001" %></td>
           <td><%= "A01 D001 AAA BBB CCC" %></td>
           <td><%= "A01／D001／AAA／BBB／CCC" %></td>
         </tr>
         <tr>
+          <td><%= "一致" %></td>
           <td><%= "A01 D002" %></td>
           <td><%= "A01 D002 SSS DDD FFF" %></td>
           <td><%= "A01／D002／SSS／DDD／FFF" %></td>
         </tr>
         <tr>
+          <td style="color: red;"><%= "不一致" %></td>
           <td><%= "A01 D002" %></td>
           <td><%= "A01 D002 GGG HHH JJJ" %></td>
           <td></td>
         </tr>
         <tr>
+          <td style="color: red;"><%= "不一致" %></td>
           <td><%= "A01 D002" %></td>
           <td></td>
           <td><%= "A01／D002／TTT／HHH／JJJ" %></td>
         </tr>
         <tr>
+          <td style="color: red;"><%= "不一致" %></td>
           <td><%= "A01 D003" %></td>
           <td><%= "A01 D003 KKK CCC VVV" %></td>
           <td></td>
