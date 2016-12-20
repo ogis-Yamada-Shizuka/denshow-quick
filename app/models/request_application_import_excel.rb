@@ -38,7 +38,6 @@ class RequestApplicationImportExcel
       RequestApplication.new(request_application_attributes)
     end
 
-    # rubocop:disable all
     def request_application_attributes
       attributes = read_request_excel_data
       attributes.store(:details_attributes, read_details_excel_data)
@@ -53,10 +52,7 @@ class RequestApplicationImportExcel
 
       attributes
     end
-    # rubocop:enable all
 
-    # rubocop:disable all
-    # ぼっち演算子を書くとなぜかrubocop errorになるのでdisable
     def convert_request_value_to_record_id!(attributes)
       attributes[:model_id] = Model.find_by(code: attributes[:model_code])&.id
       attributes[:section_id] = Section.find_by(name: attributes[:request_origin])&.id
@@ -72,7 +68,6 @@ class RequestApplicationImportExcel
         attributes.delete(:chg_type)
       end
     end
-    # rubocop:enable all
 
     def read_request_excel_data
       attributes_hash = {}

@@ -30,9 +30,9 @@ class RequestApplicationsController < ApplicationController
   # POST /request_applications.json
   def create
     @request_application = RequestApplication.new(request_application_params)
-    initialize_flow
+    @request_application.flows.build
     respond_to do |format|
-      if @request_application.save && flow.save
+      if @request_application.save
         format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :created, location: @request_application }
       else
@@ -118,7 +118,7 @@ class RequestApplicationsController < ApplicationController
   # TODO: ファイル読込に失敗したのか、フォーマットが違うのかをexceptionで判定する
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
-    initialize_flow
+    @request_application.flows.build
     @request_application.save ? redirect_to(request_applications_path, notice: 'request imported.') : (render :import_excel)
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
@@ -160,11 +160,5 @@ class RequestApplicationsController < ApplicationController
     else
       'Request application was successfully updated.'
     end
-  end
-
-  def initialize_flow
-    # 初期フロー生成
-    flow = @request_application.flows.build
-    flow.init_flow
   end
 end
