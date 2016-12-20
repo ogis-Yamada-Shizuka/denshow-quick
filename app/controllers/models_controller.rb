@@ -61,6 +61,11 @@ class ModelsController < ApplicationController
     end
   end
 
+  def import
+    Model.import(params[:file])
+    redirect_to models_url, notice: 'models imported.'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

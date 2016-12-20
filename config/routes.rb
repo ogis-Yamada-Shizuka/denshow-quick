@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     collection { post :import }  # for CSV Upload
   end
   resources :sections
-  resources :models
-  resources :vendors
+  resources :models do
+    collection { post :import } # for CSV Upload
+  end
   root 'request_applications#index'
   resources :request_applications do
     collection do
