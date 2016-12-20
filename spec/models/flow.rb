@@ -28,9 +28,12 @@ RSpec.describe Flow, type: :model do
     end
 
     context 'flow_orderが複数存在する場合' do
-      it 'orderの降順で設定されること' do
+      before do
         flow_order.update(order: 2)
         create(:flow_order, dept: create(:dept, name: '技術情報課'), order: 1)
+      end
+
+      it 'orderの降順で設定されること' do
         expect(build(:flow).dept.name).to eq '技術情報課'
       end
     end
