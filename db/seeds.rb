@@ -80,19 +80,6 @@ else
   Section.connection.execute("SELECT SETVAL('sections_id_seq', 7)")
 end
 
-# 機種のマスターデータ
-Model.delete_all
-Model.create([
-              { code: "A01",  id: 1 },
-              { code: "B01", id: 2 },
-              { code: "C01",  id: 3 }
-            ])
-if Rails.env.development?
-  Model.connection.execute("update sqlite_sequence set seq=3 where name='models'")
-else
-  Model.connection.execute("SELECT SETVAL('models_id_seq', 3)")
-end
-
 # プロジェクトのマスターデータ
 Project.delete_all
 Project.create([
