@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       post :import_excel
       get :search, to: 'request_applications/csv_export#search'
       get :export, to: 'request_applications/csv_export#export'
+      get :matching, to: 'request_applications/matching#matching'
+      get :matching_result, to: 'request_applications/matching#matching_result'
     end
     member { get :registration_result }
     resources :request_details
