@@ -1,0 +1,49 @@
+<h1><%= t('.title') %></h1>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <colgroup>
+        <col class="col-lg-2" />
+        <col class="col-lg-5" />
+        <col class="col-lg-5" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th><%= label_tag t('.matching_key') %></th>
+          <th><%= label_tag t('.request_detail') %></th>
+          <th><%= label_tag t('.matching_data') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= "A01 D001" %></td>
+          <td><%= "A01 D001 AAA BBB CCC" %></td>
+          <td><%= "A01／D001／AAA／BBB／CCC" %></td>
+        </tr>
+        <tr>
+          <td><%= "A01 D002" %></td>
+          <td><%= "A01 D002 SSS DDD FFF" %></td>
+          <td><%= "A01／D002／SSS／DDD／FFF" %></td>
+        </tr>
+        <tr>
+          <td><%= "A01 D002" %></td>
+          <td><%= "A01 D002 GGG HHH JJJ" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= "A01 D002" %></td>
+          <td></td>
+          <td><%= "A01／D002／TTT／HHH／JJJ" %></td>
+        </tr>
+        <tr>
+          <td><%= "A01 D003" %></td>
+          <td><%= "A01 D003 KKK CCC VVV" %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <%= link_to 'Back', request_applications_path %>
+</div>

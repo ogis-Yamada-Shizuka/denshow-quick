@@ -1,0 +1,11 @@
+ja:
+  request_applications:
+    matching:
+      matching:
+        title: 突合せ対象指示
+        matching: 突合せ
+      matching_result:
+        title: 突合せ結果表示
+        matching_key: キー情報
+        request_detail: 要求書
+        matching_data: 突合せデータ
