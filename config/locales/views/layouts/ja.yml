@@ -2,4 +2,4 @@ ja:
   layouts:
     application:
       request_applications_export_csv: 突合せデータ取得用CSV出力
-      for_matching_datas_import_csv: 突合せ用データ一覧
+      for_matching_datas_import_csv: 突合せ用データ取込み
