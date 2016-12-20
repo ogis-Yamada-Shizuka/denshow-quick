@@ -7,7 +7,7 @@ class Flow < ActiveRecord::Base
   scope :current_flows, -> { group(:request_application_id).having(" history_no= max(history_no)") }
 
   # 初期フローを設定する。
-  def initialize(*)
+  def initialize(attributes = nil, options = {})
     super
     first_order = FlowOrder.order_list.first
     self.order = first_order.order
