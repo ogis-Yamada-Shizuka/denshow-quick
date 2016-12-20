@@ -3,6 +3,7 @@ FactoryGirl.define do
     format_type 'PICTURE'
     document_no 'KP／PICTURE／AAA／R01／N99／BVSR／(D)／ｲ-6#2／A-N／A'
     model_code 'KP'
+    doc_no 'AA10'
     doc_type_str 'PICTURE'
     sht 'AAA'
     rev 'R01'

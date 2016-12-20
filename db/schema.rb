@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216045532) do
+ActiveRecord::Schema.define(version: 20161219123807) do
 
   create_table "chg_types", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161216045532) do
     t.string   "revision"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "doc_no"
   end
 
   create_table "models", force: :cascade do |t|
