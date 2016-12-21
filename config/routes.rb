@@ -6,14 +6,17 @@ Rails.application.routes.draw do
     collection { post :import }  # for CSV Upload
   end
   resources :sections
-  resources :models
-  resources :vendors
+  resources :models do
+    collection { post :import } # for CSV Upload
+  end
   root 'request_applications#index'
   resources :request_applications do
     collection do
       post :import_excel
       get :search, to: 'request_applications/csv_export#search'
       get :export, to: 'request_applications/csv_export#export'
+      get :matching, to: 'request_applications/matching#matching'
+      get :matching_result, to: 'request_applications/matching#matching_result'
     end
     member { get :registration_result }
     resources :request_details
@@ -43,6 +46,11 @@ Rails.application.routes.draw do
   resources :flow_orders
   resources :depts
   resources :users
+
+  namespace :for_matching_datas do
+    get :import, to: 'csv_import#import'
+    post :import, to: 'csv_import#import_csv'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

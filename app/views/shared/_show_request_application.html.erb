@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg-2">
       <%= label :project, :project %><br>
-      <%= request_application.project.name %>
+      <%= request_application.project&.name %>
     </div>
     <div class="col-lg-2">
       <%= label :model, :model %><br>
