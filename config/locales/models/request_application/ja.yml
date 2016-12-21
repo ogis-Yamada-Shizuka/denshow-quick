@@ -18,3 +18,5 @@ ja:
         scp_for_smpl: SCP FOR SMPL
         scml_ln: SCML L/N
         vendor_code: V/C
+        doc_type_id: DOC TYPE
+        chg_type_id: CHGTYPE
