@@ -21,7 +21,7 @@ class RequestApplicationImportExcel
     mcl:          8,
     scp_for_smpl: 9,
     scml_ln:      10,
-    vender_code:  11
+    vendor_code:  11
   }.freeze
 
   DETAIL_START_ROW = 8
@@ -38,7 +38,6 @@ class RequestApplicationImportExcel
       RequestApplication.new(request_application_attributes)
     end
 
-    # rubocop:disable all
     def request_application_attributes
       attributes = read_request_excel_data
       attributes.store(:details_attributes, read_details_excel_data)
@@ -47,29 +46,26 @@ class RequestApplicationImportExcel
 
       # TODO: 2015年仕様のrequest_applicationの関連を整理後に削除する
       # request_applicationにexcelに存在しない値を詰める
-      attributes[:project_id] = Dept.find_by!(project: true).id
+      attributes[:project_id] = Project.first.id || 1
       attributes[:emargency] = false
       attributes[:close] = false
 
       attributes
     end
-    # rubocop:enable all
 
     def convert_request_value_to_record_id!(attributes)
-      attributes[:model_id] = Model.find_by!(code: attributes[:model_code]).id
-      attributes[:section_id] = Section.find_by!(name: attributes[:request_origin]).id
+      attributes[:model_id] = Model.find_by(code: attributes[:model_code])&.id
+      attributes[:section_id] = Section.find_by(name: attributes[:request_origin])&.id
       attributes.delete(:model_code)
       attributes.delete(:request_origin)
     end
 
     def convert_detail_value_to_record_id!(details_attributes)
       details_attributes.each do |attributes|
-        attributes[:doc_type_id] = DocType.find_by!(name: attributes[:doc_type]).id
-        attributes[:chg_type_id] = ChgType.find_by!(name: attributes[:chg_type]).id
-        attributes[:vendor_id] = Vendor.find_by!(code: attributes[:vender_code]).id
+        attributes[:doc_type_id] = DocType.find_by(name: attributes[:doc_type])&.id
+        attributes[:chg_type_id] = ChgType.find_by(name: attributes[:chg_type])&.id
         attributes.delete(:doc_type)
         attributes.delete(:chg_type)
-        attributes.delete(:vender_code)
       end
     end
 

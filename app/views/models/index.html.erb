@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Code</th>
-      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @models.each do |model| %>
       <tr>
         <td><%= model.code %></td>
-        <td><%= model.name %></td>
         <td><%= link_to 'Show', model %></td>
         <td><%= link_to 'Edit', edit_model_path(model) %></td>
         <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,3 +25,10 @@
 <br>
 
 <%= link_to 'New Model', new_model_path %>
+
+<p>
+  <%= form_tag import_models_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag 'csv upload' %>
+  <% end %>
+</p>

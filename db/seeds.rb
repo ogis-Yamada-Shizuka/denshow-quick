@@ -80,29 +80,15 @@ else
   Section.connection.execute("SELECT SETVAL('sections_id_seq', 7)")
 end
 
-# 機種のマスターデータ
-Model.delete_all
-Model.create([
-              { code: "A01", name: "機種その１",  id: 1 },
-              { code: "B01", name: "機種その２", id: 2 },
-              { code: "C01", name: "機種その３",  id: 3 }
+# プロジェクトのマスターデータ
+Project.delete_all
+Project.create([
+              { name: "プロジェクトA", id: 1 },
+              { name: "プロジェクトB", id: 2 },
+              { name: "プロジェクトC", id: 3 }
             ])
 if Rails.env.development?
-  Model.connection.execute("update sqlite_sequence set seq=3 where name='models'")
+  Project.connection.execute("update sqlite_sequence set seq=3 where name='projects'")
 else
-  Model.connection.execute("SELECT SETVAL('models_id_seq', 3)")
+  Project.connection.execute("SELECT SETVAL('projects_id_seq', 3)")
 end
-
-# ベンダーコードのマスターデータ
-Vendor.delete_all
-Vendor.create([
-              { code: "A0001", name: "ベンダーその１",  id: 1 },
-              { code: "B0001", name: "ベンダーその２", id: 2 },
-              { code: "C0001", name: "ベンダーその３",  id: 3 }
-            ])
-if Rails.env.development?
-  Vendor.connection.execute("update sqlite_sequence set seq=3 where name='vendors'")
-else
-  Vendor.connection.execute("SELECT SETVAL('vendors_id_seq', 3)")
-end
-

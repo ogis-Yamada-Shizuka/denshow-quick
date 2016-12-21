@@ -2,7 +2,7 @@
 
 <% if @request_application.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@request_application.errors.count, "error") %> prohibited this request application from being saved:</h2>
+    <h2><%= t('activerecord.errors.template.header', count: @request_application.errors.messages.length) %></h2>
     <ul>
     <% @request_application.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -25,23 +25,33 @@
         <tbody>
           <tr>
             <td><%= label_tag :management_no %></td>
-            <td><%= @request_application.management_no %></td>
+            <td class="<%= append_error_class(@request_application, :management_no) %>">
+              <%= @request_application.management_no %>
+            </td>
           </tr>
           <tr>
             <td><%= label_tag :section %></td>
-            <td><%= @request_application.section&.name %></td>
+            <td class="<%= append_error_class(@request_application, :section) %>">
+              <%= @request_application.section&.name %>
+            </td>
           </tr>
           <tr>
             <td><%= label_tag :request_date %></td>
-            <td><%= @request_application.request_date %></td>
+            <td class="<%= append_error_class(@request_application, :request_date) %>">
+              <%= @request_application.request_date %>
+            </td>
           </tr>
           <tr>
             <td><%= label_tag :preferred_date %></td>
-            <td><%= @request_application.preferred_date %></td>
+            <td class="<%= append_error_class(@request_application, :preferred_date) %>">
+              <%= @request_application.preferred_date %>
+            </td>
           </tr>
           <tr>
             <td><%= label_tag :model %></td>
-            <td><%= @request_application.model&.name %></td>
+            <td class="<%= append_error_class(@request_application, :model) %>">
+              <%= @request_application.model&.code %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -68,7 +78,7 @@
             <th><%= label_tag :mcl %></th>
             <th><%= label_tag :scp_for_smpl %></th>
             <th><%= label_tag :scml_ln %></th>
-            <th><%= label_tag :vendor %></th>
+            <th><%= label_tag :vendor_code %></th>
           </tr>
         </thead>
         <% if @request_application.details.present? %>
@@ -76,16 +86,36 @@
             <% @request_application.details.each_with_index do |detail, i| %>
               <tr style="<%= 'border: 3px #ff6347 solid;' if detail.errors.any? %>" >
                 <td><%= i + 1 %></td>
-                <td><%= detail.doc_no %></td>
-                <td><%= detail.doc_type&.name %></td>
-                <td><%= detail.sht %></td>
-                <td><%= detail.rev %></td>
-                <td><%= detail.eo_chgno %></td>
-                <td><%= detail.chg_type&.name %></td>
-                <td><%= detail.mcl %></td>
-                <td><%= detail.scp_for_smpl %></td>
-                <td><%= detail.scml_ln %></td>
-                <td><%= detail.vendor&.code %></td>
+                <td class="<%= append_error_class(detail, :doc_no) %>">
+                  <%= detail.doc_no %>
+                </td>
+                <td class="<%= append_error_class(detail, :doc_type_id) %>">
+                  <%= detail.doc_type&.name %>
+                </td>
+                <td class="<%= append_error_class(detail, :sht) %>">
+                  <%= detail.sht %>
+                </td>
+                <td class="<%= append_error_class(detail, :rev) %>">
+                  <%= detail.rev %>
+                </td>
+                <td class="<%= append_error_class(detail, :eo_chgno) %>">
+                  <%= detail.eo_chgno %>
+                </td>
+                <td class="<%= append_error_class(detail, :chg_type_id) %>">
+                  <%= detail.chg_type&.name %>
+                </td>
+                <td class="<%= append_error_class(detail, :mcl) %>">
+                  <%= detail.mcl %>
+                </td>
+                <td class="<%= append_error_class(detail, :scp_for_smpl) %>">
+                  <%= detail.scp_for_smpl %>
+                </td>
+                <td class="<%= append_error_class(detail, :scml_ln) %>">
+                  <%= detail.scml_ln %>
+                </td>
+                <td class="<%= append_error_class(detail, :vendor_code) %>">
+                  <%= detail.vendor_code %>
+                </td>
               </tr>
             <% end %>
           </tbody>

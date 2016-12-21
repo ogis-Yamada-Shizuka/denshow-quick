@@ -1,0 +1,8 @@
+ja:
+  for_matching_datas:
+    csv_import:
+      import:
+        title: 突合せ用データ取込み
+        choose: 参照
+        registration: 登録
+        csv_import: CSV取込

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201050922) do
+ActiveRecord::Schema.define(version: 20161219123807) do
 
   create_table "chg_types", force: :cascade do |t|
     t.string   "name"
@@ -57,9 +57,26 @@ ActiveRecord::Schema.define(version: 20161201050922) do
   add_index "flows", ["dept_id"], name: "index_flows_on_dept_id"
   add_index "flows", ["request_application_id"], name: "index_flows_on_request_application_id"
 
+  create_table "for_matching_data", force: :cascade do |t|
+    t.string   "format_type"
+    t.string   "document_no"
+    t.string   "model_code"
+    t.string   "doc_type_str"
+    t.string   "sht"
+    t.string   "rev"
+    t.string   "eo_chgno"
+    t.string   "chg_type_str"
+    t.string   "mcl"
+    t.string   "scp_for_smpl"
+    t.string   "scml"
+    t.string   "revision"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "doc_no"
+  end
+
   create_table "models", force: :cascade do |t|
     t.string   "code"
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,13 +125,12 @@ ActiveRecord::Schema.define(version: 20161201050922) do
     t.datetime "updated_at",             null: false
     t.integer  "doc_type_id"
     t.integer  "chg_type_id"
-    t.integer  "vendor_id"
+    t.string   "vendor_code"
   end
 
   add_index "request_details", ["chg_type_id"], name: "index_request_details_on_chg_type_id"
   add_index "request_details", ["doc_type_id"], name: "index_request_details_on_doc_type_id"
   add_index "request_details", ["request_application_id"], name: "index_request_details_on_request_application_id"
-  add_index "request_details", ["vendor_id"], name: "index_request_details_on_vendor_id"
 
   create_table "sections", force: :cascade do |t|
     t.string   "name"
@@ -130,12 +146,5 @@ ActiveRecord::Schema.define(version: 20161201050922) do
   end
 
   add_index "users", ["dept_id"], name: "index_users_on_dept_id"
-
-  create_table "vendors", force: :cascade do |t|
-    t.string   "code"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

@@ -27,7 +27,7 @@
 
 <p>
   <strong>ChgType:</strong>
-  <%= @request_detail.chg_type.name %>
+  <%= @request_detail.chg_type&.name %>
 </p>
 
 <p>
@@ -47,9 +47,9 @@
 
 <p>
   <strong>V/C:</strong>
-  <%= @request_detail.vendor.code %>
+  <%= @request_detail.vendor_code %>
 </p>
 
 
 <%= link_to 'Edit', edit_request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
-<%= link_to 'Back', request_applications_path %>
+<%= link_to 'Back', registration_result_request_application_path(@request_detail.request_application) %>

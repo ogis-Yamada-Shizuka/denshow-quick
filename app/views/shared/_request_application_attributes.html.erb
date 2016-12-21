@@ -6,11 +6,11 @@
     </div>
     <div class="col-lg-2">
       <%= f.label :project_id %><br>
-      <%= f.collection_select :project_id, Dept.projects, :id, :name  %>
+      <%= f.collection_select :project_id, Project.all, :id, :name  %>
     </div>
     <div class="col-lg-2">
       <%= f.label :model_id %><br>
-      <%= f.collection_select :model_id, Model.all, :id, :name  %>
+      <%= f.collection_select :model_id, Model.all, :id, :code  %>
     </div>
     <div class="col-lg-2">
       <%= f.label :section_id %><br>
@@ -28,11 +28,11 @@
     </div>
     <div class="col-lg-3">
       <%= f.label :request_date %><br>
-      <%= f.date_select :request_date %>
+      <%= f.date_select :request_date, use_month_numbers: true %>
     </div>
     <div class="col-lg-3">
       <%= f.label :preferred_date %><br>
-      <%= f.date_select :preferred_date %>
+      <%= f.date_select :preferred_date, use_month_numbers: true %>
     </div>
     <div class="col-lg-3">
       <%= f.label :memo %><br>

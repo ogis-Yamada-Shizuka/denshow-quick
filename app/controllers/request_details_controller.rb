@@ -24,7 +24,7 @@ class RequestDetailsController < ApplicationController
 
   def update
     if @request_detail.update(request_detail_params)
-      change_redirect_to_by_commit_message
+      redirect_to request_application_request_detail_path(@request_detail.request_application, @request_detail), notice: redirect_notice_message
     else
       @request_application = @request_detail.request_application
       render :edit
@@ -44,7 +44,7 @@ class RequestDetailsController < ApplicationController
 
   def request_detail_params
     params.require(:request_detail).permit(
-      :request_application_id, :doc_no, :doc_type_id, :sht, :rev, :eo_chgno, :chg_type_id, :mcl, :scp_for_smpl, :scml_ln, :vendor_id
+      :request_application_id, :doc_no, :doc_type_id, :sht, :rev, :eo_chgno, :chg_type_id, :mcl, :scp_for_smpl, :scml_ln, :vendor_code
     )
   end
 
@@ -52,7 +52,7 @@ class RequestDetailsController < ApplicationController
     if params[:save_and_insert].present?
       redirect_to new_request_application_request_detail_path(@request_detail.request_application), notice: redirect_notice_message
     else
-      redirect_to request_application_request_detail_path(@request_detail.request_application, @request_detail), notice: redirect_notice_message
+      redirect_to registration_result_request_application_path(@request_detail.request_application), notice: redirect_notice_message
     end
   end
 

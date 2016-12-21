@@ -61,6 +61,11 @@ class ModelsController < ApplicationController
     end
   end
 
+  def import
+    Model.import(params[:file])
+    redirect_to models_url, notice: 'models imported.'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +75,6 @@ class ModelsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def model_params
-    params.require(:model).permit(:code, :name)
+    params.require(:model).permit(:code)
   end
 end

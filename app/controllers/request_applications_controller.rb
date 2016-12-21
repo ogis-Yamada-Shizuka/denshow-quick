@@ -1,5 +1,7 @@
 class RequestApplicationsController < ApplicationController
-  before_action :set_request_application, only: [:show, :edit, :update, :destroy, :regist, :reject, :interrupt, :first_to_revert, :regist_memo, :reject_memo, :interrupt_memo, :first_to_revert_memo]
+  before_action :set_request_application, only: %i(
+    show edit update destroy regist reject interrupt first_to_revert regist_memo reject_memo interrupt_memo first_to_revert_memo registration_result
+  )
   before_action :set_memo, only: [:regist, :reject, :interrupt, :first_to_revert]
 
   # GET /request_applications
@@ -14,8 +16,7 @@ class RequestApplicationsController < ApplicationController
 
   # GET /request_applications/1
   # GET /request_applications/1.json
-  def show
-  end
+  def show; end
 
   # GET /request_applications/new
   def new
@@ -23,18 +24,15 @@ class RequestApplicationsController < ApplicationController
   end
 
   # GET /request_applications/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /request_applications
   # POST /request_applications.json
   def create
     @request_application = RequestApplication.new(request_application_params)
-    flow = @request_application.flows.build
-    # 初期フロー生成
-    flow.init_flow
+    @request_application.flows.build
     respond_to do |format|
-      if @request_application.save && flow.save
+      if @request_application.save
         format.html { change_redirect_to_by_commit_message }
         format.json { render :show, status: :created, location: @request_application }
       else
@@ -109,31 +107,24 @@ class RequestApplicationsController < ApplicationController
     end
   end
 
-  def regist_memo
-  end
+  def regist_memo; end
 
-  def reject_memo
-  end
+  def reject_memo; end
 
-  def interrupt_memo
-  end
+  def interrupt_memo; end
 
-  def first_to_return_memo
-  end
+  def first_to_return_memo; end
 
-  # TODO: NotRecord Foundのエラー処理の際にリファクタする
+  # TODO: ファイル読込に失敗したのか、フォーマットが違うのかをexceptionで判定する
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
-    flow = @request_application.flows.build
-    flow.init_flow
-    if @request_application.save
-      redirect_to request_applications_path, notice: 'request imported.'
-    else
-      render :import_excel
-    end
+    @request_application.flows.build
+    @request_application.save ? redirect_to(request_applications_path, notice: 'request imported.') : (render :import_excel)
   rescue
     redirect_to request_applications_path, notice: 'import failed.'
   end
+
+  def registration_result; end
 
   private
 
@@ -159,7 +150,7 @@ class RequestApplicationsController < ApplicationController
     if params[:save_and_insert].present?
       redirect_to new_request_application_request_detail_path(@request_application), notice: redirect_notice_message
     else
-      redirect_to @request_application, notice: redirect_notice_message
+      redirect_to registration_result_request_application_path(@request_application), notice: redirect_notice_message
     end
   end
 
