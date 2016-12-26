@@ -50,7 +50,8 @@ RSpec.describe Model, type: :model do
     end
 
     it '読み込んだCSVとレコードに登録された値が同一である' do
-      Model.all.each_with_index do |record, i|
+      subject
+      Model.order(:id)[-csv_values.count..-1].each_with_index do |record, i|
         expect(record.code).to eq csv_values[i]
       end
     end
