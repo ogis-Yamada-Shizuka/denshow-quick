@@ -56,18 +56,5 @@ RSpec.describe Model, type: :model do
         end
       end
     end
-
-    subject { Model.import(file) }
-
-    it '読み込んだCSVと登録された件数が同一である' do
-      expect { subject }.to change { Model.count }.by csv_values.length
-    end
-
-    it '読み込んだCSVとレコードに登録された値が同一である' do
-      subject
-      Model.order(:id)[-csv_values.count..-1].each_with_index do |record, i|
-        expect(record.code).to eq csv_values[i]
-      end
-    end
   end
 end
