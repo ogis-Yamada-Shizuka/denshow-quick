@@ -39,11 +39,25 @@ RSpec.describe Model, type: :model do
   end
 
   describe 'CSV import' do
-    subject { Model.import(file) }
     let(:file) { open('spec/fixtures/files/model_import_test.csv') }
     let(:csv_values) do
       CSV.read(file, encoding: 'SJIS:UTF-8', headers: true).map { |row| row['code'] }
     end
+
+    describe '登録件数の確認' do
+      it { expect { Model.import(file) }.to change { Model.count }.by csv_values.count }
+    end
+
+    describe '登録内容一致の確認' do
+      before { Model.import(file) }
+      it do
+        Model.order(:id)[-csv_values.count..-1].each_with_index do |record, i|
+          expect(record.code).to eq csv_values[i]
+        end
+      end
+    end
+
+    subject { Model.import(file) }
 
     it '読み込んだCSVと登録された件数が同一である' do
       expect { subject }.to change { Model.count }.by csv_values.length
