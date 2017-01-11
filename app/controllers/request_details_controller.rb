@@ -1,16 +1,14 @@
 class RequestDetailsController < ApplicationController
   before_action :set_request_detail, only: [:show, :edit, :update, :destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @request_application = RequestApplication.find(params[:request_application_id])
     @request_detail = @request_application.details.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @request_detail = RequestDetail.new(request_detail_params)
