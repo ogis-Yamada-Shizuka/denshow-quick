@@ -7,6 +7,7 @@ class RequestApplication < ActiveRecord::Base
   mount_uploader :filename, FileUploader
 
   validates :management_no, uniqueness: true, presence: true
+  validates :model, presence: true
 
   # custom scope
   scope :custom_scope, lambda { |dept_id|
