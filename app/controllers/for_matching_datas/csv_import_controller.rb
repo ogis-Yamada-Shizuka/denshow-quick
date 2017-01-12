@@ -1,5 +1,6 @@
 class ForMatchingDatas::CsvImportController < ApplicationController
   def import
+    # TODO: 絞込機能追加時に全件取得外す
     @for_matching_datas = ForMatchingData.all
   end
 
