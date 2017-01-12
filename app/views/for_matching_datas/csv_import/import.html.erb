@@ -45,16 +45,14 @@
         <th><%= label_tag :revision, t('activerecord.attributes.for_matching_data.revision') %></th>
       </tr>
     </thead>
-    <% if @for_matching_datas.present? %>
-      <tbody>
-        <% @for_matching_datas.each do |for_matching_data| %>
-          <tr>
-            <td><%= for_matching_data.document_no %></td>
-            <td><%= for_matching_data.revision %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    <% end %>
+    <tbody>
+      <% @for_matching_datas.each do |for_matching_data| %>
+        <tr>
+          <td><%= for_matching_data.document_no %></td>
+          <td><%= for_matching_data.revision %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
 <%= javascript_include_tag 'for_matching_datas' %>
