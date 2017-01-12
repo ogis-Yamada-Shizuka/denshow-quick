@@ -1,5 +1,7 @@
 class ForMatchingDatas::CsvImportController < ApplicationController
-  def import; end
+  def import
+    @for_matching_datas = ForMatchingData.all
+  end
 
   def import_csv
     ForMatchingDataImportCsv.import(params[:file].tempfile)
