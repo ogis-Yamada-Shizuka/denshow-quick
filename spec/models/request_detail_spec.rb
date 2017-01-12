@@ -16,9 +16,17 @@ RSpec.describe RequestDetail, type: :model do
     it { is_expected.to respond_to(:vendor_code) }
   end
 
+  let(:request_application) do
+    create(
+      :request_application,
+      model: create(:model),
+      section: create(:section),
+      project: create(:project)
+    )
+  end
+
   describe 'associations' do
     subject { request_detail }
-    let(:request_application) { create(:request_application) }
     let(:doc_type) { create(:doc_type) }
     let(:chg_type) { create(:chg_type) }
     let(:request_detail) do
@@ -49,7 +57,7 @@ RSpec.describe RequestDetail, type: :model do
     let(:request_detail) do
       create(
         :request_detail,
-        request_application: create(:request_application),
+        request_application: request_application,
         doc_type: create(:doc_type),
         chg_type: create(:chg_type)
       )
@@ -127,7 +135,7 @@ RSpec.describe RequestDetail, type: :model do
     let(:request_detail) do
       create(
         :request_detail,
-        request_application: create(:request_application),
+        request_application: request_application,
         doc_type: create(:doc_type),
         chg_type: create(:chg_type)
       )
