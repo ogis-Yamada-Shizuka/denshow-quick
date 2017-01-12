@@ -31,7 +31,11 @@ class RequestDetailsController < ApplicationController
 
   def destroy
     @request_detail.destroy
-    redirect_to request_applications_url, notice: 'Request detail was successfully destroyed.'
+    if Rails.application.routes.recognize_path(request.referer)[:controller] == 'request_details'
+      redirect_to new_request_application_request_detail_path, notice: 'Request detail was successfully destroyed.'
+    else
+      redirect_to registration_result_request_application_path(@request_detail.request_application), notice: 'Request detail was successfully destroyed.'
+    end
   end
 
   private
