@@ -8,6 +8,8 @@ class RequestApplication < ActiveRecord::Base
 
   validates :management_no, uniqueness: true, presence: true
   validates :model, presence: true
+  validates :section, presence: true
+  validates :project, presence: true
 
   # custom scope
   scope :custom_scope, lambda { |dept_id|
