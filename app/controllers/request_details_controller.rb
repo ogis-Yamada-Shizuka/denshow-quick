@@ -30,6 +30,7 @@ class RequestDetailsController < ApplicationController
   end
 
   def destroy
+    @request_detail.destroy
     if Rails.application.routes.recognize_path(request.referer)[:controller] == 'request_details'
       redirect_to new_request_application_request_detail_path
     else
