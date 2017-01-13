@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      for_matching_data: 突合せ用データ
+    attributes:
+      for_matching_data:
+        format_type: 種類
+        document_no: ドキュメント番号
+        model_code: 機種コード
+        doc_no: 技術資料番号
+        doc_type_str: DOC TYPE
+        sht: SHT
+        rev: 親REV
+        eo_chgno: EO/CHG NO
+        chg_type_str: CHG TYPE
+        mcl: MCL
+        scp_for_smpl: SCP FOR SMPL
+        scml: SCML L/N
+        revision: REV
