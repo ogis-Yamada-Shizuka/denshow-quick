@@ -35,19 +35,20 @@
     <%= search_form_for @q, url: for_matching_datas_import_path, class: "form-inline", method: :get do |f| %>
       <div class="row">
         <div class="col-lg-2">
-          <div>
-            <%= f.label :model_code %>
-          </div>
+          <%= f.label :model_code %>
+        </div>
+        <div class="col-lg-10">
+          <%= f.label :doc_no %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
           <%= f.search_field :model_code_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
         </div>
         <div class="col-lg-2">
-          <div>
-            <%= f.label :doc_no %>
-          </div>
           <%= f.search_field :doc_no_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
         </div>
         <div class="col-lg-8">
-          <br>
           <%= f.submit t('.search'), class: 'btn btn-primary' %>
         </div>
       </div>
