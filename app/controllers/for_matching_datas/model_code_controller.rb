@@ -6,7 +6,8 @@ class ForMatchingDatas::ModelCodeController < ApplicationController
 
   def destroy
     ForMatchingData.destroy_all(model_code: params[:model_code])
-    flash[:notice] = 'For matching datas model code was successfully destroyed.'
+    # TODO: ymlにnoticeメッセージを移植する
+    flash[:notice] = '突合せデータを機種コードにもとづいて一括削除しました。'
     redirect_to for_matching_datas_model_code_path
   end
 end
