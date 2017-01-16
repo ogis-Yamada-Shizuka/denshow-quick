@@ -3,7 +3,4 @@ ja:
     model_code:
       index:
         title: 突合せ用データ登録済機種一覧
-        choose: 参照
-        registration: 登録
-        csv_import: CSV取込
         search: 検索
