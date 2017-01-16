@@ -8,7 +8,7 @@ class ForMatchingDatas::CsvImportController < ApplicationController
     ForMatchingDataImportCsv.import(params[:file].tempfile)
     redirect_to for_matching_datas_import_path, notice: 'matching data imported.'
   rescue ActiveRecord::RecordInvalid => e
-    redirect_to for_matching_datas_import_path, alert: e.record.errors.full_messages.join
+    redirect_to for_matching_datas_import_path, alert: e.record.errors.full_messages.join('<br>')
   rescue
     redirect_to for_matching_datas_import_path, alert: 'import failed.'
   end
