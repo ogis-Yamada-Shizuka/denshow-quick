@@ -1,7 +1,7 @@
 class ForMatchingDatas::ModelCodeController < ApplicationController
   def index
     @q = ForMatchingData.ransack(params[:q])
-    @for_matching_datas = @q.result.group(:model_code).order(model_code: :ASC)
+    @model_codes = @q.result.order(model_code: :ASC).pluck(:model_code).uniq
   end
 
   def destroy

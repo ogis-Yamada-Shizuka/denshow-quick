@@ -37,10 +37,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @for_matching_datas.each do |for_matching_data| %>
+      <% @model_codes.each do |model_code| %>
         <tr>
-          <td><%= for_matching_data.model_code %></td>
-          <td class="text-center"><%= link_to 'Destroy', for_matching_datas_model_code_path(model_code: for_matching_data.model_code), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td><%= model_code %></td>
+          <td class="text-center"><%= link_to 'Destroy', for_matching_datas_model_code_path(model_code: model_code), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
