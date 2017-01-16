@@ -10,14 +10,19 @@
 <body>
 
 <div class="container">
-  <span><%= link_to '進捗状況', request_applications_path %></span>　｜　
-  <span><%= link_to '部署/プロジェクト', depts_path %></span>　
-  <span><%= link_to '機種', models_path %></span>　
-  <span><%= link_to '担当課', sections_path %></span>　｜　
-  <span><%= link_to 'フロー順登録', flow_orders_path %></span>　｜　
-  <span><%= link_to t('.request_applications_export_csv'), search_request_applications_path %></span>　｜　
-  <span><%= link_to t('.for_matching_datas_import_csv'), for_matching_datas_import_path %></span>　｜　
-  <span><%= link_to t('.for_matching_datas_model_code'), for_matching_datas_model_code_path %></span>
+  <div>
+    <span><%= link_to '進捗状況', request_applications_path %></span>　｜　
+    <span><%= link_to '部署/プロジェクト', depts_path %></span>　
+    <span><%= link_to '機種', models_path %></span>　
+    <span><%= link_to '担当課', sections_path %></span>　｜　
+    <span><%= link_to 'フロー順登録', flow_orders_path %></span>　｜　
+    <span><%= link_to t('.request_applications_export_csv'), search_request_applications_path %></span>　｜　
+    <span><%= link_to t('.for_matching_datas_import_csv'), for_matching_datas_import_path %></span>　｜　
+    <span><%= link_to t('.for_matching_datas_model_code'), for_matching_datas_model_code_path %></span>
+  </div>
+  <div>
+    <span><%= link_to t('.request_application_matching'), matching_request_applications_path %></span>
+  </div>
   <hr>
   <%= yield %>
 </div>
