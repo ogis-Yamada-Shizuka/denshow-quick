@@ -40,7 +40,7 @@
       <% @for_matching_datas.each do |for_matching_data| %>
         <tr>
           <td><%= for_matching_data.model_code %></td>
-          <td><%= link_to 'Destroy', for_matching_datas_model_code_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', for_matching_datas_model_code_path(model_code: for_matching_data.model_code), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

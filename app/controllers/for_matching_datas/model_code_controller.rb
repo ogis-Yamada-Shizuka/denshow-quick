@@ -5,5 +5,8 @@ class ForMatchingDatas::ModelCodeController < ApplicationController
   end
 
   def destroy
+    ForMatchingData.destroy_all(model_code: params[:model_code])
+    flash[:notice] = 'For matching datas model code was successfully destroyed.'
+    redirect_to for_matching_datas_model_code_path
   end
 end
