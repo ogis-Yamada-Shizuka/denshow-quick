@@ -50,6 +50,8 @@ Rails.application.routes.draw do
   namespace :for_matching_datas do
     get :import, to: 'csv_import#import'
     post :import, to: 'csv_import#import_csv'
+    get :model_code, to: 'model_code#index'
+    delete :model_code, to: 'model_code#destroy'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

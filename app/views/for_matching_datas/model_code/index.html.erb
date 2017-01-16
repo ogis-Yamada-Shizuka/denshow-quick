@@ -1,0 +1,48 @@
+<h1><%= t('.title') %></h1>
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="row">
+  <div class="well well-sm well-search">
+    <%= search_form_for @q, url: for_matching_datas_model_code_path, class: "form-inline", method: :get do |f| %>
+      <div class="row">
+        <div class="col-lg-12">
+          <%= f.label :model_code %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+          <%= f.search_field :model_code_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
+        </div>
+        <div class="col-lg-10">
+          <%= f.submit t('.search'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row" style="margin-top: 15px;" >
+  <%= link_to 'Back', request_applications_path %>
+</div>
+<div class="row" style="margin-top: 15px;">
+  <table class="table table-bordered table-hover">
+    <colgroup>
+      <col class="col-lg-6" />
+      <col class="col-lg-6" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= label_tag t('activerecord.attributes.for_matching_data.model_code') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model_codes.each do |model_code| %>
+        <tr>
+          <td><%= model_code %></td>
+          <td class="text-center"><%= link_to 'Destroy', for_matching_datas_model_code_path(model_code: model_code), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
