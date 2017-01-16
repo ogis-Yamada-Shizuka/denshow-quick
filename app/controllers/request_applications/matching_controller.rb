@@ -4,5 +4,7 @@ class RequestApplications::MatchingController < ApplicationController
     @request_applications = @q.result
   end
 
-  def mathcing_result; end
+  def matching_result
+    @matching_results = RequestApplicationMatcher.match(params[:id])
+  end
 end
