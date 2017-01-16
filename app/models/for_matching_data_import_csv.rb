@@ -32,7 +32,7 @@ class ForMatchingDataImportCsv
           CSV_COLMUN.each do |key, idx|
             attributes.store(key, row[idx])
           end
-          ForMatchingData.create(attributes)
+          ForMatchingData.create!(attributes)
         end
       end
     end

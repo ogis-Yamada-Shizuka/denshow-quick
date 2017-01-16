@@ -4,5 +4,5 @@ class ForMatchingData < ActiveRecord::Base
     validates attribute, length: { maximum: 255 }
   end
 
-  validates :document_no, uniqueness: { scope: :revision }
+  validates :document_no, uniqueness: true
 end
