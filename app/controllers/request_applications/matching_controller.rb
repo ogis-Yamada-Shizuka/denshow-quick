@@ -1,7 +1,7 @@
 class RequestApplications::MatchingController < ApplicationController
   def matching
     @q = RequestApplication.ransack(params[:q])
-    @request_applications = @q.result
+    @request_applications = @q.result.eager_load(:model)
   end
 
   def matching_result
