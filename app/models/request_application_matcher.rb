@@ -46,7 +46,7 @@ class RequestApplicationMatcher
 
     def convert_request_detail_attribute_name(request_detail)
       attributes = compare_attributes
-      attributes[:doc_type] = request_detail.doc_no
+      attributes[:doc_no] = request_detail.doc_no
       attributes[:doc_type] = request_detail.doc_type.name
       attributes[:sht] = request_detail.sht
       attributes[:rev] = request_detail.rev
@@ -54,7 +54,7 @@ class RequestApplicationMatcher
       attributes[:chg_type] = request_detail.chg_type&.name
       attributes[:mcl] = request_detail.mcl
       attributes[:scp_for_smpl] = request_detail.scp_for_smpl
-      attributes[:scml] = request_detail.scml_ln
+      attributes[:scml_ln] = request_detail.scml_ln
       attributes
     end
 
@@ -63,12 +63,12 @@ class RequestApplicationMatcher
       attributes[:doc_no] = for_matching_data.doc_no
       attributes[:doc_type] = for_matching_data.doc_type_str
       attributes[:sht] = for_matching_data.sht
-      attributes[:rev] = for_matching_data.rev
+      attributes[:rev] = for_matching_data.revision
       attributes[:eo_chgno] = for_matching_data.eo_chgno
       attributes[:chg_type] = for_matching_data.chg_type_str
       attributes[:mcl] = for_matching_data.mcl
       attributes[:scp_for_smpl] = for_matching_data.scp_for_smpl
-      attributes[:scml] = for_matching_data.scml
+      attributes[:scml_ln] = for_matching_data.scml
       attributes
     end
 
