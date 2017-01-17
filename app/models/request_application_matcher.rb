@@ -29,7 +29,7 @@ class RequestApplicationMatcher
           @results << { key: key, is_match: true, request_detail: request_detail_display_value(request_detail), for_matching_data: for_matching_data.document_no }
           is_matched = true
         else
-          @results << { key: key, is_match: false, for_matching_data: for_matching_data }
+          @results << { key: key, is_match: false, for_matching_data: for_matching_data.document_no }
         end
       end
       @results << { key: key, is_match: false, request_detail: request_detail_display_value(request_detail) } unless is_matched
