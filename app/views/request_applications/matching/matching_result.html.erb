@@ -23,7 +23,9 @@
       <tbody>
         <% @matching_results.each do |result| %>
           <tr>
-            <%= render_matching_result_table_data(result[:is_match]) %>
+            <td class="<%= 'unmatch-color' unless result[:is_match] %>">
+              <%= result[:is_match] ? '一致' : '不一致' %>
+            </td>
             <td><%= result[:key] %></td>
             <td><%= result[:request_detail] %></td>
             <td><%= result[:for_matching_data] %></td>
