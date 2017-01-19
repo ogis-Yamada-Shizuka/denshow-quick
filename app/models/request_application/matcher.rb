@@ -13,7 +13,7 @@ module RequestApplication::Matcher
       return { key: key, match: false, detail: detail_values_for_display(detail) }
     end
 
-    @for_matching_datas.select { |r| r if r.doc_no == detail.doc_no }.map do |for_matching_data|
+    @for_matching_datas.select { |fmd| fmd.doc_no == detail.doc_no }.map do |for_matching_data|
       if convert_detail_attribute_names(detail) == convert_for_matching_data_attribute_names(for_matching_data)
         { key: key, match: true, detail: detail_values_for_display(detail), for_matching_data: for_matching_data.document_no }
       else
