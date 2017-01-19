@@ -17,9 +17,17 @@
     </div>
     <div class="row">
       <table class="table table-bordered table-hover">
+        <colgroup>
+          <col class="col-lg-1" />
+          <col class="col-lg-6" />
+          <col class="col-lg-5" />
+        </colgroup>
         <thead>
           <tr>
-            <th><%= label_tag t('.choose_output') %></th>
+            <th class="form-inline">
+              <input type="checkbox" name="check_all" class="checkbox checkbox-check-all">
+              <%= label_tag t('.choose_output') %>
+            </th>
             <th><%= label_tag t('activerecord.attributes.request_application.management_no') %></th>
             <th><%= label_tag t('activerecord.attributes.model.code') %></th>
           </tr>
@@ -28,7 +36,7 @@
           <tbody>
             <% @request_applications.each do |request_application| %>
               <tr>
-                <td><%= check_box_tag 'request_application[ids][]', request_application.id, false,  id: "export_check_box_#{request_application.id}" %></td>
+                <td><%= check_box_tag 'request_application[ids][]', request_application.id, false, id: "export_check_box_#{request_application.id}", class: 'checkbox' %></td>
                 <td><%= request_application.management_no %></td>
                 <td><%= request_application.model.code %></td>
               </tr>
