@@ -13,7 +13,7 @@
   </div>
   <%= form_tag export_request_applications_path, method: :get do %>
     <div class="row btn-row">
-      <input type="button" value="全て選択" class="check-all-button btn btn-default">
+      <input type="button" value="<%= t('.check_all') %>" class="check-all-button btn btn-default">
       <%= submit_tag t('.csv_export'), class: 'btn btn-primary' %>
     </div>
     <div class="row">
