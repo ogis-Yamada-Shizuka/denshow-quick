@@ -31,7 +31,7 @@
       <tbody>
         <% @request_applications.each do |request_application| %>
           <tr>
-            <td class="text-center"><%= link_to t('.matching'), matching_result_request_applications_path(request_application), class: 'btn btn-primary' %></td>
+            <td class="text-center"><%= link_to t('.matching'), matching_result_request_application_path(request_application), class: 'btn btn-primary' %></td>
             <td><%= request_application.management_no %></td>
             <td><%= request_application.model.code %></td>
           </tr>
