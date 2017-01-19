@@ -3,4 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $('.check-all-button').click ->
-    $('.checkbox').prop('checked', true)
+    if $(this).hasClass('clicked')
+      $('.checkbox').prop('checked', false)
+      $(this).removeClass('clicked')
+    else
+      $('.checkbox').prop('checked', true)
+      $(this).addClass('clicked')
