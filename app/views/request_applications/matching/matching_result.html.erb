@@ -23,11 +23,11 @@
       <tbody>
         <% @matching_results.each do |result| %>
           <tr>
-            <td class="<%= 'unmatch-color' unless result[:is_match] %>">
-              <%= result[:is_match] ? '一致' : '不一致' %>
+            <td class="<%= 'unmatch-color' unless result[:match] %>">
+              <%= result[:match] ? '一致' : '不一致' %>
             </td>
             <td><%= result[:key] %></td>
-            <td><%= result[:request_detail] %></td>
+            <td><%= result[:detail] %></td>
             <td><%= result[:for_matching_data] %></td>
           </tr>
         <% end %>
