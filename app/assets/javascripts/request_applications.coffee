@@ -2,5 +2,5 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('.checkbox-check-all').click ->
-    $('.checkbox').prop('checked', $(this).prop('checked'))
+  $('.check-all-button').click ->
+    $('.checkbox').prop('checked', true)

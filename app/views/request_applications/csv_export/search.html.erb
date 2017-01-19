@@ -13,6 +13,7 @@
   </div>
   <%= form_tag export_request_applications_path, method: :get do %>
     <div class="row" style="margin-bottom: 15px;" >
+      <input type="button" value="全て選択" class="check-all-button btn btn-default">
       <%= submit_tag t('.csv_export'), class: 'btn btn-primary' %>
     </div>
     <div class="row">
@@ -24,10 +25,7 @@
         </colgroup>
         <thead>
           <tr>
-            <th class="form-inline">
-              <input type="checkbox" name="check_all" class="checkbox checkbox-check-all">
-              <%= label_tag t('.choose_output') %>
-            </th>
+            <th><%= label_tag t('.choose_output') %></th>
             <th><%= label_tag t('activerecord.attributes.request_application.management_no') %></th>
             <th><%= label_tag t('activerecord.attributes.model.code') %></th>
           </tr>
