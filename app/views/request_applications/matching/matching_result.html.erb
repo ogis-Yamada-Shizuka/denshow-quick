@@ -23,7 +23,7 @@
       <tbody>
         <% @matching_results.each do |result| %>
           <tr>
-            <td class="<%= 'unmatch-color' unless result[:match] %>">
+            <td class="<%= 'unmatch' unless result[:match] %>">
               <%= result[:match] ? '一致' : '不一致' %>
             </td>
             <td><%= result[:key] %></td>
