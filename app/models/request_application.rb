@@ -1,4 +1,6 @@
 class RequestApplication < ActiveRecord::Base
+  include RequestApplication::Matcher
+
   has_many :flows, dependent: :destroy
   has_many :details, class_name: 'RequestDetail', dependent: :destroy
   belongs_to :section
