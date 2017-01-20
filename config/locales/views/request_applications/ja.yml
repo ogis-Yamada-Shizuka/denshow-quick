@@ -1,0 +1,10 @@
+ja:
+  request_applications:
+    index:
+      title: 技術資料要求書一覧
+      new_request_application: 要求書新規受付
+      show_request_application_status_detail: 進捗状況詳細
+      import_excel: データインポート
+      search: 検索
+      csv_export: CSV出力
+      choose_output: 出力

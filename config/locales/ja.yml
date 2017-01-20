@@ -22,3 +22,7 @@ ja:
 
   placeholder:
     partial_match: 部分一致
+
+  template:
+    edit: 編集
+    destroy: 削除
