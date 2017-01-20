@@ -1,4 +1,6 @@
 class RequestApplication < ActiveRecord::Base
+  include RequestApplication::Matcher
+
   has_many :flows, dependent: :destroy
   has_many :details, class_name: 'RequestDetail', dependent: :destroy
   belongs_to :section
@@ -9,6 +11,8 @@ class RequestApplication < ActiveRecord::Base
   validates :management_no, uniqueness: true, presence: true
   validates :model, presence: true
   validates :section, presence: true
+  validates :request_date, presence: true
+  validates :preferred_date, presence: true
 
   # custom scope
   scope :custom_scope, lambda { |dept_id|

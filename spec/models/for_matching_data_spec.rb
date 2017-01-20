@@ -33,10 +33,10 @@ RSpec.describe ForMatchingData, type: :model do
       end
     end
 
-    describe '複合ユニーク制約(document_no, revision)' do
+    describe 'ユニーク制約(document_no)' do
       context '同一の値が既に存在した場合' do
         it do
-          attributes = { document_no: 'KP／AA10／PICTURE／AAA／R01／N99／BVSR／(D)／ｲ-6#2／A-N／A', revision: 'A' }
+          attributes = { document_no: 'KP／AA10／PICTURE／AAA／R01／N99／BVSR／(D)／ｲ-6#2／A-N／A' }
           expect(create(:for_matching_data, attributes)).to be_valid
           expect(build(:for_matching_data, attributes)).to be_invalid
         end
