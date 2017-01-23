@@ -20,3 +20,9 @@ ja:
     show:
       edit: 要求書情報編集画面へ
       back: 技術資料要求書一覧画面へ
+    edit:
+      title: 要求書情報編集
+      update_request_applicaton: 編集した内容を保存
+      show: 進捗状況詳細画面へ
+      back: 技術資料要求書一覧画面へ
+      add_request_detail: 技術資料詳細を追加
