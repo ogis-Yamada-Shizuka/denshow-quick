@@ -17,3 +17,6 @@ ja:
       title: 要求書新規受付
       save_and_insert: 詳細入力画面へ
       back: 技術資料要求書一覧画面へ
+    show:
+      edit: 要求書情報編集画面へ
+      back: 技術資料要求書一覧画面へ

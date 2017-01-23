@@ -9,6 +9,10 @@ ja:
         section: 要求元
         request_date: 要求日
         preferred_date: 入手希望日
+        emargency: 緊急
+        filename: ファイル名
+        memo: メモ
+        close: Close
       request_application/details:
         doc_no: 技術資料番号
         sht: SHT
