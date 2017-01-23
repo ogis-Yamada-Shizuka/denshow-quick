@@ -1,7 +1,7 @@
 ja:
   layouts:
     application:
-      request_applications_export_csv: 突合せデータ取得用CSV出力
-      for_matching_datas_import_csv: 突合せ用データ取込み
-      for_matching_datas_model_code: 突合せ用データ登録済機種一覧
+      request_applications_export_csv: K-PEACEデータ取得用CSV出力
+      for_matching_datas_import_csv: K-PEACEデータインポート
+      for_matching_datas_model_code: K-PEACEデータ削除
       request_application_matching: リコンサイル指示
