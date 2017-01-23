@@ -2,9 +2,10 @@ ja:
   request_applications:
     matching:
       matching:
-        title: 突合せ対象指示
-        matching: 突合せ
+        title: リコンサイル指示
+        matching: 実行
         search: 検索
+        back: 技術資料要求書一覧画面へ
       matching_result:
         title: 突合せ結果表示
         matching_key: キー情報
