@@ -8,3 +8,8 @@ ja:
       search: 検索
       csv_export: CSV出力
       choose_output: 出力
+      project: プロジェクト
+      reject: 差戻
+      revert: 最初に差戻
+      interrupt: 中断
+      emargency: 緊急

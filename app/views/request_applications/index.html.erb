@@ -38,7 +38,7 @@
       <th rowspan="2">|</th>
        <% @flow_orders.each do |flow_order| %>
         <th rowspan="2">
-          <%= flow_order.dept.try(:name).presence || "プロジェクト" %>
+          <%= flow_order.dept.try(:name).presence || t('.project') %>
         </th>
        <% end %>
       <th rowspan="2"></th>
@@ -82,13 +82,13 @@
         <%= (link_to t('template.edit'), edit_request_application_path(request_application)) unless request_application.close? %>
         <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: 'Are you sure?' })  if request_application.delete_permit? %>
       </td>
-        <td  rowspan="2"><%= link_to "差戻" , reject_memo_path(request_application) if request_application.flows.order(:history_no).last.reject? %></td>
-        <td rowspan="2"><%= link_to "最初に差戻" , revert_memo_path(request_application) if request_application.flows.order(:history_no).last.first_to_revert? %></td>
-        <td rowspan="2"><%= link_to "中断" , interrupt_memo_path(request_application)  if request_application.interrupt_permit? %></td>
+        <td rowspan="2"><%= link_to t('.reject') , reject_memo_path(request_application) if request_application.flows.order(:history_no).last.reject? %></td>
+        <td rowspan="2"><%= link_to t('.revert') , revert_memo_path(request_application) if request_application.flows.order(:history_no).last.first_to_revert? %></td>
+        <td rowspan="2"><%= link_to t('.interrupt') , interrupt_memo_path(request_application)  if request_application.interrupt_permit? %></td>
 
       </tr>
       <tr>
-        <td><%= "緊急" if request_application.emargency %></td>
+        <td><%= t('.emargency') if request_application.emargency %></td>
         <td><%= request_application.close_status %></td>
         <td><%= request_application.request_date %></td>
         <td><%= request_application.preferred_date %></td>
