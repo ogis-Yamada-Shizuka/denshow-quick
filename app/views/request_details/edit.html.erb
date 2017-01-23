@@ -1,4 +1,4 @@
-<h1>Editing Request Detail</h1>
+<h1><%= t('.title') %></h1>
 <%= form_for(@request_detail, url: request_application_request_detail_path) do |f| %>
   <% if @request_detail.errors.any? %>
     <div id="error_explanation">
@@ -91,9 +91,9 @@
     </div>
   </div>
   <div class="actions">
-    <%= f.submit class:"btn btn-primary" %>
+    <%= f.submit t('.update'), class:"btn btn-primary" %>
   </div>
 <% end %>
 
-<%= link_to 'Show', request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
-<%= link_to 'Back', registration_result_request_application_path(@request_detail.request_application) %>
+<%= link_to t('.show'), request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
+<%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application) %>

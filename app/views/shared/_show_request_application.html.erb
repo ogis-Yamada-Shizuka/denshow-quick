@@ -1,41 +1,41 @@
 <div class="form-group">
   <div class="row">
     <div class="col-lg-2">
-      <%= label :management_no, :management_no %><br>
+      <%= label :management_no, t('activerecord.attributes.request_application.management_no') %><br>
       <%= request_application.management_no %>
     </div>
     <div class="col-lg-2">
-      <%= label :project, :project %><br>
+      <%= label :project, t('activerecord.attributes.request_application.project') %><br>
       <%= request_application.project&.name %>
     </div>
     <div class="col-lg-2">
-      <%= label :model, :model %><br>
+      <%= label :model, t('activerecord.attributes.request_application.model') %><br>
       <%= request_application.model.code %>
     </div>
     <div class="col-lg-2">
-      <%= label :section, :section %><br>
+      <%= label :section, t('activerecord.attributes.request_application.section') %><br>
       <%= request_application.section.name  %>
     </div>
     <div class="col-lg-4">
-      <%= label :emargency, :emargency %><br>
+      <%= label :emargency, t('activerecord.attributes.request_application.emargency') %><br>
       <%= request_application.emargency? %>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-4" style="word-wrap: break-word;">
-      <%= label :filename, :filename %><br>
+      <%= label :filename, t('activerecord.attributes.request_application.filename') %><br>
       <%= request_application.filename %>
     </div>
     <div class="col-lg-2">
-      <%= label :request_date, :request_date %><br>
+      <%= label :request_date, t('activerecord.attributes.request_application.request_date') %><br>
       <%= request_application.request_date %>
     </div>
     <div class="col-lg-2">
-      <%= label :preferred_date, :preferred_date %><br>
+      <%= label :preferred_date, t('activerecord.attributes.request_application.preferred_date') %><br>
       <%= request_application.preferred_date %>
     </div>
     <div class="col-lg-2">
-      <%= label :memo, :memo %><br>
+      <%= label :memo, t('activerecord.attributes.request_application.memo') %><br>
       <%= request_application.memo %>
     </div>
   </div>
