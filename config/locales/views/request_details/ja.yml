@@ -1,0 +1,11 @@
+ja:
+  request_details:
+    new:
+      title: 技術資料詳細入力
+      edit_request_application: 要求書情報編集
+      save_and_insert: もう1件入力
+      cancel: キャンセル
+      back: 技術資料要求書一覧画面へ
+    show:
+      edit: 要求書情報編集画面へ
+      back: 技術資料要求書一覧画面へ
