@@ -26,3 +26,4 @@ ja:
   template:
     edit: 編集
     destroy: 削除
+    save: 保存

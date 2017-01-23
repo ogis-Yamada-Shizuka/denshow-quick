@@ -13,3 +13,7 @@ ja:
       revert: 最初に差戻
       interrupt: 中断
       emargency: 緊急
+    new:
+      title: 要求書新規受付
+      save_and_insert: 詳細入力画面へ
+      back: 技術資料要求書一覧画面へ
