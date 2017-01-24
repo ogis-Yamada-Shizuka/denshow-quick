@@ -1,7 +1,4 @@
 <h1><%= t('.title') %></h1>
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
 <div class="row">
   <div class="well well-sm well-search">
     <%= search_form_for @q, url: for_matching_datas_model_code_path, class: "form-inline", method: :get do |f| %>
