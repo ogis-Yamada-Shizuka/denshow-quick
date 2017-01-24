@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t('.title') %></h1>
 
 <p>
   <strong>DocNo.:</strong>
@@ -51,5 +51,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
-<%= link_to 'Back', registration_result_request_application_path(@request_detail.request_application) %>
+<%= link_to t('.edit'), edit_request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
+<%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application) %>

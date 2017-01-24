@@ -2,12 +2,16 @@ ja:
   request_applications:
     matching:
       matching:
-        title: 突合せ対象指示
-        matching: 突合せ
+        title: リコンサイル指示
+        matching: 実行
         search: 検索
+        back: 技術資料要求書一覧画面へ
       matching_result:
-        title: 突合せ結果表示
+        title: リコンサイル結果
         matching_key: キー情報
         request_detail: 要求書
         matching_data: 突合せデータ
-        matching_result: 突合せ結果
+        matching_result: リコンサイル結果
+        match: 一致
+        unmatch: 不一致
+        back: 技術資料要求書一覧画面へ

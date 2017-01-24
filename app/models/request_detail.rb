@@ -16,6 +16,9 @@ class RequestDetail < ActiveRecord::Base
   end
 
   validates :doc_type_id, presence: true
-
+  validates :vendor_code, presence: true
   validates :vendor_code, length: { maximum: 255 }, format: { without: /[^0-9^A-Z]/ }
+  validates :doc_no, presence: true
+  validates :sht, presence: true
+  validates :rev, presence: true
 end

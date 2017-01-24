@@ -7,10 +7,10 @@
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
-        <col class="col-lg-1"/>
+        <col class="col-lg-2"/>
         <col class="col-lg-2"/>
         <col class="col-lg-4"/>
-        <col class="col-lg-5"/>
+        <col class="col-lg-4"/>
       </colgroup>
       <thead>
         <tr>
@@ -24,7 +24,7 @@
         <% @matching_results.each do |result| %>
           <tr>
             <td class="<%= 'unmatch' unless result[:match] %>">
-              <%= result[:match] ? '一致' : '不一致' %>
+              <%= result[:match] ? t('.match') : t('.unmatch') %>
             </td>
             <td><%= result[:key] %></td>
             <td><%= result[:detail] %></td>
@@ -36,5 +36,5 @@
   </div>
 </div>
 <div class="row">
-  <%= link_to 'Back', request_applications_path %>
+  <%= link_to t('.back'), request_applications_path %>
 </div>

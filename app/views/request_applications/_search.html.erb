@@ -23,7 +23,7 @@
       <div class="col-sm-2">
         <div class="form-group">
           <%= f.label :model_id %>
-          <%= f.collection_select :model_id_eq, Model.all, :id, :code, { include_blank: true }, class: "form-control input-sm select-model"  %>
+          <%= f.collection_select :model_id_eq, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: "form-control input-sm select-model"  %>
         </div>
       </div>
 
