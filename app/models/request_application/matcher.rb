@@ -38,7 +38,7 @@ module RequestApplication::Matcher
       mcl: detail.mcl,
       scp_for_smpl: detail.scp_for_smpl,
       scml_ln: detail.scml_ln
-    }
+    }.delete_if { |_key, value| value.blank? }
   end
 
   def convert_for_matching_data_attribute_names(for_matching_data)
@@ -52,6 +52,6 @@ module RequestApplication::Matcher
       mcl: for_matching_data.mcl,
       scp_for_smpl: for_matching_data.scp_for_smpl,
       scml_ln: for_matching_data.scml
-    }
+    }.delete_if { |_key, value| value.blank? }
   end
 end
