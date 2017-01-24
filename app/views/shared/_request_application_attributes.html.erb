@@ -10,7 +10,7 @@
     </div>
     <div class="col-lg-2">
       <%= f.label :model %><br>
-      <%= f.collection_select :model_id, Model.all, :id, :code, {}, class: 'form-control input-sm select-model'  %>
+      <%= f.collection_select :model_id, Model.order(code: :ASC), :id, :code, {}, class: 'form-control input-sm select-model'  %>
     </div>
     <div class="col-lg-2">
       <%= f.label :section %><br>
