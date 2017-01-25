@@ -2,24 +2,32 @@ module RequestApplication::Matcher
   # TODO: sp-03のwish終わり次第突合せ処理のテストコードを書く
   def compare_to_matching_datas
     @for_matching_datas = ForMatchingData.where(model_code: model.code).order(doc_no: :ASC)
-    details.includes(:doc_type, :chg_type).order(doc_no: :ASC).flat_map { |detail| compare_to detail }
+    details.group(:doc_no).order(doc_no: :ASC).pluck(:doc_no).flat_map { |detail| compare_to detail }
   end
 
   private
 
-  def compare_to(detail)
-    key = "#{model.code} #{detail.doc_no}"
-    if @for_matching_datas.all? { |for_matching_data| detail[:doc_no] != for_matching_data[:doc_no] }
-      return { key: key, match: false, detail: detail_values_for_display(detail) }
-    end
-
-    @for_matching_datas.select { |fmd| fmd.doc_no == detail.doc_no }.map do |for_matching_data|
-      if convert_detail_attribute_names(detail) == convert_for_matching_data_attribute_names(for_matching_data)
-        { key: key, match: true, detail: detail_values_for_display(detail), for_matching_data: for_matching_data.document_no }
-      else
-        { key: key, match: false, for_matching_data: for_matching_data.document_no }
+  # TODO: 処理の確認取れてからリファクタする。
+  def compare_to(doc_no)
+    key = "#{model.code} #{doc_no}"
+    results = []
+    target_details = details.includes(:doc_type, :chg_type).where(doc_no: doc_no).to_a
+    target_for_matching_datas = @for_matching_datas.select { |for_matching_data| doc_no == for_matching_data[:doc_no] }
+    # 一致した detail と for_matching_data を詰めて対象の配列から削除する
+    target_details.delete_if do |detail|
+      match = false
+      target_for_matching_datas.delete_if do |for_matching_data|
+        if convert_detail_attribute_names(detail) == convert_for_matching_data_attribute_names(for_matching_data)
+          results << { key: key, match: true, detail: detail_values_for_display(detail), for_matching_data: for_matching_data.document_no }
+          match = true
+        end
       end
+      match
     end
+    # 一致しなかった detail と for_matching_data を詰める
+    results.concat target_details.map { |detail| { key: key, match: false, detail: detail_values_for_display(detail) } }
+    results.concat target_for_matching_datas.map { |for_matching_data| { key: key, match: false, for_matching_data: for_matching_data.document_no } }
+    results
   end
 
   def detail_values_for_display(detail)
