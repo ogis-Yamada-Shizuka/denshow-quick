@@ -37,7 +37,7 @@
       <% @model_codes.each do |model_code| %>
         <tr>
           <td><%= model_code %></td>
-          <td class="text-center"><%= link_to t('.destroy'), for_matching_datas_model_code_path(model_code: model_code), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td class="text-center"><%= link_to t('template.destroy'), for_matching_datas_model_code_path(model_code: model_code), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
