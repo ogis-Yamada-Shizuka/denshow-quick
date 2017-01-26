@@ -1,13 +1,13 @@
-<h1>New Request Application</h1>
+<h1><%= t('.title') %></h1>
 <div class="row">
   <div class="well well-sm">
     <%= form_for(@request_application) do |f| %>
       <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
       <div class="actions">
-        <%= f.submit '保存して詳細を続けて入力', class:"btn btn-primary", name: 'save_and_insert' %>
-        <%= f.submit '保存して終了', class:"btn btn-secondary", name: 'end_regist' %>
+        <%= f.submit t('.save_and_insert'), class:"btn btn-primary", name: 'save_and_insert' %>
+        <%= f.submit t('template.save'), class:"btn btn-secondary", name: 'end_regist' %>
       </div>
     <% end %>
   </div>
 </div>
-<%= link_to 'Back', request_applications_path %>
+<%= link_to t('.back'), request_applications_path %>

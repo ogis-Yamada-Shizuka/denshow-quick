@@ -14,6 +14,9 @@ ja:
       blank: を入力してください
       invalid: は不正な値です
       taken: はすでに存在します
+    template:
+      csv_export:
+        management_no_is_not_selected: CSV出力する要求元整理番号を選択して下さい
 
   activerecord:
     errors:
@@ -22,3 +25,8 @@ ja:
 
   placeholder:
     partial_match: 部分一致
+
+  template:
+    edit: 編集
+    destroy: 削除
+    save: 保存

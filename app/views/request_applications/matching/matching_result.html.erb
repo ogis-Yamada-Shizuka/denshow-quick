@@ -2,15 +2,15 @@
 <div class="row">
   <div>
     <%= label_tag t('activerecord.attributes.request_application.management_no') %>
-    <%= "AABB-01-ｱ" %>
+    <%= @request_application.management_no %>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
-        <col class="col-lg-1"/>
-        <col class="col-lg-1"/>
-        <col class="col-lg-5"/>
-        <col class="col-lg-5"/>
+        <col class="col-lg-2"/>
+        <col class="col-lg-2"/>
+        <col class="col-lg-4"/>
+        <col class="col-lg-4"/>
       </colgroup>
       <thead>
         <tr>
@@ -21,40 +21,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= "一致" %></td>
-          <td><%= "A01 D001" %></td>
-          <td><%= "A01 D001 AAA BBB CCC" %></td>
-          <td><%= "A01／D001／AAA／BBB／CCC" %></td>
-        </tr>
-        <tr>
-          <td><%= "一致" %></td>
-          <td><%= "A01 D002" %></td>
-          <td><%= "A01 D002 SSS DDD FFF" %></td>
-          <td><%= "A01／D002／SSS／DDD／FFF" %></td>
-        </tr>
-        <tr>
-          <td style="color: red;"><%= "不一致" %></td>
-          <td><%= "A01 D002" %></td>
-          <td><%= "A01 D002 GGG HHH JJJ" %></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td style="color: red;"><%= "不一致" %></td>
-          <td><%= "A01 D002" %></td>
-          <td></td>
-          <td><%= "A01／D002／TTT／HHH／JJJ" %></td>
-        </tr>
-        <tr>
-          <td style="color: red;"><%= "不一致" %></td>
-          <td><%= "A01 D003" %></td>
-          <td><%= "A01 D003 KKK CCC VVV" %></td>
-          <td></td>
-        </tr>
+        <% @matching_results.each do |result| %>
+          <tr>
+            <td class="<%= 'unmatch' unless result[:match] %>">
+              <%= result[:match] ? t('.match') : t('.unmatch') %>
+            </td>
+            <td><%= result[:key] %></td>
+            <td><%= result[:detail] %></td>
+            <td><%= result[:for_matching_data] %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 </div>
 <div class="row">
-  <%= link_to 'Back', request_applications_path %>
+  <%= link_to t('.back'), request_applications_path %>
 </div>

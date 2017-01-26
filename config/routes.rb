@@ -16,9 +16,11 @@ Rails.application.routes.draw do
       get :search, to: 'request_applications/csv_export#search'
       get :export, to: 'request_applications/csv_export#export'
       get :matching, to: 'request_applications/matching#matching'
+    end
+    member do
+      get :registration_result
       get :matching_result, to: 'request_applications/matching#matching_result'
     end
-    member { get :registration_result }
     resources :request_details
   end
 
@@ -50,6 +52,8 @@ Rails.application.routes.draw do
   namespace :for_matching_datas do
     get :import, to: 'csv_import#import'
     post :import, to: 'csv_import#import_csv'
+    get :model_code, to: 'model_code#index'
+    delete :model_code, to: 'model_code#destroy'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

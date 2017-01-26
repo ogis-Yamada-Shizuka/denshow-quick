@@ -1,16 +1,19 @@
 <h1><%= t('.title') %></h1>
 <div class="row">
-  <div class="row">
-    <div class="well well-sm well-search">
-      <%= search_form_for @q, url: matching_request_applications_path, class: "form-inline", method: :get do |f| %>
-        <div>
-          <%= f.label :management_no %>
-        </div>
-        <%= f.search_field :management_no_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
-        <%= f.submit t('.search'), class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+  <div class="well well-sm well-search">
+    <%= search_form_for @q, url: matching_request_applications_path, class: "form-inline", method: :get do |f| %>
+      <div>
+        <%= f.label :management_no %>
+      </div>
+      <%= f.search_field :management_no_cont, class: "form-control input-sm", placeholder: t('placeholder.partial_match') %>
+      <%= f.submit t('.search'), class: 'btn btn-primary' %>
+    <% end %>
   </div>
+</div>
+<div class="row" style="margin-bottom: 10px;">
+  <%= link_to t('.back'), request_applications_path %>
+</div>
+<div class="row">
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
@@ -26,17 +29,14 @@
         </tr>
       </thead>
       <tbody>
-        <% (1..5).each do |i| %>
+        <% @request_applications.each do |request_application| %>
           <tr>
-            <td class="text-center"><%= link_to t('.matching'), matching_result_request_applications_path, class: 'btn btn-primary' %></td>
-            <td><%= "AABB-0#{i}-ｱ" %></td>
-            <td><%= "A0#{i}" %></td>
+            <td class="text-center"><%= link_to t('.matching'), matching_result_request_application_path(request_application), class: 'btn btn-primary' %></td>
+            <td><%= request_application.management_no %></td>
+            <td><%= request_application.model.code %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-</div>
-<div class="row">
-  <%= link_to 'Back', request_applications_path %>
 </div>

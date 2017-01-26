@@ -1,3 +1,18 @@
 // Place all the styles related to the request_applications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.unmatch {
+  color: red;
+}
+
+input.check-all-button {
+  margin-right: 10px;
+}
+
+.btn-row {
+  margin-bottom: 15px
+}
+
+input.clicked {
+  background-color: #e6e6e6;
+}

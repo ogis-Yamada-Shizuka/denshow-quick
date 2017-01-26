@@ -1,16 +1,14 @@
 class RequestDetailsController < ApplicationController
   before_action :set_request_detail, only: [:show, :edit, :update, :destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @request_application = RequestApplication.find(params[:request_application_id])
     @request_detail = @request_application.details.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @request_detail = RequestDetail.new(request_detail_params)
@@ -33,7 +31,12 @@ class RequestDetailsController < ApplicationController
 
   def destroy
     @request_detail.destroy
-    redirect_to request_applications_url, notice: 'Request detail was successfully destroyed.'
+    if Rails.application.routes.recognize_path(request.referer)[:controller] == 'request_details'
+      redirect_to new_request_application_request_detail_path
+    else
+      redirect_to registration_result_request_application_path(@request_detail.request_application)
+    end
+    flash[:notice] = 'Request detail was successfully destroyed.'
   end
 
   private

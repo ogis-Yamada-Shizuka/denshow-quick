@@ -2,7 +2,9 @@ ja:
   for_matching_datas:
     csv_import:
       import:
-        title: 突合せ用データ取込み
+        title: K-PEACEデータインポート
         choose: 参照
-        registration: 登録
+        registration: データインポート
         csv_import: CSV取込
+        search: 検索
+        back: 技術資料要求書一覧画面へ

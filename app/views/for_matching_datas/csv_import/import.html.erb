@@ -1,10 +1,4 @@
 <h1><%= t('.title') %></h1>
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-<% if alert.present? %>
-  <p class="alert-danger"><%= alert %></p>
-<% end %>
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -30,7 +24,54 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-top: 15px;" >
-  <%= link_to 'Back', request_applications_path %>
+<div class="row">
+  <div class="well well-sm well-search">
+    <%= search_form_for @q, url: for_matching_datas_import_path, class: "form-inline", method: :get do |f| %>
+      <div class="row">
+        <div class="col-lg-2">
+          <%= f.label :model_code %>
+        </div>
+        <div class="col-lg-10">
+          <%= f.label :doc_no %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+          <%= f.search_field :model_code_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.search_field :doc_no_cont, class: "form-control input-sm", placeholder:  t('placeholder.partial_match') %>
+        </div>
+        <div class="col-lg-8">
+          <%= f.submit t('.search'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <%= link_to t('.back'), request_applications_path %>
+</div>
+<div class="row" style="margin-top: 15px;">
+  <table class="table table-bordered table-hover">
+    <colgroup>
+      <col class="col-lg-6" />
+      <col class="col-lg-6" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= label_tag t('activerecord.attributes.for_matching_data.document_no') %></th>
+        <th><%= label_tag :revision, t('activerecord.attributes.for_matching_data.revision') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @for_matching_datas.each do |for_matching_data| %>
+        <tr>
+          <td><%= for_matching_data.document_no %></td>
+          <td><%= for_matching_data.revision %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <%= javascript_include_tag 'for_matching_datas' %>
