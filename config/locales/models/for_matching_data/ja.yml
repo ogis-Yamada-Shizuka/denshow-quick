@@ -10,7 +10,7 @@ ja:
         doc_no: 技術資料番号
         doc_type_str: DOC TYPE
         sht: SHT
-        rev: 親REV
+        rev: 新REV
         eo_chgno: EO/CHG NO
         chg_type_str: CHG TYPE
         mcl: MCL
