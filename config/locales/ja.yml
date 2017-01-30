@@ -30,3 +30,18 @@ ja:
     edit: 編集
     destroy: 削除
     save: 保存
+
+  link_name:
+    request_applications_export_csv: K-PEACEデータ取得用CSV出力
+    for_matching_datas_import_csv: K-PEACEデータインポート
+    for_matching_datas_model_code: 登録済K-PEACE機種コード一覧
+    request_application_matching: リコンサイル指示
+    request_application: 技術資料要求書一覧
+    reconciles: リコンサイル関連機能
+    maintenance: メンテナンス
+    depts: 部署/プロジェクト
+    models: 機種
+    sections: 担当課
+    flow_orders: フロー順登録
+    chg_types: CHG TYPE
+    doc_types: DOC TYPE
