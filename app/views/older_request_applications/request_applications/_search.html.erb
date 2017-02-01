@@ -1,0 +1,75 @@
+<div class="well">
+
+  <%= search_form_for(@q, url: older_request_applications_path, method: :get) do |f| %>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :dept_project %>
+          <%= f.collection_select :custom_scope, Dept.all, :id, :name, {include_blank: true }, class: "form-control input-sm"%>
+        </div>
+      </div>
+    </div>
+<hr>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :management_no %>
+          <%= f.text_field :management_no_cont, class: "form-control input-sm", placeholder: "部分一致" %>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :model_id %>
+          <%= f.collection_select :model_id_eq, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: "form-control input-sm select-model"  %>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :section_id %>
+          <%= f.collection_select :section_id_eq, Section.all, :id, :name, {include_blank: true} , class: "form-control input-sm"%>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :project_id %>
+          <%= f.collection_select :project_id_eq, Dept.projects, :id, :name, {include_blank: true }, class: "form-control input-sm"%>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :close %>
+          <%= f.select :close_eq,[["済/中断",true],["未済", false]],  {prompt: ""}, class: "form-control input-sm"%>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= f.label :preferred_date %>
+        <div class="form-inline">
+          <%= f.date_select :preferred_date_gteq, {include_blank: true, use_month_numbers: true, date_separator: ' ／ '}, class: "form-control input-sm"%>　～　
+          <%= f.date_select :preferred_date_lteq, {include_blank: true, use_month_numbers: true, date_separator: ' ／ '}, class: "form-control input-sm" %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= f.submit '検索', class: "btn btn-primary" %>
+        <%= link_to 'クリア', url_for, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
