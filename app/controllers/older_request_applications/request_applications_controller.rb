@@ -75,7 +75,7 @@ class OlderRequestApplications::RequestApplicationsController < ApplicationContr
     @request_application.flows.last.proceed
 
     respond_to do |format|
-      format.html { redirect_to request_applications_url, notice: 'Request application was successfully progress changed.' }
+      format.html { redirect_to older_request_applications_url, notice: 'Request application was successfully progress changed.' }
       format.json { head :no_content }
     end
   end
@@ -86,7 +86,7 @@ class OlderRequestApplications::RequestApplicationsController < ApplicationContr
     @request_application.flows.last.retreat
 
     respond_to do |format|
-      format.html { redirect_to request_applications_url, notice: 'Request application was successfully progress changed.' }
+      format.html { redirect_to older_request_applications_url, notice: 'Request application was successfully progress changed.' }
       format.json { head :no_content }
     end
   end
@@ -95,7 +95,7 @@ class OlderRequestApplications::RequestApplicationsController < ApplicationContr
     # 要求書の処理を中断終了する
     @request_application.interrupt
     respond_to do |format|
-      format.html { redirect_to request_applications_url, notice: 'Request application was successfully flow interrupted.' }
+      format.html { redirect_to older_request_applications_url, notice: 'Request application was successfully flow interrupted.' }
       format.json { head :no_content }
     end
   end
@@ -105,7 +105,7 @@ class OlderRequestApplications::RequestApplicationsController < ApplicationContr
     @request_application.flows.last.first_to_revert
 
     respond_to do |format|
-      format.html { redirect_to request_applications_url, notice: 'Request application was successfully progress changed.' }
+      format.html { redirect_to older_request_applications_url, notice: 'Request application was successfully progress changed.' }
       format.json { head :no_content }
     end
   end
