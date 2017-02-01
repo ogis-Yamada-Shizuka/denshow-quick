@@ -8,33 +8,57 @@
   <meta name="robots" content="noindex">
 </head>
 <body>
-
-<div class="container">
-  <div>
-    <span><%= link_to '進捗状況', request_applications_path %></span>　｜　
-    <span><%= link_to '部署/プロジェクト', depts_path %></span>　
-    <span><%= link_to '機種', models_path %></span>　
-    <span><%= link_to '担当課', sections_path %></span>　｜　
-    <span><%= link_to 'フロー順登録', flow_orders_path %></span>　｜　
-    <span><%= link_to t('.request_applications_export_csv'), search_request_applications_path %></span>　｜　
-    <span><%= link_to t('.for_matching_datas_import_csv'), for_matching_datas_import_path %></span>　｜　
-    <span><%= link_to t('.for_matching_datas_model_code'), for_matching_datas_model_code_path %></span>
-  </div>
-  <div>
-    <span><%= link_to t('.request_application_matching'), matching_request_applications_path %></span>
-  </div>
-  <hr>
-  <% if notice.present? || alert.present? %>
-    <div class="row">
-      <% if notice.present? %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert.present? %>
-        <p class="alert alert-danger"><%= alert.html_safe %></p>
-      <% end %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to t('link_name.request_application'), request_applications_path %></li>
+          <li><%= link_to t('link_name.request_applications_export_csv'), search_request_applications_path %></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= t('link_name.reconciles') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to t('link_name.request_application_matching'), matching_request_applications_path %>
+              </li>
+              <li><%= link_to t('link_name.for_matching_datas_import_csv'), for_matching_datas_import_path %></li>
+              <li><%= link_to t('link_name.for_matching_datas_model_code'), for_matching_datas_model_code_path %></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= t('link_name.maintenance') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('link_name.depts'), depts_path %></li>
+              <li><%= link_to t('link_name.models'), models_path %></li>
+              <li><%= link_to t('link_name.sections'), sections_path %></li>
+              <li><%= link_to t('link_name.flow_orders'), flow_orders_path %></li>
+              <li><%= link_to t('link_name.chg_types'), chg_types_path %></li>
+              <li><%= link_to t('link_name.doc_types'), doc_types_path %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  <% end %>
-  <%= yield %>
-</div>
+  </nav>
+  <div class="container">
+    <% if notice.present? || alert.present? %>
+      <div class="row">
+        <% if notice.present? %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="alert alert-danger"><%= alert.html_safe %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
