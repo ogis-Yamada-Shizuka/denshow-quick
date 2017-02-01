@@ -28,11 +28,11 @@
     </div>
     <div class="col-lg-3 form-inline">
       <%= f.label :request_date %><br>
-      <%= f.date_select :request_date, { use_month_numbers: true }, class: 'form-control' %>
+      <%= f.text_field :request_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
     </div>
     <div class="col-lg-3 form-inline">
       <%= f.label :preferred_date %><br>
-      <%= f.date_select :preferred_date, { use_month_numbers: true }, class: 'form-control' %>
+      <%= f.text_field :preferred_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
     </div>
     <div class="col-lg-3">
       <%= f.label :memo %><br>
