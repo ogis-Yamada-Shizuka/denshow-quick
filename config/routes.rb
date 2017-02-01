@@ -56,10 +56,27 @@ Rails.application.routes.draw do
     delete :model_code, to: 'model_code#destroy'
   end
 
+  # 2015年版に関する request_application の index, show, 進捗状況更新等のルーティングを記載。
   namespace :older_request_applications do
     get '/', to: 'request_applications#index'
-    get :search, to: 'request_applications#search'
+    get 'request_applications/:id/regist_memo' => 'request_applications#regist_memo', as: :regist_memo
+    get 'request_applications/:id/regist' => 'request_applications#regist', as: :regist_progress
+    patch 'request_applications/:id/regist' => 'request_applications#regist', as: :regist_confirm
+
+    get 'request_applications/:id/reject_memo' => 'request_applications#reject_memo', as: :reject_memo
+    get 'request_applications/:id/reject' => 'request_applications#reject', as: :reject_progress
+    patch 'request_applications/:id/reject' => 'request_applications#reject', as: :reject_confirm
+
+    get 'request_applications/:id/interrupt_memo' => 'request_applications#interrupt_memo', as: :interrupt_memo
+    get 'request_applications/:id/interrupt' => 'request_applications#interrupt', as: :interrupt_progress
+    patch 'request_applications/:id/interrupt' => 'request_applications#interrupt', as: :interrupt_confirm
+
+    get 'request_applications/:id/revert_memo' => 'request_applications#first_to_revert_memo', as: :revert_memo
+    get 'request_applications/:id/revert' => 'request_applications#first_to_revert', as: :revert_progress
+    patch 'request_applications/:id/revert' => 'request_applications#first_to_revert', as: :revert_confirm
   end
+  get 'older_request_applications/:id/' => 'older_request_applications/request_applications#show', as: :older_request_application
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
