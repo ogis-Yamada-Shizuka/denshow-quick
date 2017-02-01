@@ -44,9 +44,7 @@ class RequestApplicationImportExcel
       convert_request_value_to_record_id!(attributes)
       convert_detail_value_to_record_id!(attributes[:details_attributes])
 
-      # TODO: 2015年仕様のrequest_applicationの関連を整理後に削除する
-      # request_applicationにexcelに存在しない値を詰める
-      attributes[:project_id] = Project.first.id || 1
+      # request_applicationに2015年仕様に関連したexcelに存在しない値を詰める
       attributes[:emargency] = false
       attributes[:close] = false
 
