@@ -56,6 +56,11 @@ Rails.application.routes.draw do
     delete :model_code, to: 'model_code#destroy'
   end
 
+  namespace :older_request_applications do
+    get '/', to: 'request_applications#index'
+    get :search, to: 'request_applications#search'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
