@@ -58,8 +58,8 @@
       <div class="col-sm-12">
         <%= f.label :preferred_date %>
         <div class="form-inline">
-          <%= f.date_select :preferred_date_gteq, {include_blank: true, use_month_numbers: true, date_separator: ' ／ '}, class: "form-control input-sm"%>　～　
-          <%= f.date_select :preferred_date_lteq, {include_blank: true, use_month_numbers: true, date_separator: ' ／ '}, class: "form-control input-sm" %>
+          <%= f.text_field :preferred_date_gteq, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>　～　
+          <%= f.text_field :preferred_date_lteq, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
         </div>
       </div>
     </div>

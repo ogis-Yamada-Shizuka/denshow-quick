@@ -6,15 +6,15 @@
     </div>
     <div class="col-lg-2">
       <%= f.label :project %><br>
-      <%= f.collection_select :project_id, Project.all, :id, :name, {}, class: 'form-control input-sm' %>
+      <%= f.collection_select :project_id, Project.all, :id, :name, { include_blank: true }, class: 'form-control input-sm' %>
     </div>
     <div class="col-lg-2">
       <%= f.label :model %><br>
-      <%= f.collection_select :model_id, Model.order(code: :ASC), :id, :code, {}, class: 'form-control input-sm select-model'  %>
+      <%= f.collection_select :model_id, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: 'form-control input-sm select-model'  %>
     </div>
     <div class="col-lg-2">
       <%= f.label :section %><br>
-      <%= f.collection_select :section_id, Section.all, :id, :name,  {}, class: 'form-control input-sm'  %>
+      <%= f.collection_select :section_id, Section.all, :id, :name, { include_blank: true }, class: 'form-control input-sm'  %>
     </div>
     <div class="col-lg-4">
       <%= f.label :emargency %><br>
@@ -28,11 +28,11 @@
     </div>
     <div class="col-lg-3 form-inline">
       <%= f.label :request_date %><br>
-      <%= f.date_select :request_date, { use_month_numbers: true }, class: 'form-control' %>
+      <%= f.text_field :request_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
     </div>
     <div class="col-lg-3 form-inline">
       <%= f.label :preferred_date %><br>
-      <%= f.date_select :preferred_date, { use_month_numbers: true }, class: 'form-control' %>
+      <%= f.text_field :preferred_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
     </div>
     <div class="col-lg-3">
       <%= f.label :memo %><br>
