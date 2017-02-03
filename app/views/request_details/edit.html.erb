@@ -2,7 +2,7 @@
 <%= form_for(@request_detail, url: request_application_request_detail_path, html: { class: 'form-horizontal' }) do |f| %>
   <% if @request_detail.errors.any? %>
     <div id="error_explanation">
-      <h2><%= t('activerecord.errors.template.header', count: @request_detail.errors.messages.length) %></h2>
+      <h2><%= t('activerecord.errors.template.header', count: @request_detail.errors.count) %></h2>
       <ul>
       <% @request_detail.errors.full_messages.each do |message| %>
         <li><%= message %></li>
