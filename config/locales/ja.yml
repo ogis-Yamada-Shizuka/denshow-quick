@@ -25,11 +25,14 @@ ja:
 
   placeholder:
     partial_match: 部分一致
+    date_long: YYYY/MM/DD
 
   template:
     edit: 編集
     destroy: 削除
     save: 保存
+    search: 検索
+    clear: クリア
 
   link_name:
     request_applications_export_csv: K-PEACEデータ取得用CSV出力

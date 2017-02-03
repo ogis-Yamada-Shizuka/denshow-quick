@@ -1,7 +1,9 @@
-<h1><%= t('.title') %></h1>
-
-<div class="panel panel-default">
-  <div class="panel-heading"><%= t('.new_request_application') %></div>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= t('.new_request_application') %></div>
     <div class="panel-body new-request-panel">
       <div class="row">
         <div class="col-lg-2 text-center">
@@ -27,11 +29,12 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 
 <%= render 'search' %>
 
-<table class="table  table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
 
