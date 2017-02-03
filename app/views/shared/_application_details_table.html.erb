@@ -14,7 +14,9 @@
           <th><%= label_tag :scml_ln, t('activerecord.attributes.request_detail.scml_ln') %></th>
           <th><%= label_tag :vendor_code, t('activerecord.attributes.request_detail.vendor_code') %></th>
           <th></th>
-          <th></th>
+          <% if current_views_request_detail_is_deletable? %>
+            <th></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -30,12 +32,11 @@
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln %></td>
             <td><%= detail.vendor_code %></td>
-            <% unless controller_name == 'request_applications' && action_name == 'edit' %>
+            <% if current_views_request_detail_is_deletable? %>
               <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
               <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
               <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
-              <td></td>
             <% end %>
           </tr>
         <% end %>
