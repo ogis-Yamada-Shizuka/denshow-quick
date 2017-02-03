@@ -1,0 +1,27 @@
+<h3>履歴</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>History_no</th>
+      <th>Order</th>
+      <th>Dept</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>memo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request_application.flows.each do |flow| %>
+      <tr>
+        <td><%= flow.history_no %></td>
+        <td><%= flow.order %></td>
+        <td><%= flow.dept.try(:name) %></td>
+         <td><%= flow.progress.try(:in_date) %></td>
+         <td><%= flow.progress.try(:out_date) %></td>
+        <td><%= simple_format(flow.memo) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
