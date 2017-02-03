@@ -1,27 +1,35 @@
 <h1><%= t('.title') %></h1>
-<%= render 'search' %>
 
-<div class="row">
-  <div class="col-lg-2">
-    <%= link_to t('.new_request_application'), new_request_application_path, class: 'btn btn-default' %>
-  </div>
-  <div class="col-lg-1">
-  </div>
-  <div class="col-lg-9">
-    <div class="row">
-    <%= form_tag import_excel_request_applications_path, multipart: true do %>
-      <div class="col-lg-4">
-        <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t('.new_request_application') %></div>
+    <div class="panel-body new-request-panel">
+      <div class="row">
+        <div class="col-lg-2 text-center">
+          <%= link_to t('.manual_input'), new_request_application_path, class: 'btn btn-default manual-input-btn' %>
+        </div>
+        <div class="col-lg-10">
+          <div class="panel panel-default">
+            <div class="row panel-inner-row">
+              <%= form_tag import_excel_request_applications_path, multipart: true do %>
+                <div class="col-lg-2">
+                  <%= label_tag :file, t('.reference'), class: 'btn btn-default reference-btn' %>
+                </div>
+                <div class="col-lg-4">
+                  <%= text_field_tag :file_name, nil, class: 'form-control', readonly: true %>
+                  <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', style: 'display: none' %>
+                </div>
+                <div class="col-lg-6">
+                  <%= submit_tag t('.import_excel'), class: 'btn btn-primary'  %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8">
-        <%= submit_tag t('.import_excel'), class: 'btn btn-primary'  %>
-      </div>
-    <% end %>
     </div>
-  </div>
 </div>
 
-<br>
+<%= render 'search' %>
 
 <table class="table  table-striped">
   <thead>
