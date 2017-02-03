@@ -1,7 +1,8 @@
+# rubocop:disable all
+
 class OlderRequestApplications::RequestApplicationsController < ApplicationController
   # 過去のroot画面(request_applications/index)を保持しておくためのコントローラです。
   # 関連する Model 等が変更された場合の動作は保証せず。
-  # rubocop:disable all
 
   before_action :set_request_application, only: %i(
     show edit update destroy regist reject interrupt first_to_revert regist_memo reject_memo interrupt_memo first_to_revert_memo registration_result
