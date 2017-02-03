@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def current_views_request_detail_is_deletable?
-    !(controller_name == 'request_applications' && action_name == 'edit')
+  def from_edit_request_application?
+    controller_name == 'request_applications' && action_name == 'edit'
   end
 end
