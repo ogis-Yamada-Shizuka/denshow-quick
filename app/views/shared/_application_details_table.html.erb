@@ -30,8 +30,13 @@
             <td><%= detail.scp_for_smpl %></td>
             <td><%= detail.scml_ln %></td>
             <td><%= detail.vendor_code %></td>
-            <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
-            <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% unless controller_name == 'request_applications' && action_name == 'edit' %>
+              <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
+              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <td></td>
+              <td></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
