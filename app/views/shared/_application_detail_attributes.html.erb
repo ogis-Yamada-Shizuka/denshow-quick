@@ -10,7 +10,7 @@
           </div>
           <div class="col-lg-2">
             <%= f.label :doc_type %>
-            <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control' %>
+            <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control select-doc-type' %>
           </div>
           <div class="col-lg-2">
             <%= f.label :sht %>
@@ -28,7 +28,7 @@
         <div class="row">
           <div class="col-lg-2">
             <%= f.label :chg_type %>
-            <%= f.collection_select :chg_type_id, ChgType.all, :id, :name, { include_blank: true }, class: 'form-control' %>
+            <%= f.collection_select :chg_type_id, ChgType.order(name: :ASC), :id, :name, { include_blank: true }, class: 'form-control select-chg-type' %>
           </div>
           <div class="col-lg-2">
             <%= f.label :mcl %>
