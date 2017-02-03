@@ -59,7 +59,7 @@
     <tbody>
       <% @request_applications.each do |request_application| %>
         <tr>
-          <td><%= request_application.management_no %></td>
+          <td><%= link_to request_application.management_no, registration_result_request_application_path(request_application) %></td>
           <td><%= request_application.model&.code %></td>
           <td><%= request_application.section&.name %></td>
           <td><%= request_application.request_date %></td>
