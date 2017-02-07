@@ -1,97 +1,76 @@
-<h1><%= t('.title') %></h1>
-<%= render 'search' %>
-
 <div class="row">
-  <div class="col-lg-2">
-    <%= link_to t('.new_request_application'), new_request_application_path, class: 'btn btn-default' %>
-  </div>
-  <div class="col-lg-1">
-  </div>
-  <div class="col-lg-9">
-    <div class="row">
-    <%= form_tag import_excel_request_applications_path, multipart: true do %>
-      <div class="col-lg-4">
-        <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+  <h1><%= t('.title') %></h1>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= t('.new_request_application') %></div>
+    <div class="panel-body new-request-panel">
+      <div class="row">
+        <div class="col-lg-2 text-center">
+          <%= link_to t('.manual_input'), new_request_application_path, class: 'btn btn-default manual-input-btn' %>
+        </div>
+        <div class="col-lg-10">
+          <div class="panel panel-default">
+            <div class="row panel-inner-row">
+              <%= form_tag import_excel_request_applications_path, multipart: true do %>
+                <div class="col-lg-2">
+                  <%= label_tag :file, t('.reference'), class: 'btn btn-default reference-btn' %>
+                </div>
+                <div class="col-lg-4">
+                  <%= text_field_tag :file_name, nil, class: 'form-control', readonly: true %>
+                  <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', style: 'display: none' %>
+                </div>
+                <div class="col-lg-6">
+                  <%= submit_tag t('.import_excel'), class: 'btn btn-primary'  %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8">
-        <%= submit_tag t('.import_excel'), class: 'btn btn-primary'  %>
-      </div>
-    <% end %>
     </div>
   </div>
 </div>
 
-<br>
+<%= render 'search' %>
 
-<table class="table  table-striped">
-  <thead>
-    <tr>
-
-      <th rowspan="2"><%= t('activerecord.attributes.request_application.management_no') %></th>
-      <th>Project</th>
-      <th>model</th>
-      <th>section</th>
-      <th>File</th>
-
-      <th rowspan="2">|</th>
-       <% @flow_orders.each do |flow_order| %>
-        <th rowspan="2">
-          <%= flow_order.dept.try(:name).presence || t('.project') %>
-        </th>
-       <% end %>
-      <th rowspan="2"></th>
-      <th rowspan="2"></th>
-      <th rowspan="2"></th>
-      <th rowspan="2"></th>
-
-    </tr>
-    <tr>
-      <th>E!</th>
-      <th><%= sort_link(@q, :close) %></th>
-      <th>Request date</th>
-      <th>Preferred date</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @request_applications.each do |request_application| %>
-    <% current_order = request_application.current_order %>
+<div class="row">
+  <table class="table table-striped">
+    <colgroup>
+      <col class="col-lg-2" />
+      <col class="col-lg-2" />
+      <col class="col-lg-2" />
+      <col class="col-lg-1" />
+      <col class="col-lg-1" />
+      <col class="col-lg-2" />
+      <col class="col-lg-2" />
+    </colgroup>
+    <thead>
       <tr>
-        <td rowspan="2"><%= link_to request_application.management_no, registration_result_request_application_path(request_application) %></td>
-        <td><%= request_application.project.try(:name) %></td>
-        <td><%= request_application.model.try(:code) %></td>
-        <td><%= request_application.section.try(:name) %></td>
-        <td><%= (link_to "Download" , request_application.filename_url) if request_application.filename_url.present? %></td>
-
-        <td rowspan="2">|</td>
-        <% request_application.flows.latest_flows(Flow.latest_ids(request_application.id)).each do |flow| %>
-        <td rowspan="2">
-          <%= ( flow.progress.try(:in_date) || (link_to 'Start', regist_progress_path(request_application), class:"btn btn-warning btn-xs" unless request_application.close?
- )) %><br>
-          <%= ( flow.progress.try(:out_date) || (link_to 'End', regist_memo_path(request_application), class:"btn btn-warning btn-xs"  unless (flow.progress.try(:in_date).blank?  ||  request_application.close?  || current_order != flow.order) ) ) %>
-        </td>
-         <% end %>
-         <% (@flow_orders.count - request_application.flows.maximum(:order)).times do %>
-          <td rowspan="2"></td>
-         <% end %>
-
-        <td rowspan="2"><%= link_to t('.show_request_application_status_detail'), request_application %>
-        <%= (link_to t('template.edit'), edit_request_application_path(request_application)) unless request_application.close? %>
-        <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: 'Are you sure?' })  if request_application.delete_permit? %>
-      </td>
-        <td rowspan="2"><%= link_to t('.reject') , reject_memo_path(request_application) if request_application.flows.order(:history_no).last.reject? %></td>
-        <td rowspan="2"><%= link_to t('.revert') , revert_memo_path(request_application) if request_application.flows.order(:history_no).last.first_to_revert? %></td>
-        <td rowspan="2"><%= link_to t('.interrupt') , interrupt_memo_path(request_application)  if request_application.interrupt_permit? %></td>
-
+        <th><%= t('activerecord.attributes.request_application.management_no') %></th>
+        <th><%= t('activerecord.attributes.request_application.model') %></th>
+        <th><%= t('activerecord.attributes.request_application.section') %></th>
+        <th><%= t('activerecord.attributes.request_application.request_date') %></th>
+        <th><%= t('activerecord.attributes.request_application.preferred_date') %></th>
+        <th><%= t('activerecord.attributes.request_application.file') %></th>
+        <th></th>
       </tr>
-      <tr>
-        <td><%= t('.emargency') if request_application.emargency %></td>
-        <td><%= request_application.close_status %></td>
-        <td><%= request_application.request_date %></td>
-        <td><%= request_application.preferred_date %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @request_applications.each do |request_application| %>
+        <tr>
+          <td><%= request_application.management_no %></td>
+          <td><%= request_application.model&.code %></td>
+          <td><%= request_application.section&.name %></td>
+          <td><%= request_application.request_date %></td>
+          <td><%= request_application.preferred_date %></td>
+          <td><%= (link_to 'Download', request_application.filename_url) if request_application.filename_url.present? %></td>
+          <td>
+            <%= (link_to t('template.edit'), edit_request_application_path(request_application)) %>
+            <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: 'Are you sure?' }) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

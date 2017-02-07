@@ -14,7 +14,9 @@
           <th><%= label_tag :scml_ln, t('activerecord.attributes.request_detail.scml_ln') %></th>
           <th><%= label_tag :vendor_code, t('activerecord.attributes.request_detail.vendor_code') %></th>
           <th></th>
-          <th></th>
+          <% unless from_edit_request_application? %>
+            <th></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +33,9 @@
             <td><%= detail.scml_ln %></td>
             <td><%= detail.vendor_code %></td>
             <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
-            <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% unless from_edit_request_application? %>
+              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
