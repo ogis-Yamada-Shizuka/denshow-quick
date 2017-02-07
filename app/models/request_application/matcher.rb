@@ -7,7 +7,6 @@ module RequestApplication::Matcher
 
   private
 
-  # TODO: 処理の確認取れてからリファクタする。
   def compare_to(doc_no)
     key = "#{model.code} #{doc_no}"
     results = []
@@ -18,21 +17,32 @@ module RequestApplication::Matcher
       match = false
       target_for_matching_datas.delete_if do |for_matching_data|
         if convert_detail_attribute_names(detail) == convert_for_matching_data_attribute_names(for_matching_data)
-          results << { key: key, match: true, detail: detail_values_for_display(detail), for_matching_data: for_matching_data.document_no }
+          results << { key: key, match: true, detail: convert_detail_attribute_names(detail), for_matching_data: convert_for_matching_data_attribute_names(for_matching_data) }
           match = true
         end
       end
       match
     end
     # 一致しなかった detail と for_matching_data を詰める
-    results.concat target_details.map { |detail| { key: key, match: false, detail: detail_values_for_display(detail) } }
-    results.concat target_for_matching_datas.map { |for_matching_data| { key: key, match: false, for_matching_data: for_matching_data.document_no } }
-    results
+    results.concat target_details.map { |detail| { key: key, match: false, detail: convert_detail_attribute_names(detail) } }
+    results.concat target_for_matching_datas.map { |for_matching_data| { key: key, match: false, for_matching_data: convert_for_matching_data_attribute_names(for_matching_data) } }
+    convert_results_for_view(results)
   end
 
-  def detail_values_for_display(detail)
-    # TODO: doc_typeにもとづいて並び順を変更する必要有るか要検討
-    convert_detail_attribute_names(detail).values.delete_if(&:blank?).unshift(model.code).join('|')
+  def convert_results_for_view(results)
+    results.map do |result|
+      if result[:match]
+        result[:detail] = display_values(result[:detail])
+      elsif result[:detail].present?
+        result[:detail] = display_values(check_diffrent_attributes(result[:detail]))
+      end
+      result[:for_matching_data] = display_values(result[:for_matching_data]) if result[:for_matching_data].present?
+      result
+    end
+  end
+
+  def display_values(attributes)
+    attributes.values.delete_if(&:blank?).unshift(model.code).join('|')
   end
 
   def convert_detail_attribute_names(detail)
@@ -61,5 +71,19 @@ module RequestApplication::Matcher
       scp_for_smpl: for_matching_data.scp_for_smpl,
       scml_ln: for_matching_data.scml
     }.map { |key, value| [key, value.to_s] }.to_h
+  end
+
+  def check_diffrent_attributes(attributes)
+    for_matching_datas = @for_matching_datas.select { |for_matching_data| attributes[:doc_no] == for_matching_data[:doc_no] }.map do |for_matching_data|
+      convert_for_matching_data_attribute_names(for_matching_data)
+    end
+    for_matching_datas.each do |for_matching_data|
+      next if attributes == for_matching_data
+      attributes.keys.select { |key| attributes[key] != for_matching_data[key] }. each do |key|
+        attributes[key] = '？' if attributes[key].blank?
+        attributes[key] = "<span style=\"color:red;\">#{attributes[key]}</span>"
+      end
+    end
+    attributes
   end
 end
