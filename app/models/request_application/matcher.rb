@@ -17,14 +17,14 @@ module RequestApplication::Matcher
       match = false
       target_for_matching_datas.delete_if do |for_matching_data|
         if detail.compare_attributes == for_matching_data.compare_attributes
-          results << { key: key, match: true, detail: display_values(detail.compare_attributes), for_matching_data: display_values(for_matching_data.compare_attributes) }
+          results << { key: key, match: true, detail: display_values(detail.compare_attributes), for_matching_data: display_values(for_matching_data.compare_attributes), detail_id: detail.id }
           match = true
         end
       end
       match
     end
     # 一致しなかった detail と for_matching_data を詰める
-    results.concat target_details.map { |detail| { key: key, match: false, detail: display_values(replace_diffrent_attribute_value(detail.compare_attributes, target_for_matching_datas)) } }
+    results.concat target_details.map { |detail| { key: key, match: false, detail: display_values(replace_diffrent_attribute_value(detail.compare_attributes, target_for_matching_datas)), detail_id: detail.id } }
     results.concat target_for_matching_datas.map { |for_matching_data| { key: key, match: false, for_matching_data: display_values(for_matching_data.compare_attributes) } }
   end
 

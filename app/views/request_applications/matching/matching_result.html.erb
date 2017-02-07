@@ -27,7 +27,7 @@
               <%= result[:match] ? t('.match') : t('.unmatch') %>
             </td>
             <td><%= result[:key] %></td>
-            <td><%= result[:detail]&.html_safe %></td>
+            <td><%= generate_edit_detail_link(result[:detail]&.html_safe, @request_application.id, result[:detail_id]) %></td>
             <td><%= result[:for_matching_data] %></td>
           </tr>
         <% end %>
