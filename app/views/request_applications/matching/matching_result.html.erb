@@ -1,9 +1,15 @@
 <h1><%= t('.title') %></h1>
 <div class="row">
-  <div>
-    <%= label_tag t('activerecord.attributes.request_application.management_no') %>
-    <%= @request_application.management_no %>
+  <div class="row btn-row">
+    <div class="col-lg-3">
+      <%= label_tag t('activerecord.attributes.request_application.management_no') %>
+      <%= @request_application.management_no %>
+    </div>
+    <div class="col-lg-9 text-right">
+      <%= link_to t('.rerun'), matching_result_request_application_path(@request_application), class: 'btn btn-primary' %>
+    </div>
   </div>
+
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
