@@ -7,10 +7,10 @@
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
-        <col class="col-lg-2"/>
-        <col class="col-lg-2"/>
-        <col class="col-lg-4"/>
-        <col class="col-lg-4"/>
+        <col class="col-sm-2"/>
+        <col class="col-sm-2"/>
+        <col class="col-sm-4"/>
+        <col class="col-sm-4"/>
       </colgroup>
       <thead>
         <tr>
@@ -27,7 +27,7 @@
               <%= result[:match] ? t('.match') : t('.unmatch') %>
             </td>
             <td><%= result[:key] %></td>
-            <td><%= result[:detail] %></td>
+            <td><%= result[:detail]&.html_safe %></td>
             <td><%= result[:for_matching_data] %></td>
           </tr>
         <% end %>
