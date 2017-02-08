@@ -48,3 +48,5 @@ ja:
     flow_orders: フロー順登録
     chg_types: CHG TYPE
     doc_types: DOC TYPE
+  file_name:
+    matching_result_export_csv: K-PEACEインプット用CSVファイル
