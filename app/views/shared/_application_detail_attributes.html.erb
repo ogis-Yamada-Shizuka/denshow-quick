@@ -9,7 +9,7 @@
             <%= f.text_field :doc_no, class: 'form-control' %>
           </div>
           <div class="col-lg-2">
-            <%= f.label :doc_type %>
+            <%= f.label :doc_type_id %>
             <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control select-doc-type' %>
           </div>
           <div class="col-lg-2">

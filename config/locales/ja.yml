@@ -17,6 +17,8 @@ ja:
     template:
       csv_export:
         management_no_is_not_selected: CSV出力する要求元整理番号を選択して下さい
+      search:
+        condition_is_not_selected: 検索条件を指定してください
 
   activerecord:
     errors:

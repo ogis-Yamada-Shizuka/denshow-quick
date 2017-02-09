@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <div class="col-lg-2">
-      <%= f.label :doc_type %>
+      <%= f.label :doc_type_id %>
     </div>
     <div class="col-lg-3">
       <%= f.collection_select :doc_type_id, DocType.all, :id, :name, {}, class: 'form-control input-sm select-doc-type' %>
