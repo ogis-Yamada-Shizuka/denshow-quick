@@ -60,22 +60,24 @@ module RequestApplication::MatcherExportCsv
   end
 
   def matched_values
-    target_for_matching_datas = ForMatchingData.where(model_code: model.code).order(doc_no: :ASC)
-    details.includes(:doc_type, :chg_type).order(doc_no: :ASC).map do |detail|
-      values = {}
-      target_for_matching_datas.each do |for_matching_data|
-        next unless detail.compare_attributes == for_matching_data.compare_attributes
-        set_values(values, detail, for_matching_data)
-        break
+    [].tap do |values|
+      details.includes(:doc_type, :chg_type).order(doc_no: :ASC).map do |detail|
+        ForMatchingData.where(model_code: model.code).order(doc_no: :ASC).each do |for_matching_data|
+          if detail.compare_attributes == for_matching_data.compare_attributes
+            values << matched_value(detail, for_matching_data)
+            break
+          end
+        end
       end
-      values.present? ? values : nil
-    end.compact
+    end
   end
 
-  def set_values(values, detail, for_matching_data)
-    values[:format_type] = for_matching_data.format_type
-    values[:document_no] = for_matching_data.document_no
-    values[:revision] = for_matching_data.revision
-    values[:vendor_code] = detail.vendor_code
+  def matched_value(detail, for_matching_data)
+    {
+      format_type: for_matching_data.format_type,
+      document_no: for_matching_data.document_no,
+      revision: for_matching_data.revision,
+      vendor_code: detail.vendor_code
+    }
   end
 end
