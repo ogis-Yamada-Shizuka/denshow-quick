@@ -2,7 +2,6 @@ class ForMatchingDatas::CsvImportController < ApplicationController
   before_action :initialize_q, only: :import
 
   def import
-    initialize_q
     if params[:q].blank? || params[:q].values.all?(&:blank?)
       @for_matching_datas = @q.result.none
       flash.now[:alert] = t('message.template.search.condition_is_not_selected') if params[:q].present?
