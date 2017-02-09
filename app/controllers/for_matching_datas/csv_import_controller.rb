@@ -1,7 +1,12 @@
 class ForMatchingDatas::CsvImportController < ApplicationController
   def import
     @q = ForMatchingData.ransack(params[:q])
-    @for_matching_datas = params[:q].present? ? @q.result.order(document_no: :ASC) : []
+    if params[:q]&.values.any?(&:present?)
+      @for_matching_datas = @q.result.order(document_no: :ASC)
+    else
+      @for_matching_datas = @q.result.none
+      flash.now[:alert] = t('errors.template.search.condition_is_not_selected')
+    end
   end
 
   def import_csv
