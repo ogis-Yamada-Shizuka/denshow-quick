@@ -63,7 +63,7 @@ class ModelsController < ApplicationController
 
   def import
     Model.import(params[:file])
-    redirect_to models_url, notice: 'models imported.'
+    redirect_to models_url, notice: t('message.template.csv_upload.upload_success', model: t('activerecord.models.model'))
   end
 
   private
