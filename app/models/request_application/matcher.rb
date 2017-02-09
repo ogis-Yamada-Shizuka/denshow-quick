@@ -14,7 +14,7 @@ module RequestApplication::Matcher
         @results[:unmatched_details] << { detail: detail, unmatched_attributes: unmatched_attributes(detail, unmatched_for_matching_datas) }
       end
     end
-    remove_unnecessary_unmatched_for_matching_datas!
+    remove_unnecessary_unmatched_for_matching_datas
     @results
   end
 
@@ -51,7 +51,7 @@ module RequestApplication::Matcher
     end.uniq
   end
 
-  def remove_unnecessary_unmatched_for_matching_datas!
+  def remove_unnecessary_unmatched_for_matching_datas
     @results[:unmatched_for_matching_datas].uniq!
     @results[:unmatched_for_matching_datas].delete_if do |h|
       for_matching_data_is_already_matched?(h[:for_matching_data])
