@@ -1,4 +1,6 @@
 class RequestDetail < ActiveRecord::Base
+  include RequestDetail::Matcher
+
   belongs_to :request_application
   belongs_to :doc_type
   belongs_to :chg_type
