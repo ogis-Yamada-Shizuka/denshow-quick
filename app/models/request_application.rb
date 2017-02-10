@@ -1,5 +1,6 @@
 class RequestApplication < ActiveRecord::Base
   include RequestApplication::Matcher
+  include RequestApplication::MatcherExportCsv
 
   has_many :flows, dependent: :destroy
   has_many :details, class_name: 'RequestDetail', dependent: :destroy
