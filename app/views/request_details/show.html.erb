@@ -1,55 +1,60 @@
-<h1><%= t('.title') %></h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 
-<p>
-  <strong>DocNo.:</strong>
-  <%= @request_detail.doc_no %>
-</p>
+<div class="row">
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.doc_no') %>:</strong>
+    <%= @request_detail.doc_no %>
+  </p>
 
-<p>
-  <strong>DocType:</strong>
-  <%= @request_detail.doc_type.name %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.doc_type') %>:</strong>
+    <%= @request_detail.doc_type.name %>
+  </p>
 
-<p>
-  <strong>SHT:</strong>
-  <%= @request_detail.sht %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.sht') %>:</strong>
+    <%= @request_detail.sht %>
+  </p>
 
-<p>
-  <strong>REV:</strong>
-  <%= @request_detail.rev %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.rev') %>:</strong>
+    <%= @request_detail.rev %>
+  </p>
 
-<p>
-  <strong>EO/CHG NO:</strong>
-  <%= @request_detail.eo_chgno %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.eo_chgno') %>:</strong>
+    <%= @request_detail.eo_chgno %>
+  </p>
 
-<p>
-  <strong>ChgType:</strong>
-  <%= @request_detail.chg_type&.name %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.chg_type') %>:</strong>
+    <%= @request_detail.chg_type&.name %>
+  </p>
 
-<p>
-  <strong>MCL:</strong>
-<%= @request_detail.mcl %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.mcl') %>:</strong>
+  <%= @request_detail.mcl %>
+  </p>
 
-<p>
-  <strong>SCP FOR, SMPL:</strong>
-<%= @request_detail.scp_for_smpl %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.scp_for_smpl') %>:</strong>
+  <%= @request_detail.scp_for_smpl %>
+  </p>
 
-<p>
-  <strong>SCML, L/N:</strong>
-<%= @request_detail.scml_ln %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.scml') %>:</strong>
+  <%= @request_detail.scml_ln %>
+  </p>
 
-<p>
-  <strong>V/C:</strong>
-  <%= @request_detail.vendor_code %>
-</p>
+  <p>
+    <strong><%= t('activerecord.attributes.request_detail.vendor_code') %>:</strong>
+    <%= @request_detail.vendor_code %>
+  </p>
+</div>
 
-
-<%= link_to t('.edit'), edit_request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
-<%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application) %>
+<div class="row">
+  <%= link_to t('.edit'), edit_request_application_request_detail_path(@request_detail.request_application, @request_detail), class: 'btn btn-primary' %>
+  <%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application), class: 'btn btn-primary' %>
+</div>
