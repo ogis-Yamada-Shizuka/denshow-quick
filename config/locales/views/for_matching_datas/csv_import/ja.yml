@@ -3,7 +3,6 @@ ja:
     csv_import:
       import:
         title: K-PEACEデータインポート
-        choose: 参照
         registration: データインポート
         csv_import: CSV取込
         search: 検索

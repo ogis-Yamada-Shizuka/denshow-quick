@@ -30,6 +30,7 @@ ja:
     save: 保存
     search: 検索
     clear: クリア
+    reference: 参照
 
   link_name:
     request_applications_export_csv: K-PEACEデータ取得用CSV出力
@@ -45,6 +46,9 @@ ja:
     flow_orders: フロー順登録
     chg_types: CHG TYPE
     doc_types: DOC TYPE
+
+  file_name:
+    matching_result_export_csv: K-PEACEインプット用CSVファイル
 
   message:
     template:

@@ -7,14 +7,14 @@
     <div class="panel-body new-request-panel">
       <div class="row">
         <div class="col-lg-2 text-center">
-          <%= link_to t('.manual_input'), new_request_application_path, class: 'btn btn-default manual-input-btn' %>
+          <%= link_to t('.manual_input'), new_request_application_path, class: 'btn btn-primary manual-input-btn' %>
         </div>
         <div class="col-lg-10">
           <div class="panel panel-default">
             <div class="row panel-inner-row">
               <%= form_tag import_excel_request_applications_path, multipart: true do %>
                 <div class="col-lg-2">
-                  <%= label_tag :file, t('.reference'), class: 'btn btn-default reference-btn' %>
+                  <%= label_tag :file, t('template.reference'), class: 'btn btn-default reference-btn' %>
                 </div>
                 <div class="col-lg-4">
                   <%= text_field_tag :file_name, nil, class: 'form-control', readonly: true %>
@@ -66,8 +66,8 @@
           <td><%= request_application.preferred_date %></td>
           <td><%= (link_to 'Download', request_application.filename_url) if request_application.filename_url.present? %></td>
           <td>
-            <%= (link_to t('template.edit'), edit_request_application_path(request_application)) %>
-            <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: t('message.template.delete.confirm') }) %>
+            <%= link_to t('template.edit'), edit_request_application_path(request_application), class: 'btn btn-primary btn-sm' %>
+            <%= link_to t('template.destroy'), request_application, method: :delete, data: { confirm: t('message.template.delete.confirm') }, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>
       <% end %>

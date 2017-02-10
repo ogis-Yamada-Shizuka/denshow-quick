@@ -17,3 +17,6 @@ $(document).on 'turbolinks:load', ->
   $(".datetimepicker").datetimepicker(
     format: 'YYYY/MM/DD'
   )
+
+  $('#file').change ->
+    $('#file_name').val($(this).prop('files')[0].name)
