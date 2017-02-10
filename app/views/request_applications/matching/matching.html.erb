@@ -1,4 +1,6 @@
-<h1><%= t('.title') %></h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 <div class="row">
   <div class="well well-sm well-search">
     <%= search_form_for @q, url: matching_request_applications_path, class: "form-inline", method: :get do |f| %>
@@ -9,9 +11,6 @@
       <%= f.submit t('.search'), class: 'btn btn-primary' %>
     <% end %>
   </div>
-</div>
-<div class="row" style="margin-bottom: 10px;">
-  <%= link_to t('.back'), request_applications_path %>
 </div>
 <div class="row">
   <div class="table-responsive">
@@ -39,4 +38,7 @@
       </tbody>
     </table>
   </div>
+</div>
+<div class="row">
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
 </div>

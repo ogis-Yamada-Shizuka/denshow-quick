@@ -1,4 +1,6 @@
-<h1><%= t('.title') %></h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -49,9 +51,6 @@
     <% end %>
   </div>
 </div>
-<div class="row">
-  <%= link_to t('.back'), request_applications_path %>
-</div>
 <div class="row" style="margin-top: 15px;">
   <table class="table table-bordered table-hover">
     <colgroup>
@@ -73,5 +72,8 @@
       <% end %>
     </tbody>
   </table>
+</div>
+<div class="row">
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
 </div>
 <%= javascript_include_tag 'for_matching_datas' %>
