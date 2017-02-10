@@ -1,4 +1,6 @@
-<h1><%= t('.title') %></h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 <div class="row">
   <div class="well well-sm">
     <%= form_for(@request_application) do |f| %>
@@ -10,4 +12,6 @@
     <% end %>
   </div>
 </div>
-<%= link_to t('.back'), request_applications_path %>
+<div class="row">
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
+</div
