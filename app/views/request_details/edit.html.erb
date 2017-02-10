@@ -1,99 +1,104 @@
-<h1><%= t('.title') %></h1>
-<%= form_for(@request_detail, url: request_application_request_detail_path, html: { class: 'form-horizontal' }) do |f| %>
-  <% if @request_detail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t('activerecord.errors.template.header', count: @request_detail.errors.count) %></h2>
-      <ul>
-      <% @request_detail.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
+<div class="row">
+  <%= form_for(@request_detail, url: request_application_request_detail_path, html: { class: 'form-horizontal' }) do |f| %>
+    <% if @request_detail.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('activerecord.errors.template.header', count: @request_detail.errors.count) %></h2>
+        <ul>
+        <% @request_detail.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :doc_no %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :doc_no, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :doc_type_id %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.collection_select :doc_type_id, DocType.all, :id, :name, {}, class: 'form-control input-sm select-doc-type' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :sht %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :sht, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :rev %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :rev, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :eo_chgno %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :eo_chgno, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :chg_type %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.collection_select :chg_type_id, ChgType.order(name: :ASC), :id, :name, { include_blank: true }, class: 'form-control input-sm select-chg-type' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :mcl %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :mcl, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :scp_for_smpl %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :scp_for_smpl, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :scml_ln %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :scml_ln, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <%= f.label :vendor_code %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :vendor_code, class: 'form-control input-sm' %>
+      </div>
+    </div>
+    <div class="actions btn-row">
+      <%= f.submit t('.update'), class:"btn btn-primary" %>
     </div>
   <% end %>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :doc_no %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :doc_no, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :doc_type_id %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.collection_select :doc_type_id, DocType.all, :id, :name, {}, class: 'form-control input-sm select-doc-type' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :sht %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :sht, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :rev %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :rev, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :eo_chgno %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :eo_chgno, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :chg_type %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.collection_select :chg_type_id, ChgType.order(name: :ASC), :id, :name, { include_blank: true }, class: 'form-control input-sm select-chg-type' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :mcl %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :mcl, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :scp_for_smpl %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :scp_for_smpl, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :scml_ln %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :scml_ln, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-2">
-      <%= f.label :vendor_code %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.text_field :vendor_code, class: 'form-control input-sm' %>
-    </div>
-  </div>
-  <div class="actions">
-    <%= f.submit t('.update'), class:"btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= link_to t('.show'), request_application_request_detail_path(@request_detail.request_application, @request_detail) %> |
-<%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application) %>
+</div>
+<div class="row">
+  <%= link_to t('.show'), request_application_request_detail_path(@request_detail.request_application, @request_detail), class: 'btn btn-primary' %>
+  <%= link_to t('.back'), registration_result_request_application_path(@request_detail.request_application), class: 'btn btn-primary' %>
+</div>
