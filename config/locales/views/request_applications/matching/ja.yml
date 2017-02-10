@@ -16,3 +16,5 @@ ja:
         unmatch: 不一致
         back: 技術資料要求書一覧画面へ
         rerun: 再実行
+        csv_export_title: K-PEACEインプット用CSVファイル出力
+        csv_export: CSV出力
