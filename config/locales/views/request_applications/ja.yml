@@ -14,7 +14,6 @@ ja:
       interrupt: 中断
       emargency: 緊急
       manual_input: 手入力
-      reference: 参照
     new:
       title: 要求書新規受付
       save_and_insert: 詳細入力画面へ

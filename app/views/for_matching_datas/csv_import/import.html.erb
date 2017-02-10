@@ -11,7 +11,7 @@
         <%= form_tag for_matching_datas_import_path, method: :post, multipart: true do %>
           <div class="row">
             <div class="col-lg-1">
-              <%= label_tag :file, t('.choose'), class: 'btn btn-default', style: 'margin-left: 10px;' %>
+              <%= label_tag :file, t('template.reference'), class: 'btn btn-default', style: 'margin-left: 10px;' %>
             </div>
             <div class="col-lg-4">
               <%= text_field_tag :file_name, nil, class: 'form-control', readonly: true %>
