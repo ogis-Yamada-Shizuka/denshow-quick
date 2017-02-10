@@ -1,18 +1,24 @@
-<h1><%= t('.title') %></h1>
-
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 <% unless @request_application.close? %>
-  <div class="well well-sm">
-    <%= form_for(@request_application) do |f| %>
-      <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
-      <%= f.submit t('.update_request_applicaton'), class:"btn btn-primary", data: { action: 'update' } %>
-    <% end %>
+  <div class="row">
+    <div class="well well-sm">
+      <%= form_for(@request_application) do |f| %>
+        <%= render partial: 'shared/request_application_attributes', locals: { f: f } %>
+        <%= f.submit t('.update_request_applicaton'), class:"btn btn-primary", data: { action: 'update' } %>
+      <% end %>
+    </div>
   </div>
   <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
 <% end %>
 
-<div>
-  <%= link_to t('.add_request_detail'), new_request_application_request_detail_path(@request_application) %>
+<div class="row">
+  <div class="btn-row">
+    <%= link_to t('.add_request_detail'), new_request_application_request_detail_path(@request_application), class: 'btn btn-primary' %>
+  </div>
+  <div>
+    <%= link_to t('.show'), @request_application, class: 'btn btn-primary' %>
+    <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
+  </div>
 </div>
-
-<%= link_to t('.show'), @request_application %> |
-<%= link_to t('.back'), request_applications_path %>
