@@ -1,4 +1,6 @@
-<h1><%= t('.title') %></h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 <div class="row">
   <div class="row btn-row">
     <div class="col-lg-3">
@@ -9,7 +11,8 @@
       <%= link_to t('.rerun'), matching_result_request_application_path(@request_application), class: 'btn btn-primary' %>
     </div>
   </div>
-
+</div>
+<div class="row">
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
@@ -62,5 +65,5 @@
   </div>
 </div>
 <div class="row">
-  <%= link_to t('.back'), request_applications_path %>
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
 </div>
