@@ -14,11 +14,6 @@ ja:
       blank: を入力してください
       invalid: は不正な値です
       taken: はすでに存在します
-    template:
-      csv_export:
-        management_no_is_not_selected: CSV出力する要求元整理番号を選択して下さい
-      search:
-        condition_is_not_selected: 検索条件を指定してください
 
   activerecord:
     errors:
@@ -50,5 +45,25 @@ ja:
     flow_orders: フロー順登録
     chg_types: CHG TYPE
     doc_types: DOC TYPE
+
   file_name:
     matching_result_export_csv: K-PEACEインプット用CSVファイル
+
+  message:
+    template:
+      csv_export:
+        management_no_is_not_selected: 要求元整理番号を選択して下さい m(__)m
+      csv_import:
+        import_success: 取り込みが完了しました (^ ^)
+        import_failed: 取り込みに失敗しました (T_T)
+      csv_upload:
+        upload_success: "%{model}のインポートが完了しました (^ ^)"
+      search:
+        condition_is_not_selected: 検索条件を指定してください
+      delete:
+        for_matching_data_by_model_code: "%{model_code}のK-PEACEデータを削除が完了しました (^ ^)"
+        confirm: 削除しますがよろしいですか？
+      scaffold:
+        create: "%{model}の作成が完了しました (^ ^)"
+        update: "%{model}の編集が完了しました (^ ^)"
+        destroy: "%{model}の削除が完了しました (^ ^)"

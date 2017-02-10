@@ -34,7 +34,7 @@
             <td><%= detail.vendor_code %></td>
             <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail) %></td>
             <% unless from_edit_request_application? %>
-              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: t('message.template.delete.confirm') } %></td>
             <% end %>
           </tr>
         <% end %>

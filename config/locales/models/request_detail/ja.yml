@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      request_detail: request_detail
+      request_detail: 技術資料詳細
     attributes:
       request_detail:
         doc_no: 技術資料番号

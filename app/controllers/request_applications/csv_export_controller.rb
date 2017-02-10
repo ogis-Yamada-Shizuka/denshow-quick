@@ -9,7 +9,7 @@ class RequestApplications::CsvExportController < ApplicationController
       request_applications = RequestApplication.where(id: params[:request_application][:ids])
       send_data RequestApplicationExportCsv.export(request_applications), type: 'text/csv; charset=shift_jis', filename: "#{Time.zone.now.to_date}.csv"
     else
-      redirect_to search_request_applications_path, alert: t('errors.template.csv_export.management_no_is_not_selected')
+      redirect_to search_request_applications_path, alert: t('message.template.csv_export.management_no_is_not_selected')
     end
   end
 end

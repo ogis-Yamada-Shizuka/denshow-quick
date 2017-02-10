@@ -28,7 +28,7 @@ class ModelsController < ApplicationController
 
     respond_to do |format|
       if @model.save
-        format.html { redirect_to @model, notice: 'Model was successfully created.' }
+        format.html { redirect_to @model, notice: t('message.template.scaffold.create', model: t('activerecord.models.model')) }
         format.json { render :show, status: :created, location: @model }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ModelsController < ApplicationController
   def update
     respond_to do |format|
       if @model.update(model_params)
-        format.html { redirect_to @model, notice: 'Model was successfully updated.' }
+        format.html { redirect_to @model, notice: t('message.template.scaffold.update', model: t('activerecord.models.model')) }
         format.json { render :show, status: :ok, location: @model }
       else
         format.html { render :edit }
@@ -56,14 +56,14 @@ class ModelsController < ApplicationController
   def destroy
     @model.destroy
     respond_to do |format|
-      format.html { redirect_to models_url, notice: 'Model was successfully destroyed.' }
+      format.html { redirect_to models_url, notice: t('message.template.scaffold.destroy', model: t('activerecord.models.model')) }
       format.json { head :no_content }
     end
   end
 
   def import
     Model.import(params[:file])
-    redirect_to models_url, notice: 'models imported.'
+    redirect_to models_url, notice: t('message.template.csv_upload.upload_success', model: t('activerecord.models.model'))
   end
 
   private
