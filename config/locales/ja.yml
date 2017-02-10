@@ -30,6 +30,7 @@ ja:
     save: 保存
     search: 検索
     clear: クリア
+    reference: 参照
 
   link_name:
     request_applications_export_csv: K-PEACEデータ取得用CSV出力
