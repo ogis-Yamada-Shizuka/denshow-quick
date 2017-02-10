@@ -36,7 +36,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       if @doc_type.save
-        format.html { redirect_to @doc_type, notice: 'Doc type was successfully created.' }
+        format.html { redirect_to @doc_type, notice: t('message.template.scaffold.create', model: t('activerecord.models.doc_type')) }
         format.json { render :show, status: :created, location: @doc_type }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class DocTypesController < ApplicationController
   def update
     respond_to do |format|
       if @doc_type.update(doc_type_params)
-        format.html { redirect_to @doc_type, notice: 'Doc type was successfully updated.' }
+        format.html { redirect_to @doc_type, notice: t('message.template.scaffold.update', model: t('activerecord.models.doc_type')) }
         format.json { render :show, status: :ok, location: @doc_type }
       else
         format.html { render :edit }
@@ -64,14 +64,14 @@ class DocTypesController < ApplicationController
   def destroy
     @doc_type.destroy
     respond_to do |format|
-      format.html { redirect_to doc_types_url, notice: 'Doc type was successfully destroyed.' }
+      format.html { redirect_to doc_types_url, notice: t('message.template.scaffold.destroy', model: t('activerecord.models.doc_type')) }
       format.json { head :no_content }
     end
   end
 
   def import
     DocType.import(params[:file])
-    redirect_to doc_types_url, notice: 'doc_types imported.'
+    redirect_to doc_types_url, notice: t('message.template.csv_upload.upload_success', model: t('activerecord.models.doc_type'))
   end
 
   private

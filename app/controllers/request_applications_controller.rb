@@ -61,7 +61,7 @@ class RequestApplicationsController < ApplicationController
   def destroy
     @request_application.destroy
     respond_to do |format|
-      format.html { redirect_to request_applications_url, notice: 'Request application was successfully destroyed.' }
+      format.html { redirect_to request_applications_url, notice: t('message.template.scaffold.destroy', model: t('activerecord.models.request_application')) }
       format.json { head :no_content }
     end
   end
@@ -119,9 +119,9 @@ class RequestApplicationsController < ApplicationController
   def import_excel
     @request_application = RequestApplicationImportExcel.import(params[:file].tempfile)
     @request_application.flows.build
-    @request_application.save ? redirect_to(request_applications_path, notice: 'request imported.') : (render :import_excel)
+    @request_application.save ? redirect_to(request_applications_path, notice: t('message.template.csv_import.import_success')) : (render :import_excel)
   rescue
-    redirect_to request_applications_path, notice: 'import failed.'
+    redirect_to request_applications_path, alert: t('message.template.csv_import.import_failed')
   end
 
   def registration_result; end
@@ -156,9 +156,9 @@ class RequestApplicationsController < ApplicationController
 
   def redirect_notice_message
     if action_name == 'create'
-      'Request application was successfully created.'
+      t('message.template.scaffold.create', model: t('activerecord.models.request_application'))
     else
-      'Request application was successfully updated.'
+      t('message.template.scaffold.update', model: t('activerecord.models.request_application'))
     end
   end
 end

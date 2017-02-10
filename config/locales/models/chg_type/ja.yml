@@ -1,0 +1,4 @@
+ja:
+  activerecord:
+    models:
+      chg_type: CHG TYPE
