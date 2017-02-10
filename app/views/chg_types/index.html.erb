@@ -14,7 +14,7 @@
         <td><%= chg_type.name %></td>
         <td><%= link_to 'Show', chg_type %></td>
         <td><%= link_to 'Edit', edit_chg_type_path(chg_type) %></td>
-        <td><%= link_to 'Destroy', chg_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', chg_type, method: :delete, data: { confirm: t('message.template.delete.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>

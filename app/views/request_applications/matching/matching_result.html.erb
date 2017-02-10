@@ -1,9 +1,15 @@
 <h1><%= t('.title') %></h1>
 <div class="row">
-  <div>
-    <%= label_tag t('activerecord.attributes.request_application.management_no') %>
-    <%= @request_application.management_no %>
+  <div class="row btn-row">
+    <div class="col-lg-3">
+      <%= label_tag t('activerecord.attributes.request_application.management_no') %>
+      <%= @request_application.management_no %>
+    </div>
+    <div class="col-lg-9 text-right">
+      <%= link_to t('.rerun'), matching_result_request_application_path(@request_application), class: 'btn btn-primary' %>
+    </div>
   </div>
+
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <colgroup>
@@ -21,15 +27,35 @@
         </tr>
       </thead>
       <tbody>
-        <% @matching_results.each do |result| %>
-          <tr>
-            <td class="<%= 'unmatch' unless result[:match] %>">
-              <%= result[:match] ? t('.match') : t('.unmatch') %>
-            </td>
-            <td><%= result[:key] %></td>
-            <td><%= result[:detail] %></td>
-            <td><%= result[:for_matching_data] %></td>
-          </tr>
+        <% model_code = @request_application.model.code %>
+        <% @matching_results.each do |k, v| %>
+
+          <% v[:matched].each do |value| %>
+            <tr>
+              <td><%= t('.match') %></td>
+              <td><%= k %></td>
+              <td><%= link_to_edit_detail_path(render_attributes(model_code, value[:detail]), value[:detail]) %></td>
+              <td><%= render_attributes(model_code, value[:for_matching_data]) %></td>
+            </tr>
+          <% end %>
+
+          <% v[:unmatched_details].each do |value| %>
+            <tr>
+              <td class="unmatch"><%= t('.unmatch') %></td>
+              <td><%= k %></td>
+              <td><%= link_to_edit_detail_path(render_unmatched_attributes(model_code, value[:detail], value[:unmatched_attributes]), value[:detail]) %></td>
+              <td></td>
+            </tr>
+          <% end %>
+
+          <% v[:unmatched_for_matching_datas].each do |value| %>
+            <tr>
+              <td class="unmatch"><%= t('.unmatch') %></td>
+              <td><%= k %></td>
+              <td></td>
+              <td><%= render_attributes(model_code, value[:for_matching_data]) %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

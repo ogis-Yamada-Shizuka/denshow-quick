@@ -59,7 +59,7 @@
     <tbody>
       <% @request_applications.each do |request_application| %>
         <tr>
-          <td><%= request_application.management_no %></td>
+          <td><%= link_to request_application.management_no, registration_result_request_application_path(request_application) %></td>
           <td><%= request_application.model&.code %></td>
           <td><%= request_application.section&.name %></td>
           <td><%= request_application.request_date %></td>
@@ -67,7 +67,7 @@
           <td><%= (link_to 'Download', request_application.filename_url) if request_application.filename_url.present? %></td>
           <td>
             <%= (link_to t('template.edit'), edit_request_application_path(request_application)) %>
-            <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: 'Are you sure?' }) %>
+            <%= (link_to t('template.destroy'), request_application, method: :delete, data: { confirm: t('message.template.delete.confirm') }) %>
           </td>
         </tr>
       <% end %>

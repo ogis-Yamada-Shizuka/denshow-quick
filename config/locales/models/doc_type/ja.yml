@@ -1,0 +1,4 @@
+ja:
+  activerecord:
+    models:
+      doc_type: DOC TYPE

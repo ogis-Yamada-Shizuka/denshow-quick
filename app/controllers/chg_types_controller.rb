@@ -38,7 +38,7 @@ class ChgTypesController < ApplicationController
 
     respond_to do |format|
       if @chg_type.save
-        format.html { redirect_to @chg_type, notice: 'Chg type was successfully created.' }
+        format.html { redirect_to @chg_type, notice: t('message.template.scaffold.create', model: t('activerecord.models.chg_type')) }
         format.json { render :show, status: :created, location: @chg_type }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class ChgTypesController < ApplicationController
   def update
     respond_to do |format|
       if @chg_type.update(chg_type_params)
-        format.html { redirect_to @chg_type, notice: 'Chg type was successfully updated.' }
+        format.html { redirect_to @chg_type, notice: t('message.template.scaffold.update', model: t('activerecord.models.chg_type')) }
         format.json { render :show, status: :ok, location: @chg_type }
       else
         format.html { render :edit }
@@ -66,16 +66,15 @@ class ChgTypesController < ApplicationController
   def destroy
     @chg_type.destroy
     respond_to do |format|
-      format.html { redirect_to chg_types_url, notice: 'Chg type was successfully destroyed.' }
+      format.html { redirect_to chg_types_url, notice: t('message.template.scaffold.destroy', model: t('activerecord.models.chg_type')) }
       format.json { head :no_content }
     end
   end
 
   def import
     ChgType.import(params[:file])
-    redirect_to chg_types_url, notice: 'chg_types imported.'
+    redirect_to chg_types_url, notice: t('message.template.csv_upload.upload_success', model: t('activerecord.models.chg_type'))
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

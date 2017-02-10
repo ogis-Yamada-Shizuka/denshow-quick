@@ -1,6 +1,6 @@
 <div class="row">
   <div class="panel panel-default">
-    <div class="panel-heading">New Request Application Detail</div>
+    <div class="panel-heading"><%= t('activerecord.models.request_detail') %></div>
     <div class="panel-body">
         <div class="row">
           <%= f.hidden_field :request_application_id %>
@@ -9,7 +9,7 @@
             <%= f.text_field :doc_no, class: 'form-control' %>
           </div>
           <div class="col-lg-2">
-            <%= f.label :doc_type %>
+            <%= f.label :doc_type_id %>
             <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control select-doc-type' %>
           </div>
           <div class="col-lg-2">

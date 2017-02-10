@@ -28,7 +28,7 @@ class DeptsController < ApplicationController
 
     respond_to do |format|
       if @dept.save
-        format.html { redirect_to @dept, notice: 'Dept was successfully created.' }
+        format.html { redirect_to @dept, notice: t('message.template.scaffold.create', model: t('activerecord.models.dept')) }
         format.json { render :show, status: :created, location: @dept }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DeptsController < ApplicationController
   def update
     respond_to do |format|
       if @dept.update(dept_params)
-        format.html { redirect_to @dept, notice: 'Dept was successfully updated.' }
+        format.html { redirect_to @dept, notice: t('message.template.scaffold.update', model: t('activerecord.models.dept')) }
         format.json { render :show, status: :ok, location: @dept }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class DeptsController < ApplicationController
   def destroy
     @dept.destroy
     respond_to do |format|
-      format.html { redirect_to depts_url, notice: 'Dept was successfully destroyed.' }
+      format.html { redirect_to depts_url, notice: t('message.template.scaffold.destroy', model: t('activerecord.models.dept')) }
       format.json { head :no_content }
     end
   end
