@@ -15,6 +15,8 @@ class RequestApplication < ActiveRecord::Base
   validates :request_date, presence: true
   validates :preferred_date, presence: true
 
+  validates_date :preferred_date, on_or_after: :request_date, if: 'preferred_date.present?'
+
   # custom scope
   scope :custom_scope, lambda { |dept_id|
                          ids = Flow.current_ids(dept_id)
