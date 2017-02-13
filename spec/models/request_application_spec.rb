@@ -25,29 +25,31 @@ RSpec.describe RequestApplication, type: :model do
     end
 
     describe '日付の前後関係' do
-      subject { request_application }
+      subject { request_application.valid? }
+
+      before do
+        request_application.request_date = Time.zone.today
+        request_application.preferred_date = preferred_date
+      end
 
       context '要求日 < 入手希望日の場合' do
+        let(:preferred_date) { request_application.request_date.since(1.day) }
         it do
-          request_application[:request_date] = Time.zone.today
-          request_application[:preferred_date] = request_application.request_date.since(1.day)
-          is_expected.to be_valid
+          is_expected.to be_truthy
         end
       end
 
       context '要求日 == 入手希望日の場合' do
+        let(:preferred_date) { request_application.request_date }
         it do
-          request_application[:request_date] = Time.zone.today
-          request_application[:preferred_date] = Time.zone.today
-          is_expected.to be_valid
+          is_expected.to be_truthy
         end
       end
 
       context '要求日 > 入手希望日の場合' do
+        let(:preferred_date) { request_application.request_date.ago(1.day) }
         it do
-          request_application[:request_date] = Time.zone.today
-          request_application[:preferred_date] = request_application.request_date.ago(1.day)
-          is_expected.to be_invalid
+          is_expected.to be_falsey
         end
       end
     end
