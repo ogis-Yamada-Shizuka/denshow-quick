@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :doc_types do
     collection { post :import }  # for CSV Upload
   end
-  resources :sections
+  resources :sections do
+    collection { post :import, to: 'sections/csv_import#import' } 
+  end
   resources :models do
     collection { post :import } # for CSV Upload
   end
