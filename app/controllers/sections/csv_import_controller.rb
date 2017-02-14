@@ -1,6 +1,5 @@
 class Sections::CsvImportController < ApplicationController
   def import
-    binding.pry
     Section.import(params[:file].tempfile)
     redirect_to sections_path, notice: t('message.template.csv_import.import_success')
   rescue
