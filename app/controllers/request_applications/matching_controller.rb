@@ -19,7 +19,6 @@ class RequestApplications::MatchingController < ApplicationController
   private
 
   def filename
-    now = Time.zone.now
-    "#{t('file_name.matching_result_export_csv')}_#{now.strftime('%Y%m%d')}_#{now.strftime('%H%M')}.csv"
+    "#{@request_application.management_no}_#{Time.zone.today.strftime('%Y%m%d')}.csv"
   end
 end
