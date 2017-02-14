@@ -16,7 +16,6 @@ class RequestApplications::CsvExportController < ApplicationController
   private
 
   def filename
-    now = Time.zone.now
-    "#{t('file_name.export_csv_for_k_peace')}_#{now.strftime('%Y%m%d')}_#{now.strftime('%H%M')}.csv"
+    "#{t('file_name.export_csv_for_k_peace')}_#{Time.zone.now.strftime('%Y%m%d_%H%M')}.csv"
   end
 end
