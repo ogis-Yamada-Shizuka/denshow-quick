@@ -53,7 +53,7 @@ ja:
     doc_types: DOC TYPE
 
   file_name:
-    matching_result_export_csv: K-PEACEインプット用CSVファイル
+    matching_result_export_csv: REL_MDL_DOC
 
   message:
     template:
