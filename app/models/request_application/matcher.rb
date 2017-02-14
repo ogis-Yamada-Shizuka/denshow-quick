@@ -19,11 +19,11 @@ module RequestApplication::Matcher
   end
 
   def target_details(doc_no)
-    details.includes(:doc_type, :chg_type).where(doc_no: doc_no)
+    details.includes(:doc_type, :chg_type).where(doc_no: doc_no).order('doc_types.name ASC')
   end
 
   def target_for_matching_datas(doc_no)
-    ForMatchingData.where(model_code: model.code, doc_no: doc_no).order(doc_no: :ASC)
+    ForMatchingData.where(model_code: model.code, doc_no: doc_no).order(doc_type_str: :ASC)
   end
 
   def match?(detail, for_matching_data)
