@@ -7,9 +7,15 @@ class RequestApplications::CsvExportController < ApplicationController
   def export
     if params[:request_application].present?
       request_applications = RequestApplication.where(id: params[:request_application][:ids])
-      send_data RequestApplicationExportCsv.export(request_applications), type: 'text/csv; charset=shift_jis', filename: "#{Time.zone.now.to_date}.csv"
+      send_data RequestApplicationExportCsv.export(request_applications), type: 'text/csv; charset=shift_jis', filename: filename
     else
       redirect_to search_request_applications_path, alert: t('message.template.csv_export.management_no_is_not_selected')
     end
+  end
+
+  private
+
+  def filename
+    "#{t('file_name.export_csv_for_k_peace')}_#{Time.zone.now.strftime('%Y%m%d_%H%M')}.csv"
   end
 end
