@@ -34,7 +34,7 @@
             <td><%= detail.vendor_code %></td>
             <td><%= link_to t('template.edit'), edit_request_application_request_detail_path(request_application, detail), class: 'btn btn-primary btn-sm' %></td>
             <% unless from_edit_request_application? %>
-              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: t('message.template.delete.confirm') }, class: 'btn btn-warning btn-sm' %></td>
+              <td><%= link_to t('template.destroy'), request_application_request_detail_path(request_application, detail), method: :delete, data: { confirm: t('message.template.delete.confirm') }, class: 'btn btn-danger btn-sm' %></td>
             <% end %>
           </tr>
         <% end %>

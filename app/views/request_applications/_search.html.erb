@@ -22,9 +22,7 @@
               <%= f.collection_select :section_id_eq, Section.all, :id, :name, { include_blank: true } , class: 'form-control input-sm' %>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-4">
             <%= f.label :preferred_date %>
             <div class="form-inline">
               <%= f.text_field :preferred_date_gteq, placeholder: t('placeholder.date_long'), class: 'form-control input-sm datetimepicker' %>
@@ -32,11 +30,11 @@
               <%= f.text_field :preferred_date_lteq, placeholder: t('placeholder.date_long'), class: 'form-control input-sm datetimepicker' %>
             </div>
           </div>
-        </div>
-        <div class="row search-btn-row">
-          <div class="col-sm-12">
-            <%= f.submit t('template.search'), class: 'btn btn-primary' %>
-            <%= link_to t('template.clear'), url_for, class: 'btn btn-default' %>
+          <div class="col-sm-2">
+            <div class="search-btn">
+              <%= f.submit t('template.search'), class: 'btn btn-primary' %>
+              <%= link_to t('template.clear'), url_for, class: 'btn btn-default' %>
+            </div>
           </div>
         </div>
       <% end %>

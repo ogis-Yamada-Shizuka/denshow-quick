@@ -7,15 +7,8 @@
     <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
   </div>
 </div>
-<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
-
 <%= form_for(@request_detail, url: request_application_request_details_path) do |f| %>
   <%= render partial: 'shared/application_detail_attributes', locals: { f: f } %>
-  <div class="row">
-    <div class="actions">
-      <%= f.submit t('.save_and_insert'), class:"btn btn-primary", name: 'save_and_insert' %>
-      <%= f.submit t('template.save'), class:"btn btn-secondary", name: 'end_regist' %>
-      <%= link_to t('.cancel'), registration_result_request_application_path(@request_application), class:"btn btn-default" %>
-    </div>
-  </div>
 <% end %>
+
+<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
