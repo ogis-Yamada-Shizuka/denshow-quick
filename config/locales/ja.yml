@@ -36,6 +36,7 @@ ja:
     search: 検索
     clear: クリア
     reference: 参照
+    cancel: キャンセル
 
   link_name:
     request_applications_export_csv: K-PEACEデータ取得用CSV出力
