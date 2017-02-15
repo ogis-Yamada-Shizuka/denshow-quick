@@ -2,51 +2,58 @@
   <div class="panel panel-default">
     <div class="panel-heading"><%= t('activerecord.models.request_detail') %></div>
     <div class="panel-body">
-        <div class="row">
-          <%= f.hidden_field :request_application_id %>
-          <div class="col-lg-2">
-            <%= f.label :doc_no %>
-            <%= f.text_field :doc_no, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :doc_type_id %>
-            <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control select-doc-type' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :sht %>
-            <%= f.text_field :sht, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :rev %>
-            <%= f.text_field :rev, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :eo_chgno %>
-            <%= f.text_field :eo_chgno, class: 'form-control' %>
+      <div class="row">
+        <%= f.hidden_field :request_application_id %>
+        <div class="col-lg-2">
+          <%= f.label :doc_no %>
+          <%= f.text_field :doc_no, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :doc_type_id %>
+          <%= f.collection_select :doc_type_id, DocType.all, :id, :name, { include_blank: true }, class: 'form-control select-doc-type' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :sht %>
+          <%= f.text_field :sht, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :rev %>
+          <%= f.text_field :rev, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :eo_chgno %>
+          <%= f.text_field :eo_chgno, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :chg_type %>
+          <%= f.collection_select :chg_type_id, ChgType.order(name: :ASC), :id, :name, { include_blank: true }, class: 'form-control select-chg-type' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+          <%= f.label :mcl %>
+          <%= f.text_field :mcl, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :scp_for_smpl %>
+          <%= f.text_field :scp_for_smpl, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :scml_ln %>
+          <%= f.text_field :scml_ln, class: 'form-control' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.label :vendor_code %>
+          <%= f.text_field :vendor_code, class: 'form-control'  %>
+        </div>
+        <div class="col-lg-4">
+          <div class="actions detail-form-btn">
+            <%= f.submit t('.save_and_insert'), class:"btn btn-primary", name: 'save_and_insert' %>
+            <%= f.submit t('template.save'), class:"btn btn-secondary", name: 'end_regist' %>
+            <%= link_to t('template.cancel'), registration_result_request_application_path(@request_application), class:"btn btn-default" %>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-2">
-            <%= f.label :chg_type %>
-            <%= f.collection_select :chg_type_id, ChgType.order(name: :ASC), :id, :name, { include_blank: true }, class: 'form-control select-chg-type' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :mcl %>
-            <%= f.text_field :mcl, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :scp_for_smpl %>
-            <%= f.text_field :scp_for_smpl, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :scml_ln %>
-            <%= f.text_field :scml_ln, class: 'form-control' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.label :vendor_code %>
-            <%= f.text_field :vendor_code, class: 'form-control'  %>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>
