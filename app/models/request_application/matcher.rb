@@ -9,17 +9,14 @@ module RequestApplication::Matcher
 
   def compare(doc_no)
     @results = { matched: [], unmatched_details: [], unmatched_for_matching_datas: [] }
-    target_details(doc_no).each do |detail|
+    details.for_matching(doc_no).each do |detail|
       unless target_for_matching_datas(doc_no).map { |fmd| match?(detail, fmd) }.any?
-        @results[:unmatched_details] << { detail: detail, unmatched_attributes: unmatched_attributes(detail, unmatched_for_matching_datas) }
+        @results[:unmatched_details] << { detail: detail }
       end
     end
     remove_unnecessary_unmatched_for_matching_datas
+    check_unmatched_details_attributes
     @results
-  end
-
-  def target_details(doc_no)
-    details.includes(:doc_type, :chg_type).where(doc_no: doc_no).order('doc_types.name ASC')
   end
 
   def target_for_matching_datas(doc_no)
@@ -60,5 +57,11 @@ module RequestApplication::Matcher
 
   def for_matching_data_is_already_matched?(for_matching_data)
     @results[:matched].any? { |matched| matched[:for_matching_data] == for_matching_data }
+  end
+
+  def check_unmatched_details_attributes
+    @results[:unmatched_details].each do |h|
+      h[:unmatched_attributes] = unmatched_attributes(h[:detail], unmatched_for_matching_datas)
+    end
   end
 end
