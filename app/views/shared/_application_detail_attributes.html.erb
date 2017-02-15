@@ -47,7 +47,7 @@
           <%= f.text_field :vendor_code, class: 'form-control'  %>
         </div>
         <div class="col-lg-4">
-          <div class="actions detail-form-btn">
+          <div class="actions detail-form-btn pull-right">
             <%= f.submit t('.save_and_insert'), class:"btn btn-primary", name: 'save_and_insert' %>
             <%= f.submit t('template.save'), class:"btn btn-secondary", name: 'end_regist' %>
             <%= link_to t('template.cancel'), registration_result_request_application_path(@request_application), class:"btn btn-default" %>
