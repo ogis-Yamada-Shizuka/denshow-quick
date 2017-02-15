@@ -10,7 +10,7 @@ ja:
         title: リコンサイル結果
         matching_key: キー情報
         request_detail: 要求書
-        matching_data: 突合せデータ
+        matching_data: K-PEACEデータ
         matching_result: リコンサイル結果
         match: 一致
         unmatch: 不一致

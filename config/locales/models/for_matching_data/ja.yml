@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      for_matching_data: 突合せ用データ
+      for_matching_data: K-PEACEデータ
     attributes:
       for_matching_data:
         format_type: 種類
