@@ -4,33 +4,33 @@
     <div class="panel-body">
       <%= search_form_for(@q, method: :get) do |f| %>
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-sm-2 search-col">
             <div class="form-group">
               <%= f.label :management_no %>
               <%= f.text_field :management_no_cont, class: 'form-control input-sm', placeholder: t('placeholder.partial_match') %>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2 search-col">
             <div class="form-group">
               <%= f.label :model, t('activerecord.attributes.request_application.model') %>
               <%= f.collection_select :model_id_eq, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: 'form-control input-sm select-model' %>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2 search-col">
             <div class="form-group">
               <%= label :section, t('activerecord.attributes.request_application.section') %>
               <%= f.collection_select :section_id_eq, Section.all, :id, :name, { include_blank: true } , class: 'form-control input-sm' %>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 search-col">
             <%= f.label :preferred_date %>
             <div class="form-inline">
               <%= f.text_field :preferred_date_gteq, placeholder: t('placeholder.date_long'), class: 'form-control input-sm datetimepicker' %>
-              <%= label :between_label, '～', class: 'between-label' %>
+              <span>~</span>
               <%= f.text_field :preferred_date_lteq, placeholder: t('placeholder.date_long'), class: 'form-control input-sm datetimepicker' %>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2 search-col text-center">
             <div class="search-btn">
               <%= f.submit t('template.search'), class: 'btn btn-primary' %>
               <%= link_to t('template.clear'), url_for, class: 'btn btn-default' %>
