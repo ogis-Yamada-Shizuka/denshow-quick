@@ -14,7 +14,7 @@
         <td><%= doc_type.name %></td>
         <td><%= link_to 'Show', doc_type %></td>
         <td><%= link_to 'Edit', edit_doc_type_path(doc_type) %></td>
-        <td><%= link_to 'Destroy', doc_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', doc_type, method: :delete, data: { confirm: t('message.template.delete.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>

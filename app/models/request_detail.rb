@@ -1,4 +1,6 @@
 class RequestDetail < ActiveRecord::Base
+  include RequestDetail::Matcher
+
   belongs_to :request_application
   belongs_to :doc_type
   belongs_to :chg_type
@@ -21,4 +23,6 @@ class RequestDetail < ActiveRecord::Base
   validates :doc_no, presence: true
   validates :sht, presence: true
   validates :rev, presence: true
+
+  scope :for_matching, ->(doc_no) { includes(:doc_type, :chg_type).where(doc_no: doc_no).order('doc_types.name ASC') }
 end

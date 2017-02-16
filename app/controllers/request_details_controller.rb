@@ -31,12 +31,12 @@ class RequestDetailsController < ApplicationController
 
   def destroy
     @request_detail.destroy
+    flash[:notice] = t('message.template.scaffold.destroy', model: t('activerecord.models.request_detail'))
     if Rails.application.routes.recognize_path(request.referer)[:controller] == 'request_details'
       redirect_to new_request_application_request_detail_path
     else
       redirect_to registration_result_request_application_path(@request_detail.request_application)
     end
-    flash[:notice] = 'Request detail was successfully destroyed.'
   end
 
   private
@@ -61,9 +61,9 @@ class RequestDetailsController < ApplicationController
 
   def redirect_notice_message
     if action_name == 'create'
-      'Request detail was successfully created.'
+      t('message.template.scaffold.create', model: t('activerecord.models.request_detail'))
     else
-      'Request detail was successfully updated.'
+      t('message.template.scaffold.update', model: t('activerecord.models.request_detail'))
     end
   end
 end

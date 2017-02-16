@@ -1,0 +1,56 @@
+<p>
+  <strong><%= t('activerecord.attributes.request_application.management_no') %>:</strong>
+  <%= @request_application.management_no %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.emargency') %>:</strong>
+  <%= @request_application.emargency %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.filename') %>:</strong>
+  <%= @request_application.filename %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.request_date') %>:</strong>
+  <%= @request_application.request_date %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.preferred_date') %>:</strong>
+  <%= @request_application.preferred_date %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.close') %>:</strong>
+  <%= @request_application.close_status %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.memo') %>:</strong>
+  <%= simple_format(@request_application.memo) %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.model') %>:</strong>
+<%= @request_application.model.try(:code) %>
+
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.request_application.section') %>:</strong>
+  <%= @request_application.section.try(:name) %>
+</p>
+
+
+<hr>
+
+<%= render 'history'  %>
+
+
+<% unless @request_application.close? %>
+  <%= link_to t('.edit'), '#' %> |
+<% end %>
+<%= link_to t('.back'), older_request_applications_path %>

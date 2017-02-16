@@ -14,9 +14,11 @@ ja:
       blank: を入力してください
       invalid: は不正な値です
       taken: はすでに存在します
-    template:
-      csv_export:
-        management_no_is_not_selected: CSV出力する要求元整理番号を選択して下さい
+      on_or_after: "は %{restriction} 以後を入力してください"
+
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y/%m/%d'
 
   activerecord:
     errors:
@@ -25,8 +27,50 @@ ja:
 
   placeholder:
     partial_match: 部分一致
+    date_long: YYYY/MM/DD
 
   template:
     edit: 編集
     destroy: 削除
     save: 保存
+    search: 検索
+    clear: クリア
+    reference: 参照
+    cancel: キャンセル
+
+  link_name:
+    request_applications_export_csv: K-PEACEデータ取得用CSV出力
+    for_matching_datas_import_csv: K-PEACEデータインポート
+    for_matching_datas_model_code: 登録済K-PEACE機種コード一覧
+    request_application_matching: リコンサイル指示
+    request_application: 技術資料要求書一覧
+    reconciles: リコンサイル関連機能
+    maintenance: メンテナンス
+    depts: 部署/プロジェクト
+    models: 機種
+    sections: 担当課
+    flow_orders: フロー順登録
+    chg_types: CHG TYPE
+    doc_types: DOC TYPE
+
+  file_name:
+    export_csv_for_k_peace: REL_MDL_DOC
+
+  message:
+    template:
+      csv_export:
+        management_no_is_not_selected: 要求元整理番号を選択して下さい m(__)m
+      csv_import:
+        import_success: 取り込みが完了しました (^ ^)
+        import_failed: 取り込みに失敗しました (T_T)
+      csv_upload:
+        upload_success: "%{model}のインポートが完了しました (^ ^)"
+      search:
+        condition_is_not_selected: 検索条件を指定してください
+      delete:
+        for_matching_data_by_model_code: "%{model_code}のK-PEACEデータを削除が完了しました (^ ^)"
+        confirm: 削除しますがよろしいですか？
+      scaffold:
+        create: "%{model}の作成が完了しました (^ ^)"
+        update: "%{model}の編集が完了しました (^ ^)"
+        destroy: "%{model}の削除が完了しました (^ ^)"

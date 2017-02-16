@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
-<h1><%= t('.title') %></h1>
-
-<div class="well well-sm">
-  <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
-  <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
+<div class="row">
+  <div class="well well-sm">
+    <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
+    <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+  </div>
 </div>
 
 <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
 
-<div>
-  <%= link_to t('.add_request_detail'), new_request_application_request_detail_path(@request_application) %>
+<div class="row btn-row">
+  <%= link_to t('.add_request_detail'), new_request_application_request_detail_path(@request_application), class: 'btn btn-primary' %>
 </div>
-<%= link_to t('.back'), request_applications_path %>
+<div class="row">
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
+</div>

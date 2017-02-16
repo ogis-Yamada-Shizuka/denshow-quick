@@ -13,6 +13,7 @@ ja:
       revert: 最初に差戻
       interrupt: 中断
       emargency: 緊急
+      manual_input: 手入力
     new:
       title: 要求書新規受付
       save_and_insert: 詳細入力画面へ
@@ -31,3 +32,5 @@ ja:
       edit_request_application: 要求書情報編集
       add_request_detail: 技術資料詳細を追加
       back: 技術資料要求書一覧画面へ
+    search:
+      search_request_applicaton: 要求書検索

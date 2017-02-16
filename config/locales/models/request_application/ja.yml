@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      request_application: request_application
+      request_application: 技術資料要求書
     attributes:
       request_application:
         management_no: 要求元整理番号

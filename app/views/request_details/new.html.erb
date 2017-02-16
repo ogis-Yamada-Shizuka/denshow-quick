@@ -1,22 +1,14 @@
-<p id="notice"><%= notice %></p>
-<h1><%= t('.title') %></h1>
-
-<div class="well well-sm">
-  <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
-  <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+<div class="row">
+  <h1><%= t('.title') %></h1>
 </div>
-
-<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
-
+<div class="row">
+  <div class="well well-sm">
+    <%= render partial: 'shared/show_request_application', locals: { request_application: @request_application } %>
+    <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
+  </div>
+</div>
 <%= form_for(@request_detail, url: request_application_request_details_path) do |f| %>
   <%= render partial: 'shared/application_detail_attributes', locals: { f: f } %>
-  <div class="row">
-    <div class="actions">
-      <%= f.submit t('.save_and_insert'), class:"btn btn-primary", name: 'save_and_insert' %>
-      <%= f.submit t('template.save'), class:"btn btn-secondary", name: 'end_regist' %>
-    </div>
-  </div>
 <% end %>
-<div class="row">
-    <%= link_to t('.cancel'), registration_result_request_application_path(@request_application), class:"btn btn-default" %>
-</div>
+
+<%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>

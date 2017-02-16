@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :doc_types do
     collection { post :import }  # for CSV Upload
   end
-  resources :sections
+  resources :sections do
+    collection { post :import, to: 'sections/csv_import#import' } 
+  end
   resources :models do
     collection { post :import } # for CSV Upload
   end
@@ -54,6 +56,24 @@ Rails.application.routes.draw do
     post :import, to: 'csv_import#import_csv'
     get :model_code, to: 'model_code#index'
     delete :model_code, to: 'model_code#destroy'
+  end
+
+  # 2015年版に関する request_application の index, show, 進捗状況更新等のルーティングを記載。
+  resources :older_request_applications, controller: 'older_request_applications/request_applications', only: %i(index show) do
+    member do
+      get :regist_memo, as: :regist_memo
+      get :regist, as: :regist_progress
+      patch :regist, as: :regist_confirm
+      get :reject_memo
+      get :reject, as: :reject_progress
+      patch :reject, as: :reject_confirm
+      get :interrupt_memo
+      get :interrupt, as: :interrupt_progress
+      patch :interrupt, as: :interrupt_confirm
+      get :first_to_revert_memo, as: :revert_memo
+      get :first_to_revert, as: :revert_progress
+      patch :first_to_revert, as: :revert_confirm
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

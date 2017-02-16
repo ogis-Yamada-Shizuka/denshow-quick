@@ -17,3 +17,6 @@
 //= require_tree .
 //= require bootstrap.min.js
 //= require select2
+//= require moment
+//= require moment/ja.js
+//= require bootstrap-datetimepicker

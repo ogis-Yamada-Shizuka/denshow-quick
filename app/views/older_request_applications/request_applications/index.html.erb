@@ -1,0 +1,97 @@
+<h1><%= t('.title') %></h1>
+<%= render 'search' %>
+
+<div class="row">
+  <div class="col-lg-2">
+    <%= link_to t('.new_request_application'), '#', class: 'btn btn-default' %>
+  </div>
+  <div class="col-lg-1">
+  </div>
+  <div class="col-lg-9">
+    <div class="row">
+    <%= form_tag '#', multipart: true do %>
+      <div class="col-lg-4">
+        <%= file_field_tag :file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+      </div>
+      <div class="col-lg-8">
+        <%= submit_tag t('.import_excel'), class: 'btn btn-primary', disabled: true  %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<table class="table  table-striped">
+  <thead>
+    <tr>
+
+      <th rowspan="2"><%= t('activerecord.attributes.request_application.management_no') %></th>
+      <th>Project</th>
+      <th>model</th>
+      <th>section</th>
+      <th>File</th>
+
+      <th rowspan="2">|</th>
+       <% @flow_orders.each do |flow_order| %>
+        <th rowspan="2">
+          <%= flow_order.dept.try(:name).presence || t('.project') %>
+        </th>
+       <% end %>
+      <th rowspan="2"></th>
+      <th rowspan="2"></th>
+      <th rowspan="2"></th>
+      <th rowspan="2"></th>
+
+    </tr>
+    <tr>
+      <th>E!</th>
+      <th><%= sort_link(@q, :close) %></th>
+      <th>Request date</th>
+      <th>Preferred date</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request_applications.each do |request_application| %>
+    <% current_order = request_application.current_order %>
+      <tr>
+        <td rowspan="2"><%= link_to request_application.management_no, registration_result_request_application_path(request_application) %></td>
+        <td><%= request_application.project.try(:name) %></td>
+        <td><%= request_application.model.try(:code) %></td>
+        <td><%= request_application.section.try(:name) %></td>
+        <td><%= (link_to "Download" , request_application.filename_url) if request_application.filename_url.present? %></td>
+
+        <td rowspan="2">|</td>
+        <% request_application.flows.latest_flows(Flow.latest_ids(request_application.id)).each do |flow| %>
+        <td rowspan="2">
+          <%= ( flow.progress.try(:in_date) || (link_to 'Start', regist_progress_older_request_application_path(request_application), class:"btn btn-warning btn-xs" unless request_application.close?
+ )) %><br>
+          <%= ( flow.progress.try(:out_date) || (link_to 'End', regist_memo_older_request_application_path(request_application), class:"btn btn-warning btn-xs"  unless (flow.progress.try(:in_date).blank?  ||  request_application.close?  || current_order != flow.order) ) ) %>
+        </td>
+         <% end %>
+         <% (@flow_orders.count - request_application.flows.maximum(:order)).times do %>
+          <td rowspan="2"></td>
+         <% end %>
+
+        <td rowspan="2"><%= link_to t('.show_request_application_status_detail'), older_request_application_path(request_application) %>
+        <%= (link_to t('template.edit'), '#') unless request_application.close? %>
+        <%= (link_to t('template.destroy'), '#', data: { confirm: 'Are you sure?' })  if request_application.delete_permit? %>
+      </td>
+        <td rowspan="2"><%= link_to t('.reject') , reject_memo_older_request_application_path(request_application) if request_application.flows.order(:history_no).last.reject? %></td>
+        <td rowspan="2"><%= link_to t('.revert') , revert_memo_older_request_application_path(request_application) if request_application.flows.order(:history_no).last.first_to_revert? %></td>
+        <td rowspan="2"><%= link_to t('.interrupt') , interrupt_memo_older_request_application_path(request_application)  if request_application.interrupt_permit? %></td>
+
+      </tr>
+      <tr>
+        <td><%= t('.emargency') if request_application.emargency %></td>
+        <td><%= request_application.close_status %></td>
+        <td><%= request_application.request_date %></td>
+        <td><%= request_application.preferred_date %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

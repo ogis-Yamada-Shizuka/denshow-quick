@@ -13,3 +13,10 @@ $(document).on 'turbolinks:load', ->
     else
       $('.checkbox').prop('checked', true)
       $(this).addClass('clicked')
+
+  $(".datetimepicker").datetimepicker(
+    format: 'YYYY/MM/DD'
+  )
+
+  $('#file').change ->
+    $('#file_name').val($(this).prop('files')[0].name)

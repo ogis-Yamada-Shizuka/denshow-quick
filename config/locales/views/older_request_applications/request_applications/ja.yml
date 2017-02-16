@@ -1,0 +1,34 @@
+ja:
+  older_request_applications:
+    request_applications:
+      index:
+        title: 技術資料要求書一覧
+        new_request_application: 要求書新規受付
+        show_request_application_status_detail: 進捗状況詳細
+        import_excel: データインポート
+        search: 検索
+        csv_export: CSV出力
+        choose_output: 出力
+        project: プロジェクト
+        reject: 差戻
+        revert: 最初に差戻
+        interrupt: 中断
+        emargency: 緊急
+      new:
+        title: 要求書新規受付
+        save_and_insert: 詳細入力画面へ
+        back: 技術資料要求書一覧画面へ
+      show:
+        edit: 要求書情報編集画面へ
+        back: 技術資料要求書一覧画面へ
+      edit:
+        title: 要求書情報編集
+        update_request_applicaton: 編集した内容を保存
+        show: 進捗状況詳細画面へ
+        back: 技術資料要求書一覧画面へ
+        add_request_detail: 技術資料詳細を追加
+      registration_result:
+        title: 要求書＆技術資料詳細
+        edit_request_application: 要求書情報編集
+        add_request_detail: 技術資料詳細を追加
+        back: 技術資料要求書一覧画面へ

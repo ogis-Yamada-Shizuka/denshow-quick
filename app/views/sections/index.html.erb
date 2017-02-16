@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Sections</h1>
 
 <table class="table">
@@ -16,7 +14,7 @@
         <td><%= section.name %></td>
         <td><%= link_to 'Show', section %></td>
         <td><%= link_to 'Edit', edit_section_path(section) %></td>
-        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: t('message.template.delete.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +23,10 @@
 <br>
 
 <%= link_to 'New Section', new_section_path %>
+
+<div class="row">
+  <%= form_tag import_sections_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag 'csv upload' %>
+  <% end %>
+</div>

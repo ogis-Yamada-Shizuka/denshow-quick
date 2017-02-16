@@ -16,7 +16,7 @@
         <td><%= dept_status(dept.project) %></td>
         <td><%= link_to 'Show', dept %></td>
         <td><%= link_to 'Edit', edit_dept_path(dept) %></td>
-        <td><%= link_to 'Destroy', dept, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', dept, method: :delete, data: { confirm: t('message.template.delete.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>

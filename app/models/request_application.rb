@@ -1,5 +1,6 @@
 class RequestApplication < ActiveRecord::Base
   include RequestApplication::Matcher
+  include RequestApplication::MatcherExportCsv
 
   has_many :flows, dependent: :destroy
   has_many :details, class_name: 'RequestDetail', dependent: :destroy
@@ -13,6 +14,8 @@ class RequestApplication < ActiveRecord::Base
   validates :section, presence: true
   validates :request_date, presence: true
   validates :preferred_date, presence: true
+
+  validates_date :preferred_date, on_or_after: :request_date, if: 'preferred_date.present?'
 
   # custom scope
   scope :custom_scope, lambda { |dept_id|
