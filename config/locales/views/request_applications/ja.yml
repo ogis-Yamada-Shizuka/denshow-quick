@@ -32,5 +32,6 @@ ja:
       edit_request_application: 要求書情報編集
       add_request_detail: 技術資料詳細を追加
       back: 技術資料要求書一覧画面へ
+      document_count: "ドキュメント数：%{count}"
     search:
       search_request_applicaton: 要求書検索
