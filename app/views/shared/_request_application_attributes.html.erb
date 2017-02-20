@@ -1,42 +1,42 @@
 <div class="form-group">
   <div class="row">
     <div class="col-lg-2">
-      <%= f.label :management_no %><br>
-      <%= f.text_field :management_no, class: 'form-control input-sm' %>
+      <div><%= f.label :management_no %></div>
+      <div><%= f.text_field :management_no, class: 'form-control input-sm' %></div>
     </div>
     <div class="col-lg-2">
-      <%= f.label :project %><br>
-      <%= f.collection_select :project_id, Project.all, :id, :name, { include_blank: true }, class: 'form-control input-sm' %>
+      <div><%= f.label :project %></div>
+      <div><%= f.collection_select :project_id, Project.all, :id, :name, { include_blank: true }, class: 'form-control input-sm' %></div>
     </div>
     <div class="col-lg-2">
-      <%= f.label :model %><br>
-      <%= f.collection_select :model_id, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: 'form-control input-sm select-model'  %>
+      <div><%= f.label :model_id %></div>
+      <div><%= f.collection_select :model_id, Model.order(code: :ASC), :id, :code, { include_blank: true }, class: 'form-control input-sm select-model'  %></div>
     </div>
     <div class="col-lg-2">
-      <%= f.label :section %><br>
-      <%= f.collection_select :section_id, Section.all, :id, :name, { include_blank: true }, class: 'form-control input-sm'  %>
+      <div><%= f.label :section_id %></div>
+      <div><%= f.collection_select :section_id, Section.all, :id, :name, { include_blank: true }, class: 'form-control input-sm'  %></div>
     </div>
     <div class="col-lg-4">
-      <%= f.label :emargency %><br>
-      <%= f.check_box :emargency, class: 'checkbox' %>
+      <div><%= f.label :emargency %></div>
+      <div><%= f.check_box :emargency, class: 'checkbox' %></div>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-3">
-      <%= f.label :filename %><br>
-      <%= f.file_field :filename %>
+      <div><%= f.label :filename %></div>
+      <div><%= f.file_field :filename %></div>
     </div>
     <div class="col-lg-3 form-inline">
-      <%= f.label :request_date %><br>
-      <%= f.text_field :request_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
+      <div><%= f.label :request_date %></div>
+      <div><%= f.text_field :request_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %></div>
     </div>
     <div class="col-lg-3 form-inline">
-      <%= f.label :preferred_date %><br>
-      <%= f.text_field :preferred_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %>
+      <div><%= f.label :preferred_date %></div>
+      <div><%= f.text_field :preferred_date, placeholder: 'YYYY/MM/DD', class: 'form-control input-sm datetimepicker' %></div>
     </div>
     <div class="col-lg-3">
-      <%= f.label :memo %><br>
-      <%= f.text_area :memo, class: 'form-control input-sm' %>
+      <div><%= f.label :memo %></div>
+      <div><%= f.text_area :memo, class: 'form-control input-sm' %></div>
     </div>
   </div>
 </div>

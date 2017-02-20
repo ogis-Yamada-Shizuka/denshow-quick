@@ -23,5 +23,10 @@ module DenshowQuick
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    #デフォルトだとdivタグで挟まれてレイアウト崩れるのでspanタグに変更
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
+      %(<span class="field_with_errors">#{html_tag}</span>).html_safe
+    end
   end
 end

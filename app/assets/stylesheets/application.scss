@@ -34,9 +34,18 @@ p, ol, ul, td {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  label {
+    background-color: red;
+  }
+  select {
+    border: 2px solid red;
+  }
+  input {
+    border: 2px solid red;
+  }
+  .select2-selection {
+    border: 2px solid red;
+  }
 }
 
 #error_explanation {
