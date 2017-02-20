@@ -35,3 +35,6 @@ ja:
       document_count: "ドキュメント数：%{count}"
     search:
       search_request_applicaton: 要求書検索
+    import_excel:
+      title: 取込エラー
+      back: 技術資料要求書一覧画面へ
