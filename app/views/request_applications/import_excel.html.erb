@@ -1,4 +1,6 @@
-<h1>Import Error</h1>
+<div class="row">
+  <h1><%= t('.title') %></h1>
+</div>
 
 <% if @request_application.errors.any? %>
   <div id="error_explanation">
@@ -14,7 +16,7 @@
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Request Application
+      <%= t('activerecord.models.request_application') %>
     </div>
     <div class="panel-body">
       <table class="table table-bordered table-hover">
@@ -24,31 +26,31 @@
         </colgroup>
         <tbody>
           <tr>
-            <td><%= label_tag :management_no %></td>
+            <td><%= label_tag :management_no, t('activerecord.attributes.request_application.management_no') %></td>
             <td class="<%= append_error_class(@request_application, :management_no) %>">
               <%= @request_application.management_no %>
             </td>
           </tr>
           <tr>
-            <td><%= label_tag :section %></td>
+            <td><%= label_tag :section, t('activerecord.attributes.request_application.section') %></td>
             <td class="<%= append_error_class(@request_application, :section) %>">
               <%= @request_application.section&.name %>
             </td>
           </tr>
           <tr>
-            <td><%= label_tag :request_date %></td>
+            <td><%= label_tag :request_date, t('activerecord.attributes.request_application.request_date') %></td>
             <td class="<%= append_error_class(@request_application, :request_date) %>">
               <%= @request_application.request_date %>
             </td>
           </tr>
           <tr>
-            <td><%= label_tag :preferred_date %></td>
+            <td><%= label_tag :preferred_date, t('activerecord.attributes.request_application.preferred_date') %></td>
             <td class="<%= append_error_class(@request_application, :preferred_date) %>">
               <%= @request_application.preferred_date %>
             </td>
           </tr>
           <tr>
-            <td><%= label_tag :model %></td>
+            <td><%= label_tag :model, t('activerecord.attributes.request_application.model') %></td>
             <td class="<%= append_error_class(@request_application, :model) %>">
               <%= @request_application.model&.code %>
             </td>
@@ -62,29 +64,29 @@
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Request Detail
+      <%= t('activerecord.models.request_detail') %>
     </div>
     <div class="panel-body">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
             <th><%= label_tag 'No.' %></th>
-            <th><%= label_tag :doc_no %></th>
-            <th><%= label_tag :doc_type %></th>
-            <th><%= label_tag :sht %></th>
-            <th><%= label_tag :rev %></th>
-            <th><%= label_tag :eo_chgno %></th>
-            <th><%= label_tag :chg_type %></th>
-            <th><%= label_tag :mcl %></th>
-            <th><%= label_tag :scp_for_smpl %></th>
-            <th><%= label_tag :scml_ln %></th>
-            <th><%= label_tag :vendor_code %></th>
+            <th><%= label_tag :doc_no, t('activerecord.attributes.request_detail.doc_no') %></th>
+            <th><%= label_tag :doc_type, t('activerecord.attributes.request_detail.doc_type') %></th>
+            <th><%= label_tag :sht, t('activerecord.attributes.request_detail.sht') %></th>
+            <th><%= label_tag :rev, t('activerecord.attributes.request_detail.rev') %></th>
+            <th><%= label_tag :eo_chgno, t('activerecord.attributes.request_detail.eo_chgno') %></th>
+            <th><%= label_tag :chg_type, t('activerecord.attributes.request_detail.chg_type') %></th>
+            <th><%= label_tag :mcl, t('activerecord.attributes.request_detail.mcl') %></th>
+            <th><%= label_tag :scp_for_smpl, t('activerecord.attributes.request_detail.scp_for_smpl') %></th>
+            <th><%= label_tag :scml_ln, t('activerecord.attributes.request_detail.scml_ln') %></th>
+            <th><%= label_tag :vendor_code, t('activerecord.attributes.request_detail.vendor_code') %></th>
           </tr>
         </thead>
         <% if @request_application.details.present? %>
           <tbody>
             <% @request_application.details.each_with_index do |detail, i| %>
-              <tr style="<%= 'border: 3px #ff6347 solid;' if detail.errors.any? %>" >
+              <tr class="<%= 'error-border' if detail.errors.any? %>" >
                 <td><%= i + 1 %></td>
                 <td class="<%= append_error_class(detail, :doc_no) %>">
                   <%= detail.doc_no %>
@@ -125,5 +127,5 @@
   </div>
 </div>
 <div class="row">
-  <%= link_to 'Back', request_applications_path %>
+  <%= link_to t('.back'), request_applications_path, class: 'btn btn-primary' %>
 </div>
