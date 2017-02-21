@@ -6,7 +6,9 @@ ja:
       request_application:
         management_no: 要求元整理番号
         model: 機種コード
+        model_id: 機種コード
         section: 要求元
+        section_id: 要求元
         request_date: 要求日
         preferred_date: 入手希望日
         emargency: 緊急
