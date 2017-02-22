@@ -14,10 +14,7 @@ RSpec.describe Dept, type: :model do
 
     describe 'name' do
       context '値がnilの場合' do
-        subject { dept.valid? }
-        before { dept[:name] = nil }
-
-        it { is_expected.to be_falsey }
+        it { expect(build(:dept, name: nil)).to be_invalid }
       end
 
       context '値がユニークではない場合' do
