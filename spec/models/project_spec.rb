@@ -12,10 +12,7 @@ RSpec.describe Project, type: :model do
 
     describe 'name' do
       context '256文字以上の場合' do
-        it do
-          project[:name] = 'a' * 256
-          is_expected.to be_invalid
-        end
+        it { expect(build(:project, name: 'a' * 256)).to be_invalid }
       end
     end
   end
