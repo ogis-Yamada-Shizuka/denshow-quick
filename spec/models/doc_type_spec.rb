@@ -6,12 +6,6 @@ RSpec.describe DocType, type: :model do
     it { is_expected.to respond_to(:name) }
   end
 
-  describe 'validates' do
-    subject { doc_type }
-    let(:doc_type) { create(:doc_type) }
-    it { is_expected.to be_valid }
-  end
-
   describe '半角英小文字が半角英大文字にvalidateすると置換される' do
     subject { doc_type[:name] }
     let(:doc_type) { build(:doc_type) }

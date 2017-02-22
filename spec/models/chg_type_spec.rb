@@ -6,12 +6,6 @@ RSpec.describe ChgType, type: :model do
     it { is_expected.to respond_to(:name) }
   end
 
-  describe 'validates' do
-    subject { chg_type }
-    let(:chg_type) { create(:chg_type) }
-    it { is_expected.to be_valid }
-  end
-
   describe '半角英小文字が半角英大文字にvalidateすると置換される' do
     subject { chg_type[:name] }
     let(:chg_type) { build(:chg_type) }
