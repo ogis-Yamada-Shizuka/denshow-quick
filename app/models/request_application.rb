@@ -10,8 +10,8 @@ class RequestApplication < ActiveRecord::Base
   mount_uploader :filename, FileUploader
 
   validates :management_no, uniqueness: true, presence: true
-  validates :model, presence: true
-  validates :section, presence: true
+  validates :model_id, presence: true
+  validates :section_id, presence: true
   validates :request_date, presence: true
   validates :preferred_date, presence: true
 

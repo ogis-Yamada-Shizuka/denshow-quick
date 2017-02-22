@@ -7,7 +7,9 @@
     <%= link_to t('.edit_request_application'), edit_request_application_path(@request_application), class: 'btn btn-primary' %>
   </div>
 </div>
-
+<div class="row">
+  <b><%= t('.document_count', count: @request_application.details.count) %></b>
+</div>
 <%= render partial: 'shared/application_details_table', locals: { request_application: @request_application } %>
 
 <div class="row btn-row">

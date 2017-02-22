@@ -15,6 +15,8 @@ RSpec.describe RequestApplication, type: :model do
   end
 
   describe 'validates' do
+    subject { request_application.valid? }
+
     let(:request_application) do
       create(
         :request_application,
@@ -25,8 +27,6 @@ RSpec.describe RequestApplication, type: :model do
     end
 
     describe '日付の前後関係' do
-      subject { request_application.valid? }
-
       before do
         request_application.request_date = Time.zone.today
         request_application.preferred_date = preferred_date
@@ -51,6 +51,32 @@ RSpec.describe RequestApplication, type: :model do
         it do
           is_expected.to be_falsey
         end
+      end
+    end
+
+    %i(management_no model_id section_id request_date preferred_date).each do |attribute|
+      describe "#{attribute} presence validate" do
+        context '値がnilの場合' do
+          before { request_application[attribute] = nil }
+          it do
+            is_expected.to be_falsey
+          end
+        end
+      end
+    end
+
+    describe 'management_no' do
+      context '値がユニークではない場合' do
+        subject { same_attribute_request_application.valid? }
+
+        let(:same_attribute_request_application) do
+          build(
+            :request_application,
+            request_application.attributes
+          )
+        end
+
+        it { is_expected.to be_falsey }
       end
     end
   end
