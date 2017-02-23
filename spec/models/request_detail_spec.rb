@@ -155,4 +155,67 @@ RSpec.describe RequestDetail, type: :model do
       end
     end
   end
+
+  describe 'compare_attributes method' do
+    let(:attributes) do
+      {
+        doc_no: 'DOC-TEST-001',
+        doc_type: 'GHI',
+        sht: 'S01',
+        rev: 'A',
+        eo_chgno: 'N99',
+        chg_type: 'BVSR',
+        mcl: '(D)',
+        scp_for_smpl: 'ｲ-6#2',
+        scml_ln: 'A-N'
+      }
+    end
+
+    let(:request_detail) do
+      build(
+        :request_detail,
+        doc_no: attributes[:doc_no],
+        sht: attributes[:sht],
+        rev: attributes[:rev],
+        eo_chgno: attributes[:eo_chgno],
+        mcl: attributes[:mcl],
+        scp_for_smpl: attributes[:scp_for_smpl],
+        scml_ln: attributes[:scml_ln],
+        doc_type: create(:doc_type, name: attributes[:doc_type]),
+        chg_type: create(:chg_type, name: attributes[:chg_type])
+      )
+    end
+
+    describe 'attributesに設定した値が規定のキーと値で返却される' do
+      subject { request_detail.compare_attributes }
+      it { is_expected.to eq attributes }
+    end
+
+    describe '値が nil もしくは 空文字 の場合は該当するキーが返却されない' do
+      before do
+        build(:request_detail, doc_no: nil, sht: '')
+      end
+
+      %i(doc_no sht).each do |key|
+        subject { request_detail.compare_attributes.key?(key) }
+        it { is_expected.to be_truthy }
+      end
+    end
+
+    describe '同一の値を設定したForMatchingDataと比較すると True が得られる' do
+      subject { request_detail.compare_attributes == for_matching_data.compare_attributes }
+
+      let(:for_matching_data) do
+        build(
+          :for_matching_data,
+          doc_no: attributes[:doc_no], doc_type_str: attributes[:doc_type],
+          sht: attributes[:sht], eo_chgno: attributes[:eo_chgno],
+          chg_type_str: attributes[:chg_type], mcl: attributes[:mcl],
+          scp_for_smpl: attributes[:scp_for_smpl], scml: attributes[:scml_ln]
+        )
+      end
+
+      it { is_expected.to be_truthy }
+    end
+  end
 end
