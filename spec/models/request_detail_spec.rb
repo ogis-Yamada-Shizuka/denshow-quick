@@ -172,12 +172,15 @@ RSpec.describe RequestDetail, type: :model do
     end
 
     let(:request_detail) do
-      create(
+      build(
         :request_detail,
-        request_application: request_application, doc_no: attributes[:doc_no],
-        sht: attributes[:sht], rev: attributes[:rev],
-        eo_chgno: attributes[:eo_chgno], mcl: attributes[:mcl],
-        scp_for_smpl: attributes[:scp_for_smpl], scml_ln: attributes[:scml_ln],
+        doc_no: attributes[:doc_no],
+        sht: attributes[:sht],
+        rev: attributes[:rev],
+        eo_chgno: attributes[:eo_chgno],
+        mcl: attributes[:mcl],
+        scp_for_smpl: attributes[:scp_for_smpl],
+        scml_ln: attributes[:scml_ln],
         doc_type: create(:doc_type, name: attributes[:doc_type]),
         chg_type: create(:chg_type, name: attributes[:chg_type])
       )
@@ -188,11 +191,22 @@ RSpec.describe RequestDetail, type: :model do
       it { is_expected.to eq attributes }
     end
 
+    describe '値が nil もしくは 空文字 の場合は該当するキーが返却されない' do
+      before do
+        build(:request_detail, doc_no: nil, sht: '')
+      end
+
+      %i(doc_no sht).each do |key|
+        subject { request_detail.compare_attributes.key?(key) }
+        it { is_expected.to be_truthy }
+      end
+    end
+
     describe '同一の値を設定したForMatchingDataと比較すると True が得られる' do
       subject { request_detail.compare_attributes == for_matching_data.compare_attributes }
 
       let(:for_matching_data) do
-        create(
+        build(
           :for_matching_data,
           doc_no: attributes[:doc_no], doc_type_str: attributes[:doc_type],
           sht: attributes[:sht], eo_chgno: attributes[:eo_chgno],
@@ -201,7 +215,7 @@ RSpec.describe RequestDetail, type: :model do
         )
       end
 
-      it { is_expected.to be true }
+      it { is_expected.to be_truthy }
     end
   end
 end

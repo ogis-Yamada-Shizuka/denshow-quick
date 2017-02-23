@@ -74,6 +74,17 @@ RSpec.describe ForMatchingData, type: :model do
       it { is_expected.to eq attributes }
     end
 
+    describe '値が nil もしくは 空文字 の場合は該当するキーが返却されない' do
+      before do
+        build(:for_matching_data, doc_no: nil, sht: '')
+      end
+
+      %i(doc_no sht).each do |key|
+        subject { for_matching_data.compare_attributes.key?(key) }
+        it { is_expected.to be_truthy }
+      end
+    end
+
     describe '返却される key の rev の値は revision に設定した値が返却される' do
       subject { for_matching_data.compare_attributes[:rev] }
       before do
@@ -85,21 +96,23 @@ RSpec.describe ForMatchingData, type: :model do
 
     describe '同一の値を設定した RequestDetail と比較すると True が得られる' do
       subject { for_matching_data.compare_attributes == request_detail.compare_attributes }
-      let(:request_application) { create(:request_application, model: create(:model), section: create(:section)) }
 
       let(:request_detail) do
-        create(
+        build(
           :request_detail,
-          request_application: request_application, doc_no: attributes[:doc_no],
-          sht: attributes[:sht], rev: attributes[:rev],
-          eo_chgno: attributes[:eo_chgno], mcl: attributes[:mcl],
-          scp_for_smpl: attributes[:scp_for_smpl], scml_ln: attributes[:scml_ln],
+          doc_no: attributes[:doc_no],
+          sht: attributes[:sht],
+          rev: attributes[:rev],
+          eo_chgno: attributes[:eo_chgno],
+          mcl: attributes[:mcl],
+          scp_for_smpl: attributes[:scp_for_smpl],
+          scml_ln: attributes[:scml_ln],
           doc_type: create(:doc_type, name: attributes[:doc_type]),
           chg_type: create(:chg_type, name: attributes[:chg_type])
         )
       end
 
-      it { is_expected.to be true }
+      it { is_expected.to be_truthy }
     end
   end
 end
