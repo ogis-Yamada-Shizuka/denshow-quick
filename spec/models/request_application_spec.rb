@@ -80,4 +80,67 @@ RSpec.describe RequestApplication, type: :model do
       end
     end
   end
+
+  describe 'compare_to_matching_datas method' do
+    let(:request_application) do
+      create(
+        :request_application,
+        model: create(:model, code: 'A01'),
+        section: create(:section),
+        project: create(:project)
+      )
+    end
+
+    describe '一致、不一致の結果がハッシュとして返却される' do
+      context '全て一致する場合' do
+        subject { request_application.compare_to_matching_datas.all? { |_key, value| value[:matched].present? } }
+
+        before do
+          create_list(:request_detail_same_attribute_as_fmd, 5, request_application: request_application)
+          create_list(:fmd_same_attribute_as_detail, 5)
+        end
+
+        it { is_expected.to be_truthy }
+      end
+
+      context '不一致の detail が存在する場合' do
+        subject { request_application.compare_to_matching_datas.any? { |_key, value| value[:unmatched_details].present? } }
+
+        before do
+          create(:request_detail_same_attribute_as_fmd, request_application: request_application, sht: 'ERR1')
+          create(:fmd_same_attribute_as_detail)
+        end
+
+        it { is_expected.to be_truthy }
+      end
+
+      context '不一致の for_matching_data が存在する場合' do
+        subject { request_application.compare_to_matching_datas.any? { |_key, value| value[:unmatched_for_matching_datas].present? } }
+
+        before do
+          create(:request_detail_same_attribute_as_fmd, request_application: request_application)
+          create(:fmd_same_attribute_as_detail, sht: 'ERR1')
+        end
+
+        it { is_expected.to be_truthy }
+      end
+    end
+
+    describe '不一致の detail の attributes の key が返却される' do
+      let(:unmatched_keys) { %i(sht rev) }
+      before do
+        create(:request_detail_same_attribute_as_fmd, request_application: request_application, sht: 'ERR1', rev: 'ERR2')
+        create(:fmd_same_attribute_as_detail)
+      end
+
+      subject do
+        [].tap do |keys|
+          request_application.compare_to_matching_datas.each do |_key, result|
+            result[:unmatched_details].each { |h| h[:unmatched_attributes].each { |key| keys << key } }
+          end
+        end
+      end
+      it { is_expected.to eq unmatched_keys }
+    end
+  end
 end
