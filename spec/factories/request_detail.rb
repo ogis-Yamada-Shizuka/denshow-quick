@@ -14,9 +14,7 @@ FactoryGirl.define do
     association :doc_type
     association :chg_type
 
-    sequence :doc_no do |n|
-      "DOC-TEST-#{n}"
-    end
+    sequence(:doc_no) { |n| "DOC-TEST-#{n}" }
     sht 'S01'
     rev 'A'
     eo_chgno 'CHG1'

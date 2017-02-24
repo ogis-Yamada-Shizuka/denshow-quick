@@ -21,9 +21,7 @@ FactoryGirl.define do
       "A01／DOC-TEST-#{n}／GHI／S01／-／CHG1／BVSR／MC1／SCP／1LN／A"
     end
     model_code 'A01'
-    sequence :doc_no do |n|
-      "DOC-TEST-#{n}"
-    end
+    sequence(:doc_no) { |n| "DOC-TEST-#{n}" }
     doc_type_str 'GHI'
     sht 'S01'
     rev '-'
